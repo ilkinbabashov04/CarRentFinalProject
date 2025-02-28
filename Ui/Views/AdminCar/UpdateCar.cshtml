@@ -1,0 +1,74 @@
+﻿@model CarDto
+@{
+    ViewData["Title"] = "UpdateCar";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Car Update Page</h4>
+                        <p class="card-subtitle mb-4">You are required to enter all the details of the cars before proceeding. Once all the necessary information has been provided, please press the Save button to complete the update operation.</p>
+                        <form method="post">
+                            <input type="hidden" asp-for="id" />
+
+                            <div class="form-group">
+                                <label for="exampleInputBrand">Brand</label>
+                                @Html.DropDownListFor(model => model.BrandId, (List<SelectListItem>)ViewBag.BrandValues, new { @class = "form-control" })
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputModel">Model</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Model" placeholder="Model">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputCoverImage">CoverImage</label>
+                                <input type="text" class="form-control" id="exampleInputCoverImage" asp-for="CoverImageUrl" placeholder="Enter Cover image Url">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputKm">Km</label>
+                                <input type="text" class="form-control" id="exampleInputKm" asp-for="Km" placeholder="Enter Km">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTransmission">Transmission</label>
+                                <input type="text" class="form-control" id="exampleInputTransmission" asp-for="Transmission" placeholder="Enter transmission type">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSeat">Seat</label>
+                                <input type="number" class="form-control" id="exampleInputSeat" asp-for="Seat" placeholder="Enter seat count">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputLuggage">Luggage</label>
+                                <input type="number" class="form-control" id="exampleInputLuggage" asp-for="Luggage" placeholder="Enter luggage weight">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputFuel">Fuel</label>
+                                <input type="text" class="form-control" id="exampleInputFuel" asp-for="Fuel" placeholder="Enter Fuel type">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputBigImageUrl">Big Image Url</label>
+                                <input type="text" class="form-control" id="exampleInputBigImageUrl" asp-for="BigImageUrl" placeholder="Enter Big Image Url">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div>
+            </div>
+
+        </div>
+        <!-- end card-body-->
+    </div>
+    <!-- end card -->
+
+</div>
+<!-- end col -->
+        </div>
+<!-- end page title -->

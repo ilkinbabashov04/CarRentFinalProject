@@ -1,0 +1,14 @@
+﻿@model List<CategoryDto>
+<div class="sidebar-box ftco-animate">
+    <div class="categories">
+        <h3>Categories</h3>
+        <ul style="list-style: none; padding: 0; margin: 0;">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="#">@item.Name <span>(0)</span></a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

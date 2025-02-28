@@ -231,3 +231,12 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Entities.
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Core.pdb
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\obj\Debug\net8.0\Ui.sourcelink.json
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

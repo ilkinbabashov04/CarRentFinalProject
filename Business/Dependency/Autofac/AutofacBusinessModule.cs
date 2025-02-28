@@ -42,6 +42,16 @@ namespace Business.Dependency.Autofac
 			builder.RegisterType<EfSocialMediaDal>().As<ISocialMediaDal>().SingleInstance();
 			builder.RegisterType<TestimonialManager>().As<ITestimonialService>().SingleInstance();
 			builder.RegisterType<EfTestimaonialDal>().As<ITestimonialDal>().SingleInstance();
+			builder.RegisterType<AuthorManager>().As<IAuthorService>().SingleInstance();
+			builder.RegisterType<EfAuthorDal>().As<IAuthorDal>().SingleInstance();
+			builder.RegisterType<BlogManager>().As<IBlogService>().SingleInstance();
+			builder.RegisterType<EfBlogDal>().As<IBlogDal>().SingleInstance();
+			builder.RegisterType<CarPricingManager>().As<ICarPricingService>().SingleInstance();
+			builder.RegisterType<EfCarPricingDal>().As<ICarPricingDal>().SingleInstance();
+			builder.RegisterType<TagCloudManager>().As<ITagCloudService>().SingleInstance();
+			builder.RegisterType<EfTagCloudDal>().As<ITagCloudDal>().SingleInstance();
+			builder.RegisterType<CommentManager>().As<ICommentService>().SingleInstance();
+			builder.RegisterType<EfCommentDal>().As<ICommentDal>().SingleInstance();
 		}
 	}
 }

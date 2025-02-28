@@ -17,3 +17,4 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\Business\bin\Debug\net8.0\Dat
 C:\Users\Babashov\source\repos\CarRentFinalProject\Business\bin\Debug\net8.0\Entities.pdb
 C:\Users\Babashov\source\repos\CarRentFinalProject\Business\obj\Debug\net8.0\Business.csproj.AssemblyReference.cache
 C:\Users\Babashov\source\repos\CarRentFinalProject\Business\obj\Debug\net8.0\Business.csproj.Up2Date
+C:\Users\Babashov\source\repos\CarRentFinalProject\Business\obj\Debug\net8.0\Business.sourcelink.json

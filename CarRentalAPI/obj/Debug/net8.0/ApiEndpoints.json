@@ -74,6 +74,190 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CarRentalAPI.Controllers.AuthorController",
+    "Method": "Add",
+    "RelativePath": "api/Author/AddAuthor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "author",
+        "Type": "Entities.Concrete.Author",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.AuthorController",
+    "Method": "Delete",
+    "RelativePath": "api/Author/DeleteAuthor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.AuthorController",
+    "Method": "GetAll",
+    "RelativePath": "api/Author/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.AuthorController",
+    "Method": "Get",
+    "RelativePath": "api/Author/GetAuthorById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.AuthorController",
+    "Method": "Update",
+    "RelativePath": "api/Author/UpdateAuthor",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "author",
+        "Type": "Entities.Concrete.Author",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.BlogController",
+    "Method": "Add",
+    "RelativePath": "api/Blog/AddBlog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blog",
+        "Type": "Entities.Concrete.Blog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.BlogController",
+    "Method": "Delete",
+    "RelativePath": "api/Blog/DeleteBlog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.BlogController",
+    "Method": "GetThreeBlogs",
+    "RelativePath": "api/Blog/Get3Blogs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.BlogController",
+    "Method": "GetAll",
+    "RelativePath": "api/Blog/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.BlogController",
+    "Method": "GetAllBlogsWithAuthor",
+    "RelativePath": "api/Blog/GetAllBlogsWithAuthor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.BlogController",
+    "Method": "Get",
+    "RelativePath": "api/Blog/GetBlogById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.BlogController",
+    "Method": "GetBlogsByAuthorId",
+    "RelativePath": "api/Blog/GetBlogsByAuthorId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.BlogController",
+    "Method": "Update",
+    "RelativePath": "api/Blog/UpdateBlog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "blog",
+        "Type": "Entities.Concrete.Blog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CarRentalAPI.Controllers.BrandController",
     "Method": "Add",
     "RelativePath": "api/Brand/AddBrand",
@@ -92,15 +276,15 @@
   {
     "ContainingType": "CarRentalAPI.Controllers.BrandController",
     "Method": "Delete",
-    "RelativePath": "api/Brand/DeleteBrand",
-    "HttpMethod": "POST",
+    "RelativePath": "api/Brand/DeleteBrand{id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -171,15 +355,15 @@
   {
     "ContainingType": "CarRentalAPI.Controllers.CarController",
     "Method": "Delete",
-    "RelativePath": "api/Car/DeleteCar",
-    "HttpMethod": "POST",
+    "RelativePath": "api/Car/DeleteCar {id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -207,7 +391,7 @@
   {
     "ContainingType": "CarRentalAPI.Controllers.CarController",
     "Method": "Get",
-    "RelativePath": "api/Car/GetCarById",
+    "RelativePath": "api/Car/GetCarById {id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -215,7 +399,7 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -223,7 +407,7 @@
   {
     "ContainingType": "CarRentalAPI.Controllers.CarController",
     "Method": "Update",
-    "RelativePath": "api/Car/UpdateCar",
+    "RelativePath": "api/Car/UpdateCar {id}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -232,8 +416,23 @@
         "Name": "car",
         "Type": "Entities.Concrete.Car",
         "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
+        "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CarPricingController",
+    "Method": "GetAll",
+    "RelativePath": "api/CarPricing/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -305,6 +504,80 @@
       {
         "Name": "category",
         "Type": "Entities.Concrete.Category",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CommentController",
+    "Method": "Add",
+    "RelativePath": "api/Comment/AddComment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comment",
+        "Type": "Entities.Concrete.Comment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CommentController",
+    "Method": "Delete",
+    "RelativePath": "api/Comment/DeleteComment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CommentController",
+    "Method": "GetAll",
+    "RelativePath": "api/Comment/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CommentController",
+    "Method": "Get",
+    "RelativePath": "api/Comment/GetCommentById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CommentController",
+    "Method": "Update",
+    "RelativePath": "api/Comment/UpdateComment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "comment",
+        "Type": "Entities.Concrete.Comment",
         "IsRequired": true
       }
     ],
@@ -403,15 +676,15 @@
   {
     "ContainingType": "CarRentalAPI.Controllers.FeatureController",
     "Method": "Delete",
-    "RelativePath": "api/Feature/DeleteFeature",
-    "HttpMethod": "POST",
+    "RelativePath": "api/Feature/DeleteFeature {id}",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -445,7 +718,7 @@
   {
     "ContainingType": "CarRentalAPI.Controllers.FeatureController",
     "Method": "Update",
-    "RelativePath": "api/Feature/UpdateFeature",
+    "RelativePath": "api/Feature/UpdateFeature {id}",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -453,6 +726,11 @@
       {
         "Name": "feature",
         "Type": "Entities.Concrete.Feature",
+        "IsRequired": true
+      },
+      {
+        "Name": "id",
+        "Type": "",
         "IsRequired": true
       }
     ],
@@ -897,6 +1175,96 @@
       {
         "Name": "socialMedia",
         "Type": "Entities.Concrete.SocialMedia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.TagCloudController",
+    "Method": "Add",
+    "RelativePath": "api/TagCloud/AddTagCloud",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tagCloud",
+        "Type": "Entities.Concrete.TagCloud",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.TagCloudController",
+    "Method": "Delete",
+    "RelativePath": "api/TagCloud/DeleteTagCloud",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.TagCloudController",
+    "Method": "GetAll",
+    "RelativePath": "api/TagCloud/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.TagCloudController",
+    "Method": "Get",
+    "RelativePath": "api/TagCloud/GetTagCloudById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.TagCloudController",
+    "Method": "GetTagCloudsByBlogId",
+    "RelativePath": "api/TagCloud/GetTagCloudsByBlogId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.TagCloudController",
+    "Method": "Update",
+    "RelativePath": "api/TagCloud/UpdateTagCloud",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tagCloud",
+        "Type": "Entities.Concrete.TagCloud",
         "IsRequired": true
       }
     ],

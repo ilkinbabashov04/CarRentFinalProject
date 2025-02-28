@@ -25,7 +25,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("UpdateCar")]
+		[HttpPost("UpdateCar {id}")]
 		public IActionResult Update(Car car)
 		{
 			var result = _carService.Update(car);
@@ -35,7 +35,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("DeleteCar")]
+		[HttpDelete("DeleteCar {id}")]
 		public IActionResult Delete(int id)
 		{
 			var result = _carService.Delete(id);
@@ -45,7 +45,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpGet("GetCarById")]
+		[HttpGet("GetCarById {id}")]
 		public IActionResult Get(int id)
 		{
 			var result = _carService.GetById(id);

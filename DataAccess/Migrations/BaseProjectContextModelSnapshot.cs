@@ -50,6 +50,71 @@ namespace DataAccess.Migrations
                     b.ToTable("Abouts");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.Author", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Authors");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Blog", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CoverImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Blogs");
+                });
+
             modelBuilder.Entity("Entities.Concrete.Brand", b =>
                 {
                     b.Property<int>("Id")
@@ -196,10 +261,6 @@ namespace DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CarId");
-
-                    b.HasIndex("PricingId");
-
                     b.ToTable("CarPricings");
                 });
 
@@ -221,6 +282,36 @@ namespace DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Categories");
+                });
+
+            modelBuilder.Entity("Entities.Concrete.Comment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Comments");
                 });
 
             modelBuilder.Entity("Entities.Concrete.Contact", b =>
@@ -438,6 +529,31 @@ namespace DataAccess.Migrations
                     b.ToTable("SocialMedias");
                 });
 
+            modelBuilder.Entity("Entities.Concrete.TagCloud", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BlogId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("IsDelete")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BlogId");
+
+                    b.ToTable("TagClouds");
+                });
+
             modelBuilder.Entity("Entities.Concrete.Testimonial", b =>
                 {
                     b.Property<int>("Id")
@@ -473,7 +589,7 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Concrete.Car", b =>
                 {
                     b.HasOne("Entities.Concrete.Brand", "Brand")
-                        .WithMany("Cars")
+                        .WithMany()
                         .HasForeignKey("BrandId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -484,7 +600,7 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Concrete.CarDescription", b =>
                 {
                     b.HasOne("Entities.Concrete.Car", "Car")
-                        .WithMany("CarDescriptions")
+                        .WithMany()
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -495,13 +611,13 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Concrete.CarFeature", b =>
                 {
                     b.HasOne("Entities.Concrete.Car", "Car")
-                        .WithMany("CarFeatures")
+                        .WithMany()
                         .HasForeignKey("CarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Entities.Concrete.Feature", "Feature")
-                        .WithMany("CarFeatures")
+                        .WithMany()
                         .HasForeignKey("FeatureId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -511,47 +627,18 @@ namespace DataAccess.Migrations
                     b.Navigation("Feature");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.CarPricing", b =>
+            modelBuilder.Entity("Entities.Concrete.TagCloud", b =>
                 {
-                    b.HasOne("Entities.Concrete.Car", "Car")
-                        .WithMany("CarPricings")
-                        .HasForeignKey("CarId")
+                    b.HasOne("Entities.Concrete.Blog", null)
+                        .WithMany("TagClouds")
+                        .HasForeignKey("BlogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("Entities.Concrete.Pricing", "Pricing")
-                        .WithMany("CarPricings")
-                        .HasForeignKey("PricingId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Car");
-
-                    b.Navigation("Pricing");
                 });
 
-            modelBuilder.Entity("Entities.Concrete.Brand", b =>
+            modelBuilder.Entity("Entities.Concrete.Blog", b =>
                 {
-                    b.Navigation("Cars");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.Car", b =>
-                {
-                    b.Navigation("CarDescriptions");
-
-                    b.Navigation("CarFeatures");
-
-                    b.Navigation("CarPricings");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.Feature", b =>
-                {
-                    b.Navigation("CarFeatures");
-                });
-
-            modelBuilder.Entity("Entities.Concrete.Pricing", b =>
-                {
-                    b.Navigation("CarPricings");
+                    b.Navigation("TagClouds");
                 });
 #pragma warning restore 612, 618
         }

@@ -16,13 +16,15 @@ namespace Ui.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.v1 = "Cars";
+            ViewBag.v2 = "Choose Your Car";
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7140/api/Car/GetAll");
+            var responseMessage = await client.GetAsync("https://localhost:7140/api/CarPricing/GetAll");
 
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<CarDto>>>(jsonData);
+                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<CarPricingDto>>>(jsonData);
                 var values = apiResponse?.Data;
                 return View(values);
             }

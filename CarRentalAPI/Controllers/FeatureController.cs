@@ -24,7 +24,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("UpdateFeature")]
+		[HttpPost("UpdateFeature {id}")]
 		public IActionResult Update(Feature feature)
 		{
 			var result = _featureService.Update(feature);
@@ -34,7 +34,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("DeleteFeature")]
+		[HttpDelete("DeleteFeature {id}")]
 		public IActionResult Delete(int id)
 		{
 			var result = _featureService.Delete(id);

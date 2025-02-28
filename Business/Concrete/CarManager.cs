@@ -92,6 +92,7 @@ namespace Business.Concrete
 			var result = _carDal.Get(p => p.Id == car.Id && p.IsDelete == false);
 			if (result != null)
 			{
+				result.Id = car.Id;
 				result.BrandId = car.BrandId;
 				result.Fuel = car.Fuel;
 				result.Transmission = car.Transmission;
@@ -109,5 +110,6 @@ namespace Business.Concrete
 				return new ErrorResult("Not found!");
 			}
 		}
-	}
+
+    }
 }

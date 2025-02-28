@@ -6,7 +6,10 @@ namespace Ui.Controllers
 	{
 		public IActionResult Index()
 		{
-			return View();
+			ViewBag.v1 = "About Us";
+			ViewBag.v2 = "About Us";
+
+            return View();
 		}
 	}
 }

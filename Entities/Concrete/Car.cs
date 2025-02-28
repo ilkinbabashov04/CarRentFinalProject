@@ -10,7 +10,7 @@ namespace Entities.Concrete
 	public class Car : BaseEntity
 	{
         public int BrandId { get; set; }
-        public Brand Brand { get; set; }
+        //public Brand Brand { get; set; }
         public string Model { get; set; }
         public string CoverImageUrl { get; set; }
         public int Km { get; set; }

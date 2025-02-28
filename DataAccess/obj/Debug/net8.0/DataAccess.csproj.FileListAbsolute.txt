@@ -17,3 +17,4 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\obj\Debug\net8.0\r
 C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\obj\Debug\net8.0\DataAccess.pdb
 C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\obj\Debug\net8.0\DataAccess.genruntimeconfig.cache
 C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\obj\Debug\net8.0\ref\DataAccess.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\obj\Debug\net8.0\DataAccess.sourcelink.json

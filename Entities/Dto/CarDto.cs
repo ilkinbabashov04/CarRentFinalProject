@@ -1,5 +1,7 @@
 ﻿using Core.Entity.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +12,8 @@ namespace Entities.Dto
 {
 	public class CarDto : IDto
 	{
-        public int CarId { get; set; }
+		//[JsonProperty("id")]  // This ensures correct mapping from API response
+		public int id { get; set; }
         public int BrandId { get; set; }
         public string BrandName { get; set; }
         public string Model { get; set; }

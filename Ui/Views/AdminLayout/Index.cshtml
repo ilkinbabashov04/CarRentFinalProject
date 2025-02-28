@@ -1,0 +1,30 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+@Html.Partial("/Views/AdminLayout/AdminHeaderPartial.cshtml")
+
+
+
+<body>
+
+    <!-- Begin page -->
+    <div id="layout-wrapper">
+        @Html.Partial("/Views/AdminLayout/AdminNavbarPartial.cshtml")
+        @Html.Partial("/Views/AdminLayout/AdminSidebarPartial.cshtml")
+
+        <div class="main-content">
+
+            @RenderBody()
+            @Html.Partial("/Views/AdminLayout/AdminFooterPartial.cshtml")
+
+        </div>
+
+    </div>
+    @Html.Partial("/Views/AdminLayout/AdminScriptPartial.cshtml")
+
+</body>
+</html>

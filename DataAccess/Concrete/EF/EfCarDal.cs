@@ -49,6 +49,7 @@ namespace DataAccess.Concrete.EF
 						 on c.BrandId equals b.Id
 						 select new CarDto
 						 {
+							 id = c.Id,
 							 BrandId = b.Id,
 							 BrandName = b.Name,
 							 Model = c.Model,
@@ -72,7 +73,7 @@ namespace DataAccess.Concrete.EF
                          on c.BrandId equals b.Id
                          select new CarDto
                          {
-							 CarId = c.Id,
+							 id = c.Id,
                              BrandId = b.Id,
                              BrandName = b.Name,
                              Model = c.Model,

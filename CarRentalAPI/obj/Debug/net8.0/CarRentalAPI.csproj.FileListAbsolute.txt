@@ -82,3 +82,6 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\obj\Debug\net8.0
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Autofac.Extensions.DependencyInjection.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\libman.json
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\obj\Debug\net8.0\CarRentalAPI.sourcelink.json
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Newtonsoft.Json.dll
