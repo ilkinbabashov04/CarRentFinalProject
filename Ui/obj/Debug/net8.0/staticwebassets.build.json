@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "8pgBnuuxs4LyWVqCIHvH1NHC5TMEvj6K0nnC9Kf6M58=",
+  "Hash": "aWeDEpwkA5AJF/4RK5fo5LW5IRNHBgHfFYyFU7BIynY=",
   "Source": "Ui",
   "BasePath": "_content/Ui",
   "Mode": "Default",
@@ -7330,6 +7330,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Admin\\vertical\\assets\\images\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\Admin\\vertical\\assets\\images\\flags\\azerb.png",
+      "SourceId": "Ui",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\",
+      "BasePath": "_content/Ui",
+      "RelativePath": "Admin/vertical/assets/images/flags/azerb.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Admin\\vertical\\assets\\images\\flags\\azerb.png"
     },
     {
       "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\Admin\\vertical\\assets\\images\\flags\\french.jpg",

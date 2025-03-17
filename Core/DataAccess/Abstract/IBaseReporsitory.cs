@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.DataAccess.Abstract
 {
-	public interface IBaseReporsitory<T> where T : class, IEntity, new()
+	public interface IBaseReporsitory<T> where T : class, /*IEntity*/ new()
 	{
 		void Add(T entity);
 		void Update(T entity);

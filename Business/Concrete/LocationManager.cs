@@ -1,11 +1,15 @@
 ﻿using Business.Abstract;
+//using Business.BusinessAspect.Autofac.Secured;
+using Core.Entity.Concrete;
 using Core.Helper.Result.Abstract;
 using Core.Helper.Result.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -14,7 +18,7 @@ namespace Business.Concrete
 	public class LocationManager(ILocationDal locationDal) : ILocationService
 	{
 		private readonly ILocationDal _locationDal = locationDal;
-		public IResult Add(Location location)
+        public IResult Add(Location location)
 		{
 			_locationDal.Add(location);
 			return new SuccessResult("Successfully added!");

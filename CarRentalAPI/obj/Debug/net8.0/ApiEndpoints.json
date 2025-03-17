@@ -74,6 +74,43 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CarRentalAPI.Controllers.AppUserController",
+    "Method": "UpdateUserRole",
+    "RelativePath": "api/AppUser/UpdateUserRole/{userId}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateUserRoleDto",
+        "Type": "Entities.Dto.UpdateUserRoleDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.AppUsersRoleIdController",
+    "Method": "Get",
+    "RelativePath": "api/AppUsersRoleId/GetAppUsersRoleIdById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CarRentalAPI.Controllers.AuthorController",
     "Method": "Add",
     "RelativePath": "api/Author/AddAuthor",
@@ -959,6 +996,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CarRentalAPI.Controllers.LoginController",
+    "Method": "Index",
+    "RelativePath": "api/Login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "Business.BusinessAspect.AppUserQuery.GetCheckAppUserQuery",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CarRentalAPI.Controllers.PricingController",
     "Method": "Add",
     "RelativePath": "api/Pricing/AddPricing",
@@ -1027,6 +1080,64 @@
       {
         "Name": "pricing",
         "Type": "Entities.Concrete.Pricing",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.RegisterController",
+    "Method": "CreateUser",
+    "RelativePath": "api/Register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "command",
+        "Type": "Core.Entity.Concrete.CreateAppUser",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.RoleController",
+    "Method": "Delete",
+    "RelativePath": "api/Role/DeleteRole {id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.RoleController",
+    "Method": "GetAll",
+    "RelativePath": "api/Role/GetAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.RoleController",
+    "Method": "Get",
+    "RelativePath": "api/Role/GetRoleById {id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

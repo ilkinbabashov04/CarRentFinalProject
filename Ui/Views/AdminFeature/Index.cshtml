@@ -13,18 +13,18 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Car Feature List</h4>
+                        <h4 class="card-title">@Ui.Resources.Resource.GetString("Car Feature List")</h4>
                         <p class="card-subtitle mb-4">
-                            You can add new features related to cars (like air conditioning, Bluetooth, audio, electric, etc.), edit features through the list of features, and remove a feature from here.
+                            @Ui.Resources.Resource.GetString("You can add new features related to cars (like air conditioning, Bluetooth, audio, electric, etc.), edit features through the list of features, and remove a feature from here.")
                         </p>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Features</th>
-                                        <th>Delete</th>
-                                        <th>Update</th>
+                                        <th>@Ui.Resources.Resource.GetString("Features")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Delete")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Update")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,13 +34,13 @@
                                         <tr>
                                             <th scope="row">@count</th>
                                             <td>@item.Name</td>
-                                            <td><a href="/AdminFeature/DeleteFeature/@item.Id" class="btn btn-outline-danger">Delete</a></td>
-                                            <td><a href="/AdminFeature/UpdateFeature/@item.Id" class="btn btn-outline-success">Update</a></td>
+                                            <td><a href="/AdminFeature/DeleteFeature/@item.Id" class="btn btn-outline-danger">@Ui.Resources.Resource.GetString("Delete")</a></td>
+                                            <td><a href="/AdminFeature/UpdateFeature/@item.Id" class="btn btn-outline-success">@Ui.Resources.Resource.GetString("Update")</a></td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                            <td><a href="/AdminFeature/CreateFeature" class="btn btn-outline-primary">Add new Feature</a></td>
+                            <td><a href="/AdminFeature/CreateFeature" class="btn btn-outline-primary">@Ui.Resources.Resource.GetString("Add new Feature")</a></td>
                         </div>
                     </div>
                 </div>

@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Core.Entity.Concrete;
+using Entities.Concrete;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,8 @@ namespace DataAccess.Concrete.EF
 		}
 
         public DbSet<About> Abouts { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<AppRole> AppRoles { get; set; }
 		public DbSet<Brand> Brands { get; set; }
 		public DbSet<Car> Cars { get; set; }
 		public DbSet<CarDescription> CarDescriptions { get; set; }
@@ -35,6 +38,9 @@ namespace DataAccess.Concrete.EF
 		public DbSet<Blog> Blogs { get; set; }
         public DbSet<TagCloud> TagClouds { get; set; }
         public DbSet<Comment> Comments { get; set; }
+		//public DbSet<User> Users { get; set; }
+		//public DbSet<OperationClaims> OperationClaims { get; set; }
+		//public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
 
-    }
+	}
 }

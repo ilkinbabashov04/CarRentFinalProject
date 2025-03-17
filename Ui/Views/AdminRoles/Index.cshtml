@@ -1,0 +1,53 @@
+﻿@model List<RolesDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Roles List</h4>
+                        <p class="card-subtitle mb-4">
+                            You can change the roles of users or delete the users of website from here.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>UserName</th>
+                                        <th>RoleName</th>
+                                        <th>RoleId</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.UserName</td>
+                                            <td>@item.RoleName</td>
+                                            <td>@item.RoleId</td>
+                                            <td><a href="/AdminRoles/DeleteRole/@item.AppUserId" class="btn btn-outline-danger">Delete</a></td>
+                                            <td><a href="/AdminRoles/UpdateRole/@item.AppUserId" class="btn btn-outline-success">Update</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

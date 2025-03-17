@@ -13,24 +13,24 @@
             <div class="col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">Car List</h4>
+                        <h4 class="card-title">@Ui.Resources.Resource.GetString("Car List")</h4>
                         <p class="card-subtitle mb-4">
-                            This page enables users to add, delete, update, and list cars for efficient vehicle management.
+                            @Ui.Resources.Resource.GetString("This page enables users to add, delete, update, and list cars for efficient vehicle management.")
                         </p>
                         <div class="table-responsive">
                             <table class="table mb-0">
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Brand Name</th>
-                                        <th>Model</th>
-                                        <th>Transmission</th>
-                                        <th>Milesone</th>
-                                        <th>Delete</th>
-                                        <th>Update</th>
-                                        <th>Details</th>
-                                        <th>View in Site</th>
-                                        <th>Price Information</th>
+                                        <th>@Ui.Resources.Resource.GetString("BrandName")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Model")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Transmission")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Milesone")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Delete")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Update")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Details")</th>
+                                        <th>@Ui.Resources.Resource.GetString("View in Site")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Price Information")</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -43,16 +43,16 @@
                                             <td>@item.Model</td>
                                             <td>@item.Transmission</td>
                                             <td>@item.Km</td>
-                                            <td><a href="/AdminCar/DeleteCar/@item.id" class="btn btn-outline-danger">Delete</a></td>
-                                            <td><a href="/AdminCar/UpdateCar/@item.id" class="btn btn-outline-success">Update</a></td>
-                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-dark">Details</a></td>
-                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-warning">View in site</a></td>
-                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-secondary">Price Information</a></td>
+                                            <td><a href="/AdminCar/DeleteCar/@item.id" class="btn btn-outline-danger">@Ui.Resources.Resource.GetString("Delete")</a></td>
+                                            <td><a href="/AdminCar/UpdateCar/@item.id" class="btn btn-outline-success">@Ui.Resources.Resource.GetString("Update")</a></td>
+                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-dark">@Ui.Resources.Resource.GetString("Details")</a></td>
+                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-warning">@Ui.Resources.Resource.GetString("View in Site")</a></td>
+                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-secondary">@Ui.Resources.Resource.GetString("Price Information")</a></td>
                                         </tr>
                                     }
                                 </tbody>
                             </table>
-                            <td><a href="/AdminCar/CreateCar" class="btn btn-outline-primary">Add new Car</a></td>
+                            <td><a href="/AdminCar/CreateCar" class="btn btn-outline-primary">@Ui.Resources.Resource.GetString("Add new Car")</a></td>
                         </div>
 
                     </div>

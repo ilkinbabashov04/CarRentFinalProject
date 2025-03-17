@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+//using Business.BusinessAspect.Autofac.Secured;
 using Core.Helper.Result.Abstract;
 using Core.Helper.Result.Concrete;
 using DataAccess.Abstract;
@@ -11,6 +12,7 @@ namespace Business.Concrete
     public class BlogManager(IBlogDal blogDal) : IBlogService
     {
         private readonly IBlogDal _blogDal = blogDal;
+        
         public IResult Add(Blog blog)
         {
             _blogDal.Add(blog);

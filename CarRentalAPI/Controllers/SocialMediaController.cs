@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
+//using Business.BusinessAspect.Autofac.Secured;
 using Entities.Concrete;
-using Microsoft.AspNetCore.Http;
+//using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
@@ -10,11 +11,12 @@ namespace CarRentalAPI.Controllers
 	public class SocialMediaController : ControllerBase
 	{
 		private readonly ISocialMediaService _socialMediaService;
+		
 		public SocialMediaController(ISocialMediaService socialMediaService)
 		{
 			_socialMediaService = socialMediaService;
 		}
-		[HttpPost("AddSocialMedia")]
+        [HttpPost("AddSocialMedia")]
 		public IActionResult Add(SocialMedia socialMedia)
 		{
 			var result = _socialMediaService.Add(socialMedia);

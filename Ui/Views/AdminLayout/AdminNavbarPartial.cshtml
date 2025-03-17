@@ -9,7 +9,7 @@
             <div class="dropdown d-none d-sm-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="mdi mdi-plus"></i> Create New
+                    <i class="mdi mdi-plus"></i> @Ui.Resources.Resource.GetString("Create New")
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu">
@@ -63,20 +63,38 @@
             <div class="dropdown d-inline-block">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="" src="~/Admin/vertical/assets/images/flags/us.jpg" alt="Header Language" height="16">
-                    <span class="d-none d-sm-inline-block ml-1">English</span>
+                    <span class="d-none d-sm-inline-block ml-1" asp-controller = "AdminCar" asp-action ="ChangeLanguage" asp-route-lang="en">
+                        @if(Thread.CurrentThread.CurrentCulture.ToString() == "en")
+                        {
+                            <img class="" src="~/Admin/vertical/assets/images/flags/us.jpg" alt="Header Language" height="16">
+                            <span>English</span>
+                            
+                        }
+                        else if (Thread.CurrentThread.CurrentCulture.ToString() == "az")
+                        {
+                            <img src="~/Admin/vertical/assets/images/flags/azerb.png" alt="user-image" class="mr-1" height="12">
+                            <span class="align-middle">Azərbaycan</span>
+                        }
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="~/Admin/vertical/assets/images/flags/spain.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">Spanish</span>
+                    <a class="dropdown-item notify-item"
+                       asp-controller="AdminCar" asp-action="ChangeLanguage" asp-route-lang="az">
+                        <img src="~/Admin/vertical/assets/images/flags/azerb.png" alt="user-image" class="mr-1" height="12">
+                        <span class="align-middle">Azərbaycan</span>
                     </a>
 
-                    <!-- item-->
-                    <a href="javascript:void(0);" class="dropdown-item notify-item">
-                        <img src="~/Admin/vertical/assets/images/flags/germany.jpg" alt="user-image" class="mr-1" height="12"> <span class="align-middle">German</span>
+                    <a class="dropdown-item notify-item"
+                       asp-controller="AdminCar" asp-action="ChangeLanguage" asp-route-lang="en">
+                        <img src="~/Admin/vertical/assets/images/flags/us.jpg" alt="user-image" class="mr-1" height="12">
+                        <span class="align-middle">English</span>
+                    </a>
+
+                    <a class="dropdown-item notify-item"
+                       asp-controller="AdminCar" asp-action="ChangeLanguage" asp-route-lang="gr">
+                        <img src="~/Admin/vertical/assets/images/flags/germany.jpg" alt="user-image" class="mr-1" height="12">
+                        <span class="align-middle">German</span>
                     </a>
 
                     <!-- item-->
@@ -102,10 +120,10 @@
                     <div class="p-3">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h6 class="m-0"> Notifications </h6>
+                                <h6 class="m-0">@Ui.Resources.Resource.GetString("Notifications")</h6>
                             </div>
                             <div class="col-auto">
-                                <a href="#!" class="small"> View All</a>
+                                <a href="#!" class="small">@Ui.Resources.Resource.GetString("View All")</a>
                             </div>
                         </div>
                     </div>
@@ -165,25 +183,25 @@
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                        <span>Inbox</span>
+                        <span>@Ui.Resources.Resource.GetString("Inbox")</span>
                         <span>
                             <span class="badge badge-pill badge-info">3</span>
                         </span>
                     </a>
                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                        <span>Profile</span>
+                        <span>@Ui.Resources.Resource.GetString("Profile")</span>
                         <span>
                             <span class="badge badge-pill badge-warning">1</span>
                         </span>
                     </a>
                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                        Settings
+                        @Ui.Resources.Resource.GetString("Settings")
                     </a>
                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                        <span>Lock Account</span>
+                        <span>@Ui.Resources.Resource.GetString("Lock Account")</span>
                     </a>
                     <a class="dropdown-item d-flex align-items-center justify-content-between" href="javascript:void(0)">
-                        <span>Log Out</span>
+                        <span>@Ui.Resources.Resource.GetString("Log Out")</span>
                     </a>
                 </div>
             </div>

@@ -1,0 +1,32 @@
+﻿@model RolesDto
+@{
+    ViewData["Title"] = "UpdateRole";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Role Update Page</h4>
+                        <p class="card-subtitle mb-4">You are required to enter all the details of the cars before proceeding. Once all the necessary information has been provided, please press the Save button to complete the update operation.</p>
+                        <form method="post">
+                            <input type="hidden" asp-for="AppUserId" />
+
+                            <div class="form-group">
+                                <label for="exampleInputModel">Model</label>
+                                <input type="text" class="form-control" id="roleId" asp-for="RoleId" placeholder="Role ID">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+

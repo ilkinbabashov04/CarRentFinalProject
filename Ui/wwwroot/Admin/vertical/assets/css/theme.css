@@ -61,7 +61,7 @@ File: App Css
 }
 
 .vertical-menu {
-  width: 230px;
+  width: 280px;
   z-index: 1001;
   background: #2f4050;
   bottom: 0;
@@ -73,7 +73,7 @@ File: App Css
 }
 
 .main-content {
-  margin-left: 230px;
+  margin-left: 280px;
   overflow: hidden;
 }
 

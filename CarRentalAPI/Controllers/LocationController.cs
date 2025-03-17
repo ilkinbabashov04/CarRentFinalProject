@@ -1,13 +1,17 @@
 ﻿using Business.Abstract;
+//using Business.BusinessAspect.Autofac.Secured;
 using Entities.Concrete;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+//using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
+    [Route("api/[controller]")]
 	[ApiController]
-	public class LocationController : ControllerBase
+    public class LocationController : ControllerBase
 	{
 		private readonly ILocationService _locationService;
 		public LocationController(ILocationService locationService)
@@ -54,7 +58,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpGet("GetAll")]
+        [HttpGet("GetAll")]
 		public IActionResult GetAll()
 		{
 			var result = _locationService.GetAll();

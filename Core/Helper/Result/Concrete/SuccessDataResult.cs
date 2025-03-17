@@ -12,7 +12,7 @@ namespace Core.Helper.Result.Concrete
 		{
 
 		}
-        public SuccessDataResult(T data) : base(data, true)
+        public SuccessDataResult(List<Entity.Concrete.AppRole> result, T data) : base(data, true)
         {
             
         }

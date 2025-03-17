@@ -1537,6 +1537,10 @@
       "PackagePath": "staticwebassets\\Admin\\vertical\\assets\\images\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\Admin\\vertical\\assets\\images\\flags\\azerb.png",
+      "PackagePath": "staticwebassets\\Admin\\vertical\\assets\\images\\flags\\azerb.png"
+    },
+    {
       "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\Admin\\vertical\\assets\\images\\flags\\french.jpg",
       "PackagePath": "staticwebassets\\Admin\\vertical\\assets\\images\\flags\\french.jpg"
     },

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Globalization;
 using System.Text;
 using Ui.Helper;
 
@@ -120,6 +121,22 @@ namespace Ui.Controllers
                 return RedirectToAction("Index");
             }
             return View();
+        }
+        public IActionResult ChangeLanguage(string lang)
+        {
+            if(!string.IsNullOrEmpty(lang))
+            {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture(lang);
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo(lang);
+            }
+            else
+            {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.CreateSpecificCulture("en");
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                lang = "en";
+            }
+            Response.Cookies.Append("Language", lang);
+            return Redirect(Request.GetTypedHeaders().Referer.ToString());
         }
     }
 }

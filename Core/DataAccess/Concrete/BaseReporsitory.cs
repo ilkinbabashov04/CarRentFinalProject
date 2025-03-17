@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 namespace Core.DataAccess.Concrete
 {
 	public class BaseReporsitory<TEntity, TContext>(TContext context) : IBaseReporsitory<TEntity>
-		where TEntity : class, IEntity, new()
+		where TEntity : class, /*IEntity*/ new()
 		where TContext : DbContext, new()
 	{
 		private readonly TContext _context = context;
