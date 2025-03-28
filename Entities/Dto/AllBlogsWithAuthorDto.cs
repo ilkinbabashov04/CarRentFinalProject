@@ -9,7 +9,7 @@ namespace Entities.Dto
 {
     public class AllBlogsWithAuthorDto : IDto
     {
-        public int BlogId { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public string AuthorName { get; set; }
         public string CategoryName { get; set; }

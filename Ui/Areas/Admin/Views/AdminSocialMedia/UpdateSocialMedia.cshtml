@@ -1,0 +1,43 @@
+﻿@model SocialMediaDto
+@{
+    ViewData["Title"] = "UpdateSocialMedia";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Update Social Media Page</h4>
+                        <p class="card-subtitle mb-4">
+                            On this page, you can update your social media account information.
+                        </p>
+                        <form method="post">
+                            <input type="hidden" asp-for="Id"/>
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaName">Social Media Name</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaName" asp-for="Name" placeholder="Add Social Media Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaUrl">URL</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaUrl" asp-for="Url" placeholder="Add Social Media Url">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaIconUrl">Social Media Icon Url</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaIconUrl" asp-for="IconUrl" placeholder="Add Social Media Icon Url">
+                            </div>
+                            <button type="submit" class="btn btn-success waves-effect waves-light">Update Social Media Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

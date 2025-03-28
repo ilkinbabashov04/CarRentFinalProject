@@ -16,7 +16,7 @@
                         <h4 class="card-title">New Car Login</h4>
                         <p class="card-subtitle mb-4">You are required to enter all the details of the cars before proceeding. Once all the necessary information has been provided, please press the Save button to complete the operation.</p>
 
-                        <form method="post">
+                        <form method="post" enctype="multipart/form-data">
                             <div class="form-group">
                                 <label for="exampleInputBrand">Brand</label>
                                 @Html.DropDownListFor(model => model.BrandId, (List<SelectListItem>)ViewBag.BrandValues, new { @class = "form-control" })
@@ -27,8 +27,8 @@
                                 <input type="text" class="form-control" id="exampleInputModel" asp-for ="Model" placeholder="Model">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputCoverImage">CoverImage</label>
-                                <input type="text" class="form-control" id="exampleInputCoverImage" asp-for="CoverImageUrl" placeholder="Enter Cover image Url">
+                                <label for="exampleInputCoverImage">Cover Image</label>
+                                <input type="file" class="form-control" name="CoverImage">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputKm">Km</label>
@@ -51,9 +51,10 @@
                                 <input type="text" class="form-control" id="exampleInputFuel" asp-for="Fuel" placeholder="Enter Fuel type">
                             </div>
                             <div class="form-group">
-                                <label for="exampleInputBigImageUrl">Big Image Url</label>
-                                <input type="text" class="form-control" id="exampleInputBigImageUrl" asp-for="BigImageUrl" placeholder="Enter Big Image Url">
+                                <label for="exampleInputBigImageUrl">Big Image</label>
+                                <input type="file" class="form-control" name="BigImage">
                             </div>
+
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
                         </form>
 

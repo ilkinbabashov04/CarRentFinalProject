@@ -34,7 +34,7 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
-        [HttpPost("DeleteBlog")]
+        [HttpDelete("DeleteBlog")]
         public IActionResult Delete(int id)
         {
             var result = _blogService.Delete(id);

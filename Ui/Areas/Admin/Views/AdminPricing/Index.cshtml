@@ -1,0 +1,56 @@
+﻿@model List<PricingDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Pricing Page</h4>
+                        <p class="card-subtitle mb-4">
+                            This page displays the daily, rental, monthly, and other similar leasing options for vehicles. Through this page, you can add, delete, or update a new rental period.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Period Name</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.Name</td>
+                                            <td><a href="/Admin/AdminPricing/DeletePricing/@item.Id" class="btn btn-outline-danger">Delete</a></td>
+                                            <td><a href="/Admin/AdminPricing/UpdatePricing/@item.Id" class="btn btn-outline-success">Update</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminPricing/CreatePricing" class="btn btn-outline-primary">Add new Pricing</a></td>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

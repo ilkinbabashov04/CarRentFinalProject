@@ -1,0 +1,40 @@
+﻿@model CreateSocialMediaDto
+@{
+    ViewData["Title"] = "CreateSocialMedia";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Create Social Media Page</h4>
+                        <p class="card-subtitle mb-4">
+                            On this page, you can manage your social media account information. You can add a new social media account, edit existing ones, or delete them as needed. The list of available icons can be accessed through the icon list.
+                        </p>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaName">Social Media Name</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaName" asp-for="Name" placeholder="Add Social Media Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaUrl">URL</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaUrl" asp-for="Url" placeholder="Add Social Media Url">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSocialMediaIconUrl">Social Media Icon Url</label>
+                                <input type="text" class="form-control" id="exampleInputSocialMediaIconUrl" asp-for="IconUrl" placeholder="Add SocialMedia Icon Url">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save SocialMedia Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

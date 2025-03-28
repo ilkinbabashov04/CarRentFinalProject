@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\views\\car\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\views\\adminfeature\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\views\\adminfeature\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\views\\adminlayout\\adminsidebarpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\views\\adminlayout\\adminsidebarpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\resources\\resource.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\resources\\resource.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBB76DCE-2F3F-44B4-9284-DCC09E01B540}|Entities\\Entities.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\entities\\concrete\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBB76DCE-2F3F-44B4-9284-DCC09E01B540}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -31,57 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\Car\\Index.cshtml",
-              "RelativeDocumentMoniker": "Ui\\Views\\Car\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\Car\\Index.cshtml",
-              "RelativeToolTip": "Ui\\Views\\Car\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-17T07:43:01.645Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\AdminFeature\\Index.cshtml",
-              "RelativeDocumentMoniker": "Ui\\Views\\AdminFeature\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\AdminFeature\\Index.cshtml",
-              "RelativeToolTip": "Ui\\Views\\AdminFeature\\Index.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA8AAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-17T06:03:59.197Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminSidebarPartial.cshtml",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\AdminLayout\\AdminSidebarPartial.cshtml",
-              "RelativeDocumentMoniker": "Ui\\Views\\AdminLayout\\AdminSidebarPartial.cshtml",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\AdminLayout\\AdminSidebarPartial.cshtml",
-              "RelativeToolTip": "Ui\\Views\\AdminLayout\\AdminSidebarPartial.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-16T17:47:50.567Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Resource.designer.cs",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Resources\\Resource.designer.cs",
-              "RelativeDocumentMoniker": "Ui\\Resources\\Resource.designer.cs",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Resources\\Resource.designer.cs",
-              "RelativeToolTip": "Ui\\Resources\\Resource.designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
+              "Title": "Reservation.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Entities\\Concrete\\Reservation.cs",
+              "RelativeDocumentMoniker": "Entities\\Concrete\\Reservation.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Entities\\Concrete\\Reservation.cs*",
+              "RelativeToolTip": "Entities\\Concrete\\Reservation.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-15T19:26:43.291Z",
+              "WhenOpened": "2025-03-28T20:34:21.268Z",
               "EditorCaption": ""
             }
           ]

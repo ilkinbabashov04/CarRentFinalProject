@@ -34,7 +34,7 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
-        [HttpPost("DeleteTestimonial")]
+        [HttpDelete("DeleteTestimonial")]
         public IActionResult Delete(int id)
         {
             var result = _testimonialService.Delete(id);

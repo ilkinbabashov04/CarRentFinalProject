@@ -1,3 +1,4 @@
+using Azure.Storage.Files.Shares;
 using Core.Tools;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -23,6 +24,18 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
+
+
+var azureStorageConfig = builder.Configuration.GetSection("AzureStorage");
+string connectionString = azureStorageConfig["ConnectionString"];
+string shareName = azureStorageConfig["ShareName"];
+
+builder.Services.AddSingleton(_ => new ShareServiceClient(connectionString));
+builder.Services.AddSingleton(provider =>
+{
+    var serviceClient = provider.GetRequiredService<ShareServiceClient>();
+    return serviceClient.GetShareClient(shareName);
+});
 
 var app = builder.Build();
 
@@ -61,5 +74,13 @@ app.UseAuthorization();
 app.MapControllerRoute(
 	name: "default",
 	pattern: "{controller=Home}/{action=Index}/{id?}");
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllerRoute(
+      name: "areas",
+      pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}"
+    );
+});
 
 app.Run();

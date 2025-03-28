@@ -1,0 +1,54 @@
+﻿@model List<AuthorDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Author Page</h4>
+                        <p class="card-subtitle mb-4">Operations related to Authors, including comprehensive details.</p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Name and Surname</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                        <th>Authors' Blogs</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td><img src="@item.ImageUrl" width="50" height="50" style="margin-right:10px; border-radius:50%" />@item.Name</td>
+                                            <td><a href="/Admin/AdminAuthor/DeleteAuthor/@item.Id" class="btn btn-outline-danger">Delete</a></td>
+                                            <td><a href="/Admin/AdminAuthor/UpdateAuthor/@item.Id" class="btn btn-outline-success">Update</a></td>
+                                            <td><a href="/Admin/AdminAuthor/UpdateAuthor/@item.Id" class="btn btn-outline-success">Authors' Blogs</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminAuthor/CreateAuthor" class="btn btn-outline-primary">Add new Author</a></td>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

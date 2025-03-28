@@ -34,7 +34,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("DeleteCategory")]
+		[HttpDelete("DeleteCategory")]
 		public IActionResult Delete(int id)
 		{
 			var result = _categoryService.Delete(id);

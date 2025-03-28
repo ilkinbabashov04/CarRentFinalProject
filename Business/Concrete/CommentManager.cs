@@ -3,6 +3,7 @@ using Core.Helper.Result.Abstract;
 using Core.Helper.Result.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,19 @@ namespace Business.Concrete
             else
             {
                 return new ErrorDataResult<Comment>(result, "Not found!");
+            }
+        }
+
+        public IDataResult<List<CommentDto>> GetCommentByBlogId(int id)
+        {
+            var result = _commentDal.GetCommentsByBlogId(id);
+            if (result != null)
+            {
+                return new SuccessDataResult<List<CommentDto>>(result, "Got Successfully");
+            }
+            else
+            {
+                return new ErrorDataResult<List<CommentDto>>(result, "Not found!");
             }
         }
 

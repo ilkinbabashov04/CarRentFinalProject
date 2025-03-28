@@ -1,0 +1,42 @@
+﻿@model TestimonialDto
+@{
+    ViewData["Title"] = "UpdateTestimonial";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Update Testimonial Page</h4>
+                        <p class="card-subtitle mb-4">
+                            This page is used for update references.
+                        </p>
+                        <form method="post">
+                            <input type="hidden" asp-for="Id"/>
+                            <div class="form-group">
+                                <label for="exampleInputTestimonialName">Reference Name</label>
+                                <input type="text" class="form-control" id="exampleInputTestimonialName" asp-for="Name" placeholder="Add Reference Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTestimonialUrl">Reference Title</label>
+                                <input type="text" class="form-control" id="exampleInputTestimonialUrl" asp-for="Title" placeholder="Add Reference Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTestimonialImage">Reference Image</label>
+                                <input type="text" class="form-control" id="exampleInputTestimonialImage" asp-for="ImageUrl" placeholder="Add Reference Image">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputTestimonialImage">Reference Comment</label>
+                                <textarea rows="5" asp-for="Comment" class="form-control " placeholder="Add Comment"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-success waves-effect waves-light">Update Testimonial Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

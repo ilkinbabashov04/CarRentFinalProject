@@ -285,3 +285,8 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Ui.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Ui.pdb
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\az\Ui.resources.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Azure.Storage.Common.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Azure.Storage.Files.Shares.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\System.IO.Hashing.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Azure.Storage.Blobs.dll

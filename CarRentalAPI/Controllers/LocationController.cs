@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
 	[ApiController]
     public class LocationController : ControllerBase
@@ -38,7 +38,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("DeleteLocation")]
+		[HttpDelete("DeleteLocation")]
 		public IActionResult Delete(int id)
 		{
 			var result = _locationService.Delete(id);

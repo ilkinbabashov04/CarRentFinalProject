@@ -1,0 +1,62 @@
+﻿@model List<HomeDto>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+    int count = 0;
+}
+
+
+<div class="page-content">
+    <div class="container-fluid">
+
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Home Page</h4>
+                        <p class="card-subtitle mb-4">
+                            You can edit the information in the Banner area of ​​the home page below. In order not to disrupt the integrity of the theme, please enter only one data entry, otherwise the integrity of the theme will be disrupted.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Header</th>
+                                        <th>Description</th>
+                                        <th>VideoUrl</th>
+                                        <th>Video Description</th>
+                                        <th>Delete</th>
+                                        <th>Update</th>
+                                        <th>Open in YouTube</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                         count++;
+                                        <tr>
+                                            <th scope="row">@count</th>
+                                            <td>@item.Title</td>
+                                            <td>@item.Description</td>
+                                            <td>@item.VideoUrl</td>
+                                            <td>@item.VideoDescription</td>
+                                            <td><a href="/Admin/AdminHome/DeleteHome/@item.Id" class="btn btn-outline-danger">Delete</a></td>
+                                            <td><a href="/Admin/AdminHome/UpdateHome/@item.Id" class="btn btn-outline-success">Update</a></td>
+                                            <td><a href="/Admin/AdminHome/DeleteHome/@item.Id" class="btn btn-outline-dark">Open in YouTube</a></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <td><a href="/Admin/AdminHome/CreateHome" class="btn btn-outline-primary">Add new Home</a></td>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

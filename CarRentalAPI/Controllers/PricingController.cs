@@ -34,7 +34,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("DeletePricing")]
+		[HttpDelete("DeletePricing")]
 		public IActionResult Delete(int id)
 		{
 			var result = _pricingService.Delete(id);

@@ -33,7 +33,7 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
-        [HttpPost("DeleteAuthor")]
+        [HttpDelete("DeleteAuthor")]
         public IActionResult Delete(int id)
         {
             var result = _authorService.Delete(id);

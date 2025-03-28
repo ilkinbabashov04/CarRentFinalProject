@@ -1,0 +1,54 @@
+﻿@model CreateReservationDto
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/UiLayout/Index.cshtml";
+}
+
+<div class="col-md-12 block-9 mb-md-5">
+    <form class="bg-light p-5 contact-form" method="post">
+        <h3 class="alert alert-success">Reservation Form</h3>
+        <br />
+            <input type="hidden" asp-for="CarId" value="@ViewBag.v3" class="form-control"  placeholder="The Selected Car">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" asp-for="Name" class="form-control" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+            <label>Surname</label>
+            <input type="text" asp-for="Surname" class="form-control" placeholder="Your Surname">
+        </div>
+        <div class="form-group">
+            <label>Mail</label>
+            <input type="text" asp-for="Mail" class="form-control" placeholder="Your Email">
+        </div>
+        <div class="form-group">
+            <label>Phone Number</label>
+            <input type="text" asp-for="Phone" class="form-control" placeholder="Phone Number">
+        </div>
+        <div class="form-group">
+            <label>PickUp Location</label>
+            @Html.DropDownListFor(x => x.PickUpLocationId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop", name = "Id" })
+        </div>
+        <div class="form-group">
+            <label>DropOff Location</label>
+            @Html.DropDownListFor(x => x.DropOffLocationId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop", name = "Id" })
+        </div>
+        <div class="form-group">
+            <label>Age</label>
+            <input type="text" asp-for="Age" class="form-control" placeholder="Your Age">
+        </div>
+        <div class="form-group">
+            <label>Driver License Date</label>
+            <input type="text" asp-for="DriverLicenceYear" class="form-control" placeholder="Driver's license date">
+        </div>
+        <div class="form-group">
+            <label>Additional Information</label>
+            <textarea asp-for="Description" id="" cols="30" rows="7" class="form-control" placeholder="Additional Information"></textarea>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Reservation" class="btn btn-primary py-3 px-5">
+        </div>
+    </form>
+
+</div>
+

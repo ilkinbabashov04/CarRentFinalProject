@@ -69,6 +69,10 @@ namespace Business.Dependency.Autofac
 			builder.RegisterType<EfRoleManager>().As<IRoleDal>().SingleInstance();
 			builder.RegisterType<EfIAppUsersRoleIdDal>().As<IAppUsersRoleIdDal>().SingleInstance();
 			builder.RegisterType<AppUsersRoleIdManager>().As<IAppUsersRoleIdService>().SingleInstance();
+			builder.RegisterType<EfRentACarDal>().As<IRentACarDal>().SingleInstance();
+			builder.RegisterType<RentACarManager>().As<IRentACarService>().SingleInstance();
+			builder.RegisterType<EfReservationDal>().As<IReservationDal>().SingleInstance();
+			builder.RegisterType<ReservationManager>().As<IReservationService>().SingleInstance();
             builder.RegisterAssemblyTypes(typeof(CreateAppUserHandler).Assembly).AsImplementedInterfaces();
 
             //builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();

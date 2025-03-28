@@ -64,5 +64,15 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("GetCommentListByBlog")]
+        public IActionResult GetCommentListByBlog(int id)
+        {
+            var result = _commentService.GetCommentByBlogId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
     }
 }

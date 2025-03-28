@@ -9,7 +9,7 @@ namespace Entities.Dto
 {
     public class TestimonialDto : IDto
     {
-        public int TestimonialId { get; set; }
+        public int Id { get; set; }
         public string Name { get; set; }
         public string Title { get; set; }
         public string Comment { get; set; }

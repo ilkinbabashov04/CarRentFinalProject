@@ -1,0 +1,38 @@
+﻿@model CreateServiceDto
+@{
+    ViewData["Title"] = "CreateService";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Create Service Page</h4>
+                        <p class="card-subtitle mb-4">
+                            You can manage the service list displayed on the homepage and in the services section from the page below. To maintain theme integrity, please ensure that exactly four service entries are made.
+                        </p>
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputService">Service Title</label>
+                                <input type="text" class="form-control" id="exampleInputService" asp-for="Title" placeholder="Add Service Title">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputServiceDescription">Service Description</label>
+                                <input type="text" class="form-control" id="exampleInputServiceDescription" asp-for="Description" placeholder="Add Service Description">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputServiceIconUrl">Service Icon Url</label>
+                                <input type="text" class="form-control" id="exampleInputServiceIconUrl" asp-for="IconUrl" placeholder="Add Service Icon Url">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Save Service Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

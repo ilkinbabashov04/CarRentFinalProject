@@ -34,7 +34,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("DeleteFooterAddress")]
+		[HttpDelete("DeleteFooterAddress")]
 		public IActionResult Delete(int id)
 		{
 			var result = _footerAddressService.Delete(id);

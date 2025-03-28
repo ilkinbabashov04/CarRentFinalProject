@@ -24,15 +24,20 @@ namespace DataAccess.Concrete.EF
                          where p.PricingId == 2
                          join c in context.Cars
                          on p.CarId equals c.Id
+                         join b in context.Brands
+                         on c.BrandId equals b.Id
                          select new CarPricingDto
                          {
+                             CarId = p.CarId,
                              CarPricingId = p.Id,
                              Amount = p.Amount,
-                             //BrandName = c.Brand.Name,
+                             BrandName = b.Name,
                              ModelName = c.Model,
                              CoverImageUrl = c.CoverImageUrl,
                          };
+
             return result.ToList();
+
         }
     }
 }

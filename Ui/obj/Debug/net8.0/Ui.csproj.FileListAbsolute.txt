@@ -250,3 +250,10 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\az\Ui.res
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\obj\Debug\net8.0\Ui.Resources.Resource.az.resources
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\obj\Debug\net8.0\az\Ui.resources.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\obj\Debug\net8.0\Ui.Resources.Resource.sp.resources
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Azure.Core.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Azure.Storage.Common.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Azure.Storage.Files.Shares.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\System.ClientModel.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\System.IO.Hashing.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\System.Memory.Data.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Azure.Storage.Blobs.dll

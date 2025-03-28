@@ -2681,6 +2681,10 @@
       "PackagePath": "staticwebassets\\carbook-master\\images\\about.jpg"
     },
     {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bg.jpg",
+      "PackagePath": "staticwebassets\\carbook-master\\images\\bg.jpg"
+    },
+    {
       "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bg_1.jpg",
       "PackagePath": "staticwebassets\\carbook-master\\images\\bg_1.jpg"
     },
@@ -2691,6 +2695,22 @@
     {
       "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bg_3.jpg",
       "PackagePath": "staticwebassets\\carbook-master\\images\\bg_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bm3.jpg",
+      "PackagePath": "staticwebassets\\carbook-master\\images\\bm3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bmw3.jpg",
+      "PackagePath": "staticwebassets\\carbook-master\\images\\bmw3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bmw4.jpg",
+      "PackagePath": "staticwebassets\\carbook-master\\images\\bmw4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bmwbg.jpg",
+      "PackagePath": "staticwebassets\\carbook-master\\images\\bmwbg.jpg"
     },
     {
       "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\car-1.jpg",

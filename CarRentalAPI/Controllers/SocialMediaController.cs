@@ -36,7 +36,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("DeleteSocialMedia")]
+		[HttpDelete("DeleteSocialMedia")]
 		public IActionResult Delete(int id)
 		{
 			var result = _socialMediaService.Delete(id);

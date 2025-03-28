@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EF
                          on b.AuthorId equals a.Id
                          select new BlogDto
                          {
-                             BlogId = b.Id,
+                             Id = b.Id,
                              Title = b.Title,
                              AuthorName = a.Name,
                              AuthorImageUrl = a.ImageUrl,

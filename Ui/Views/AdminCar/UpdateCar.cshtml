@@ -4,7 +4,6 @@
     Layout = "~/Views/AdminLayout/Index.cshtml";
 }
 
-
 <div class="page-content">
     <div class="container-fluid">
 
@@ -16,9 +15,10 @@
 
                         <h4 class="card-title">Car Update Page</h4>
                         <p class="card-subtitle mb-4">You are required to enter all the details of the cars before proceeding. Once all the necessary information has been provided, please press the Save button to complete the update operation.</p>
-                        <form method="post">
-                            <input type="hidden" asp-for="id" />
 
+                        <!-- Form starts here -->
+                        <form method="post" enctype="multipart/form-data">
+                            <input type="hidden" asp-for="id" />
                             <div class="form-group">
                                 <label for="exampleInputBrand">Brand</label>
                                 @Html.DropDownListFor(model => model.BrandId, (List<SelectListItem>)ViewBag.BrandValues, new { @class = "form-control" })
@@ -28,47 +28,89 @@
                                 <label for="exampleInputModel">Model</label>
                                 <input type="text" class="form-control" id="exampleInputModel" asp-for="Model" placeholder="Model">
                             </div>
+
                             <div class="form-group">
-                                <label for="exampleInputCoverImage">CoverImage</label>
-                                <input type="text" class="form-control" id="exampleInputCoverImage" asp-for="CoverImageUrl" placeholder="Enter Cover image Url">
+                                <label for="coverImage">Cover Image</label>
+                                <input type="file" class="form-control" id="coverImage" name="CoverImage" accept="image/*">
+                                <small class="form-text text-muted">Upload a new cover image or leave empty to keep the existing one.</small>
+                                @if (Model.CoverImageUrl != null)
+                                {
+                                    <div>
+                                        <label>Current Cover Image:</label>
+                                        <img src="@Model.CoverImageUrl" width="100" alt="Current Cover Image" />
+                                    </div>
+                                }
                             </div>
+
                             <div class="form-group">
                                 <label for="exampleInputKm">Km</label>
                                 <input type="text" class="form-control" id="exampleInputKm" asp-for="Km" placeholder="Enter Km">
                             </div>
+
                             <div class="form-group">
                                 <label for="exampleInputTransmission">Transmission</label>
                                 <input type="text" class="form-control" id="exampleInputTransmission" asp-for="Transmission" placeholder="Enter transmission type">
                             </div>
+
                             <div class="form-group">
                                 <label for="exampleInputSeat">Seat</label>
                                 <input type="number" class="form-control" id="exampleInputSeat" asp-for="Seat" placeholder="Enter seat count">
                             </div>
+
                             <div class="form-group">
                                 <label for="exampleInputLuggage">Luggage</label>
                                 <input type="number" class="form-control" id="exampleInputLuggage" asp-for="Luggage" placeholder="Enter luggage weight">
                             </div>
+
                             <div class="form-group">
                                 <label for="exampleInputFuel">Fuel</label>
                                 <input type="text" class="form-control" id="exampleInputFuel" asp-for="Fuel" placeholder="Enter Fuel type">
                             </div>
                             <div class="form-group">
+                                <label for="coverImage">Big Image</label>
+                                <input type="file" class="form-control" id="bigImage" name="BigImage" accept="image/*">
+                                <small class="form-text text-muted">Upload a new big image or leave empty to keep the existing one.</small>
+                                @if (Model.BigImageUrl != null)
+                                {
+                                    <div>
+                                        <label>Current Big Image:</label>
+                                        <img src="@Model.BigImageUrl" width="100" alt="Current Big Image" />
+                                    </div>
+                                }
+                            </div>
+
+                            @* <div class="form-group">
                                 <label for="exampleInputBigImageUrl">Big Image Url</label>
                                 <input type="text" class="form-control" id="exampleInputBigImageUrl" asp-for="BigImageUrl" placeholder="Enter Big Image Url">
-                            </div>
+                            </div> *@
+
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Update</button>
                         </form>
-
-                    </div> <!-- end card-body-->
+                    </div>
                 </div>
             </div>
-
         </div>
-        <!-- end card-body-->
     </div>
-    <!-- end card -->
-
 </div>
-<!-- end col -->
-        </div>
-<!-- end page title -->
+</div>
+
+<script>
+    // JavaScript for previewing images dynamically (if you want to show the selected cover image before submission)
+    document.getElementById("coverImage").addEventListener("change", function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const previewImage = document.createElement("img");
+                previewImage.src = event.target.result;
+                previewImage.width = 100;
+                const currentCoverImage = document.querySelector("div img");
+                if (currentCoverImage) {
+                    currentCoverImage.remove();
+                }
+                document.querySelector("form").append(previewImage);
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

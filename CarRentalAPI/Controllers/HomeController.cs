@@ -34,7 +34,7 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-		[HttpPost("DeleteHome")]
+		[HttpDelete("DeleteHome/{id}")]
 		public IActionResult Delete(int id)
 		{
 			var result = _homeService.Delete(id);

@@ -1,0 +1,45 @@
+﻿@model AuthorDto
+@{
+    ViewData["Title"] = "UpdateAuthor";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Author Update Page</h4>
+                        <p class="card-subtitle mb-4">You can update Author data using the field provided below.</p>
+                        <form method="post">
+                            <input type="hidden" asp-for = "Id"/>
+                            <div class="form-group">
+                                <label for="exampleInputTitle">Name and Surname</label>
+                                <input type="text" class="form-control" id="exampleInputTitle" asp-for="Name" placeholder="Add Author Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputDescription">Description</label>
+                                <textarea rows="5" class="form-control" asp-for="Description" placeholder="Add Author Description"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputImageUrl">Image</label>
+                                <input type="text" class="form-control" id="exampleInputImageUrl" asp-for="ImageUrl" placeholder="Add Image Url">
+                            </div>
+                            <button type="submit" class="btn btn-success waves-effect waves-light">Update Author Details</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
