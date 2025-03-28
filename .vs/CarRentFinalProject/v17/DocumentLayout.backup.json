@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBB76DCE-2F3F-44B4-9284-DCC09E01B540}|Entities\\Entities.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\entities\\concrete\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBB76DCE-2F3F-44B4-9284-DCC09E01B540}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\reservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CFE40B20-1929-446A-BD6E-873ACDD5FA6A}|Business\\Business.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\business\\concrete\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFE40B20-1929-446A-BD6E-873ACDD5FA6A}|Business\\Business.csproj|solutionrelative:business\\concrete\\filemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Reservation.cs",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Entities\\Concrete\\Reservation.cs",
-              "RelativeDocumentMoniker": "Entities\\Concrete\\Reservation.cs",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Entities\\Concrete\\Reservation.cs*",
-              "RelativeToolTip": "Entities\\Concrete\\Reservation.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAABEAAAAAAAAAA==",
+              "Title": "FileManager.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Business\\Concrete\\FileManager.cs",
+              "RelativeDocumentMoniker": "Business\\Concrete\\FileManager.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Business\\Concrete\\FileManager.cs",
+              "RelativeToolTip": "Business\\Concrete\\FileManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-28T20:34:21.268Z",
+              "WhenOpened": "2025-03-28T20:46:28.346Z",
               "EditorCaption": ""
             }
           ]

@@ -290,3 +290,6 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\System.ClientModel.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\System.IO.Hashing.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Azure.Storage.Blobs.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\CarRentalAPI\bin\Debug\net8.0\Microsoft.Extensions.Configuration.UserSecrets.dll

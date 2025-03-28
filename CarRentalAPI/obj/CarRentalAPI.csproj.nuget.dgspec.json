@@ -88,6 +88,10 @@
               "target": "Package",
               "version": "[8.0.0, )"
             },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -218,6 +222,10 @@
               "target": "Package",
               "version": "[8.0.13, )"
             },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -323,6 +331,10 @@
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             },
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
@@ -446,6 +458,10 @@
               "target": "Package",
               "version": "[8.0.8, )"
             },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
               "version": "[8.0.0, )"
@@ -540,6 +556,10 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             },
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
@@ -639,6 +659,10 @@
             "Microsoft.AspNetCore.Authentication.JwtBearer": {
               "target": "Package",
               "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[8.0.1, )"
             },
             "Microsoft.IdentityModel.JsonWebTokens": {
               "target": "Package",
