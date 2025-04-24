@@ -23,7 +23,8 @@ namespace DataAccess.Concrete.EF
                          where p.IsDelete == false
                          where p.PricingId == 2
                          join c in context.Cars
-                         on p.CarId equals c.Id
+                         on p.CarId equals c.Id 
+						 where c.IsDelete == false
                          join b in context.Brands
                          on c.BrandId equals b.Id
                          select new CarPricingDto
@@ -39,5 +40,34 @@ namespace DataAccess.Concrete.EF
             return result.ToList();
 
         }
-    }
+
+		public List<GetCarPricingWithTimePeriodDto> GetCarPricingWithTimePeriods()
+		{
+			using var context = new BaseProjectContext();
+
+			var result = from cp in context.CarPricings
+						 where cp.IsDelete == false
+						 join p in context.Pricings
+						 on cp.PricingId equals p.Id
+						 join c in context.Cars
+						 on cp.CarId equals c.Id
+						 where c.IsDelete == false
+						 join b in context.Brands
+						 on c.BrandId equals b.Id
+						 group cp by new { c.Id, c.Model, c.CoverImageUrl, Brand = b.Name } into g
+						 select new GetCarPricingWithTimePeriodDto
+						 {
+							 Brand = g.Key.Brand,
+							 Model = g.Key.Model,
+							 CoverImageUrl = g.Key.CoverImageUrl,
+							 DailyAmount = g.Where(x => x.PricingId == 1).Sum(x => x.Amount),
+							 WeeklyAmount = g.Where(x => x.PricingId == 2).Sum(x => x.Amount),
+							 MonthlyAmount = g.Where(x => x.PricingId == 4).Sum(x => x.Amount)
+						 };
+
+			return result.ToList();
+
+		}
+
+	}
 }

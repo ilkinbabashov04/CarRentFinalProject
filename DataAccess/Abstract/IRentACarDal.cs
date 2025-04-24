@@ -13,5 +13,6 @@ namespace DataAccess.Abstract
     public interface IRentACarDal : IBaseReporsitory<RentACar>
     {
         List<CarGetByFilterDto> GetByFilter(int locationId, bool available);
+        List<BarGraphDto> GetBarGraphDetail();
     }
 }

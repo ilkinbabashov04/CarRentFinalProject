@@ -10,6 +10,9 @@ using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
 using Microsoft.Extensions.Options;
+using FluentValidation.AspNetCore;
+using System.Reflection;
+using CarRentalAPI.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient();
@@ -18,6 +21,20 @@ builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
 builder.Host.ConfigureContainer<ContainerBuilder>(builder => builder.RegisterModule(new AutofacBusinessModule()));
 builder.Services.AddLocalization(options => options.ResourcesPath = "Resources");
 
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+//{
+//	opt.RequireHttpsMetadata = false;
+//	opt.TokenValidationParameters = new TokenValidationParameters
+//	{
+//		ValidAudience = JwtTokenDefaults.ValidAudience,
+//		ValidIssuer = JwtTokenDefaults.ValidIssuer,
+//		ClockSkew = TimeSpan.Zero,
+//		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
+//		ValidateLifetime = true,
+//		ValidateIssuerSigningKey = true,
+//	};
+//});
+builder.Services.AddHttpClient();
 builder.Services.AddCors(opt =>
 {
     opt.AddPolicy("CorsPolicy", builder =>
@@ -102,7 +119,10 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddFluentValidation(x =>
+{
+    x.RegisterValidatorsFromAssembly(Assembly.GetExecutingAssembly());
+});
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle    
 builder.Services.AddEndpointsApiExplorer();
@@ -126,5 +146,7 @@ app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<CarHub>("/carhub");
+
 
 app.Run();

@@ -73,6 +73,14 @@ namespace Business.Dependency.Autofac
 			builder.RegisterType<RentACarManager>().As<IRentACarService>().SingleInstance();
 			builder.RegisterType<EfReservationDal>().As<IReservationDal>().SingleInstance();
 			builder.RegisterType<ReservationManager>().As<IReservationService>().SingleInstance();
+			builder.RegisterType<EfStatisticsDal>().As<IStatisticsDal>().SingleInstance();
+			builder.RegisterType<StatisticsManager>().As<IStatisticsService>().SingleInstance();
+			builder.RegisterType<EfCarFeatureDal>().As<ICarFeatureDal>().SingleInstance();
+			builder.RegisterType<CarFeatureManager>().As<ICarFeatureService>().SingleInstance();
+			builder.RegisterType<EfCarDescriptionDal>().As<ICarDescriptionDal>().SingleInstance();
+			builder.RegisterType<CarDescriptionManager>().As<ICarDescriptionService>().SingleInstance();
+			builder.RegisterType<EfReviewDal>().As<IReviewDal>().SingleInstance();
+			builder.RegisterType<ReviewManager>().As<IReviewService>().SingleInstance();
             builder.RegisterAssemblyTypes(typeof(CreateAppUserHandler).Assembly).AsImplementedInterfaces();
 
             //builder.RegisterType<UserManager>().As<IUserService>().SingleInstance();

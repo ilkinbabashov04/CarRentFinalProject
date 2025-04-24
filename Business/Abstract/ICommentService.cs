@@ -17,5 +17,6 @@ namespace Business.Abstract
         IDataResult<Comment> GetById(int id);
         IDataResult<List<Comment>> GetAll();
         IDataResult<List<CommentDto>> GetCommentByBlogId(int id);
+        IDataResult<CommentCountDto> CommentCountByBlogId(int id);
     }
 }

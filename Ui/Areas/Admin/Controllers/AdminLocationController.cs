@@ -1,12 +1,15 @@
 ﻿using Entities.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 using System.Text;
 using Ui.Helper;
 
 namespace Ui.Areas.Admin.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
+    [Authorize(Roles ="Admin")]
     [Area("Admin")]
     [Route("Admin/AdminLocation")]
     public class AdminLocationController : Controller
@@ -21,15 +24,20 @@ namespace Ui.Areas.Admin.Controllers
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7140/api/Location/GetAll");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x=> x.Type == "accessToken")?.Value;
+            if(token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<LocationDto>>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
-            }
+				var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+				var responseMessage = await client.GetAsync("https://localhost:7140/api/Location/GetAll");
+				if (responseMessage.IsSuccessStatusCode)
+				{
+					var jsonData = await responseMessage.Content.ReadAsStringAsync();
+					var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<LocationDto>>>(jsonData);
+					var values = apiResponse?.Data;
+					return View(values);
+				}
+			}
             return View();
         }
 

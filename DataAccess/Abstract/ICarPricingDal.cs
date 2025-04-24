@@ -12,5 +12,6 @@ namespace DataAccess.Abstract
 	public interface ICarPricingDal : IBaseReporsitory<CarPricing>
 	{
 		List<CarPricingDto> GetAll();
+		List<GetCarPricingWithTimePeriodDto> GetCarPricingWithTimePeriods();
 	}
 }

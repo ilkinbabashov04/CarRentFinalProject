@@ -1,62 +1,251 @@
-﻿<footer class="ftco-footer ftco-bg-dark ftco-section">
-    <div class="container">
-        <div class="row mb-5">
-            <div class="col-md">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>book</span></a></h2>
-                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-                    <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
-                        <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-                        <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="ftco-footer-widget mb-4 ml-md-5">
-                    <h2 class="ftco-heading-2">Information</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">About</a></li>
-                        <li><a href="#" class="py-2 d-block">Services</a></li>
-                        <li><a href="#" class="py-2 d-block">Term and Conditions</a></li>
-                        <li><a href="#" class="py-2 d-block">Best Price Guarantee</a></li>
-                        <li><a href="#" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Customer Support</h2>
-                    <ul class="list-unstyled">
-                        <li><a href="#" class="py-2 d-block">FAQ</a></li>
-                        <li><a href="#" class="py-2 d-block">Payment Option</a></li>
-                        <li><a href="#" class="py-2 d-block">Booking Tips</a></li>
-                        <li><a href="#" class="py-2 d-block">How it works</a></li>
-                        <li><a href="#" class="py-2 d-block">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md">
-                <div class="ftco-footer-widget mb-4">
-                    <h2 class="ftco-heading-2">Have a Questions?</h2>
-                    <div class="block-23 mb-3">
-                        <ul>
-                            <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-                            <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                            <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+﻿@model List<FooterAddressDto>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        $('#btn1').click(function () {
+            swal({
+                title: "Terms and Conditions",
+                text: "Terms and Conditions\n\nLast Updated: 04.02.2025\n\nWelcome to Car Rental. Please read these Terms and Conditions carefully before using our services. By accessing or using our website and rental services, you agree to be bound by these Terms and Conditions.\n\n" +
+                    "### 1. Rental Eligibility\n1.1. Renters must be at least 18 years old and possess a valid driver’s license.\n1.2. An additional verification process may be required based on the renter's country of residence.\n1.3. The renter must present a valid credit/debit card for security deposit purposes.\n\n" +
+                    "### 2. Reservation and Payment\n2.1. All reservations require a valid payment method.\n2.2. Full or partial payment may be required at the time of booking.\n2.3. Prices are subject to applicable taxes and fees.\n\n" +
+                    "### 3. Vehicle Use and Restrictions\n3.1. The rented vehicle must only be used for lawful purposes.\n3.2. Off-road driving, racing, towing, or any activity that may cause damage to the vehicle is strictly prohibited.\n3.3. The renter is responsible for ensuring compliance with all traffic laws and regulations.\n\n" +
+                    "### 4. Insurance and Liability\n4.1. Basic insurance coverage is included in the rental, but renters may opt for additional coverage.\n4.2. The renter is responsible for any damage, loss, or theft of the vehicle if found negligent.\n4.3. In case of an accident, the renter must inform the company immediately and follow the required procedures.\n\n" +
+                    "### 5. Fuel Policy\n5.1. The vehicle must be returned with the same fuel level as at the time of rental.\n5.2. A refueling charge may apply if the vehicle is returned with less fuel than required.\n\n" +
+                    "### 6. Cancellation and Refund Policy\n6.1. Cancellations made 24 hours before the rental period may be eligible for a refund.\n6.2. No-shows or last-minute cancellations may result in partial or no refunds.\n6.3. The company reserves the right to cancel a reservation due to unforeseen circumstances.\n\n" +
+                    "### 7. Return Policy\n7.1. The vehicle must be returned on the agreed-upon date and time.\n7.2. Late returns may incur additional charges.\n7.3. The vehicle must be returned in the same condition as it was rented, with no excessive dirt or damage.\n\n" +
+                    "### 8. Privacy Policy\n8.1. Personal information collected during the rental process will be used only for service-related purposes.\n8.2. The company does not sell or share personal data with third parties without consent, except as required by law.\n\n" +
+                    "### 9. Modifications and Amendments\n9.1. The company reserves the right to modify these terms and conditions at any time.\n9.2. Updated terms will be effective immediately upon posting on our website.\n\n" +
+                    "### 10. Governing Law\n10.1. These Terms and Conditions are governed by the laws of the Azerbaijan Republic.\n10.2. Any disputes arising from these terms will be resolved through appropriate legal channels.\n\n" +
+                    "If you have any questions or concerns about these Terms and Conditions, please contact us +994559642400 .\n\nThank you for choosing Car Rental!",
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+                className: "custom-swal"
+            });
+        });
+
+        $('#btn2').click(function () {
+            swal({
+                title: "Security",
+                text: `### 11. Security
+    11.1. Car Rental takes appropriate security measures to protect personal and payment information from unauthorized access, alteration, disclosure, or destruction.
+    11.2. All payment transactions are processed through secure and encrypted channels to prevent fraud and unauthorized transactions.
+    11.3. Renters must ensure the security of their login credentials and notify the company immediately in case of any unauthorized access or suspected security breach.
+    11.4. The company reserves the right to implement additional security verifications for reservations to prevent fraudulent activities.
+    11.5. Vehicle security must be maintained by renters at all times, including locking the vehicle when unattended and not leaving valuable items inside.
+    11.6. In case of theft or security-related incidents involving the rented vehicle, renters must report the issue to local authorities and notify the company immediately.`,
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+                className: "custom-swal"
+            });
+        });
+
+        $('#btn3').click(function () {
+            swal({
+                title: "Cookies Policy",
+                text: `### 12. Cookies Policy
+    12.1. Car Rental uses cookies to enhance user experience, analyze site traffic, and improve our services.
+    12.2. By using our website, you consent to the use of cookies in accordance with this policy.
+    12.3. Cookies may be used to store user preferences, session data, and track website interactions.
+    12.4. Users have the option to disable cookies through their browser settings, but doing so may limit certain functionalities of the website.
+    12.5. Third-party services integrated into our website may also use cookies, and we encourage users to review their respective privacy policies.
+    12.6. For more information on how we use cookies and how to manage them, please contact us.`,
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+                className: "custom-swal"
+            });
+        });
+
+        $('#btn4').click(function () {
+            swal({
+                title: "Frequently Asked Questions (FAQ)",
+                text: `### 13. FAQ
+    13.1. **How can I rent a car?**
+    To rent a car, simply select your preferred vehicle, choose your rental dates, and complete the booking process online.
+
+    13.2. **What documents do I need to rent a car?**
+    You will need a valid driver’s license, a credit/debit card for payment and security deposit, and a form of identification.
+
+    13.3. **Is insurance included in the rental?**
+    Yes, basic insurance is included, but additional coverage options are available for extra protection.
+
+    13.4. **Can I cancel my reservation?**
+    Yes, cancellations made at least 24 hours before the rental start time may be eligible for a refund. Last-minute cancellations may result in partial or no refunds.
+
+    13.5. **What happens if I return the car late?**
+    Late returns may incur additional charges. Please return the vehicle on time to avoid extra fees.
+
+    13.6. **Do you offer roadside assistance?**
+    Yes, we provide 24/7 roadside assistance for emergencies such as breakdowns or accidents.
+
+    13.7. **Can someone else drive the rental car?**
+    Only authorized drivers listed on the rental agreement may drive the vehicle.
+
+    13.8. **What is the fuel policy?**
+    The vehicle must be returned with the same fuel level as at the time of rental. A refueling charge may apply if returned with less fuel.
+
+    13.9. **How do I contact customer support?**
+    For any inquiries or support, you can reach us at +994559642400 or via our website’s contact form.`,
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+                className: "custom-swal"
+            });
+        });
+
+        $('#btn5').click(function () {
+            swal({
+                title: "Payment Options",
+                text: `### 12. Payment Options
+    12.1. **What payment methods are accepted?**
+    We accept major credit and debit cards, including Visa, MasterCard, and American Express. Online payment options such as PayPal and bank transfers may also be available.
+
+    12.2. **Is a security deposit required?**
+    Yes, a refundable security deposit is required at the time of rental. The amount depends on the vehicle type and rental duration.
+
+    12.3. **When will my payment be processed?**
+    Payments are processed at the time of booking. Some reservations may allow partial payment upfront with the remaining balance due at pickup.
+
+    12.4. **Are there any additional fees?**
+    Additional charges may apply for extra services such as GPS, child seats, or additional insurance. Taxes and service fees may also be included in the final cost.
+
+    12.5. **Can I get a refund if I cancel my reservation?**
+    Cancellations made at least 24 hours before the rental period may be eligible for a refund. Late cancellations or no-shows may result in partial or no refunds.
+
+    12.6. **Is my payment information secure?**
+    Yes, all transactions are processed through secure, encrypted channels to ensure your payment information remains protected.
+
+    12.7. **Do you offer installment payments?**
+    Depending on the payment provider, installment options may be available. Please check with your bank or card issuer for eligibility.`,
+
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+                className: "custom-swal"
+            });
+        });
+
+        $('#btn6').click(function () {
+            swal({
+                title: "How It Works",
+                text: `### 13. How It Works
+    13.1. **Browse Vehicles**
+    Choose from a wide selection of vehicles available for rent based on your needs and budget.
+
+    13.2. **Make a Reservation**
+    Select your preferred rental dates, location, and additional services. Provide the necessary details and complete the booking process.
+
+    13.3. **Payment & Confirmation**
+    Complete your payment securely online. Once processed, you will receive a confirmation email with all the rental details.
+
+    13.4. **Pick Up the Vehicle**
+    Arrive at the designated pickup location at the scheduled time. Present your valid driver’s license, payment card, and booking confirmation.
+
+    13.5. **Enjoy Your Ride**
+    Drive safely and follow all traffic laws. Enjoy your rental for the selected period.
+
+    13.6. **Return the Vehicle**
+    Return the vehicle on the agreed-upon date and time with the required fuel level and in good condition to avoid additional charges.
+
+    13.7. **Final Inspection & Security Deposit Refund**
+    After the vehicle is returned, our team will inspect it. If everything is in order, your security deposit will be refunded within a few business days.`,
+
+                icon: "info",
+                buttons: true,
+                dangerMode: false,
+                className: "custom-swal"
+            });
+        });
+
+
+
+    });
+
+</script>
+<style>
+    .swal-modal.custom-swal {
+        width: 800px !important;
+        max-width: 90%;
+    }
+
+    .swal-text {
+        text-align: left !important;
+        max-height: 500px;
+        overflow-y: auto;
+        font-size: 16px;
+    }
+</style>
+
+
+@foreach (var item in Model)
+{
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2"><a href="#" class="logo">Car<span>book</span></a></h2>
+                        <p>@item.Description</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
                         </ul>
                     </div>
                 </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Information</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="/About/Index/" class="py-2 d-block">About</a></li>
+                            <li><a href="/Car/Index/" class="py-2 d-block">Services</a></li>
+                            <li><a href="#" id="btn1" class="py-2 d-block">Term and Conditions</a></li>
+                            <li><a href="#" id="btn2" class="py-2 d-block">Security</a></li>
+                            <li><a href="#" id="btn3" class="py-2 d-block">Privacy &amp; Cookies Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Customer Support</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" id="btn4" class="py-2 d-block">FAQ</a></li>
+                            <li><a href="#" id="btn5" class="py-2 d-block">Payment Option</a></li>
+                            <li><a href="/CarPricing/Index/" class="py-2 d-block">Booking Tips</a></li>
+                            <li><a href="#" id="btn6" class="py-2 d-block">How it works</a></li>
+                            <li><a href="/Contact/Index/" class="py-2 d-block">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">@item.Address</span></li>
+                                <li><span class="icon icon-phone"></span><span class="text">@item.Phone</span></li>
+                                <li><span class="icon icon-envelope"></span><span class="text">@item.Mail</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Ilkin Babashov</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <p>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Ilkin Babashov</a>
-                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                </p>
-            </div>
-        </div>
-    </div>
-</footer>
+    </footer>
+}
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

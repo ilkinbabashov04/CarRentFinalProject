@@ -2789,6 +2789,10 @@
       "PackagePath": "staticwebassets\\carbook-master\\images\\loc.png"
     },
     {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\mc.jpg",
+      "PackagePath": "staticwebassets\\carbook-master\\images\\mc.jpg"
+    },
+    {
       "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\person_1.jpg",
       "PackagePath": "staticwebassets\\carbook-master\\images\\person_1.jpg"
     },
@@ -3261,6 +3265,10 @@
       "PackagePath": "staticwebassets\\carbook-master\\services.html"
     },
     {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\chart.js",
+      "PackagePath": "staticwebassets\\chart.js"
+    },
+    {
       "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
@@ -3499,6 +3507,14 @@
     {
       "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Ui.Microsoft.AspNetCore.StaticWebAssets.props",

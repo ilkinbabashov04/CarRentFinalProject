@@ -40,11 +40,10 @@ namespace DataAccess.Concrete.EF
         public List<BlogWithAuthorIdDto> GetBlogWithoutAuthorId(int id)
         {
             var context = new BaseProjectContext();
-            var values = from b in context.Blogs
-                         where b.Id == id
-                         where b.IsDelete == false
-                         join a in context.Authors
-                         on b.AuthorId equals a.Id
+            var values = from a in context.Authors
+                         join b in context.Blogs
+                         on a.Id equals b.AuthorId
+                         where a.Id == id && a.IsDelete == false && b.IsDelete == false
                          select new BlogWithAuthorIdDto
                          {
                              AuthorId = a.Id,
@@ -67,12 +66,17 @@ namespace DataAccess.Concrete.EF
                          on b.AuthorId equals a.Id
                          select new BlogDto
                          {
+                             Id = b.Id,
+                             Title = b.Title,
                              AuthorId = a.Id,
                              AuthorName = a.Name,
+                             AuthorImageUrl = a.ImageUrl,
+                             AuthorDescription = a.Description,
                              CategoryId = b.Id,
+                             CategoryName = c.Name,
                              CoverImageUrl = b.CoverImageUrl,
                              CreatedDate = b.CreatedDate,
-                             Title = b.Title,
+                             Description = b.Description,
                          };
             return values.Take(3).ToList();
         }

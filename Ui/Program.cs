@@ -6,24 +6,36 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
-{
-	opt.RequireHttpsMetadata = false;
-	opt.TokenValidationParameters = new TokenValidationParameters
-	{
-		ValidAudience = JwtTokenDefaults.ValidAudience,
-		ValidIssuer = JwtTokenDefaults.ValidIssuer,
-		ClockSkew = TimeSpan.Zero,
-		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
-		ValidateLifetime = true,
-		ValidateIssuerSigningKey = true,
-	};
-});
+//builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+//{
+//	opt.RequireHttpsMetadata = false;
+//	opt.TokenValidationParameters = new TokenValidationParameters
+//	{
+//		ValidAudience = JwtTokenDefaults.ValidAudience,
+//		ValidIssuer = JwtTokenDefaults.ValidIssuer,
+//		ClockSkew = TimeSpan.Zero,
+//		IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtTokenDefaults.Key)),
+//		ValidateLifetime = true,
+//		ValidateIssuerSigningKey = true,
+//	};
+//});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie
+	(JwtBearerDefaults.AuthenticationScheme, opt =>
+	{
+		opt.LoginPath = "/Login/Index";
+		opt.LogoutPath = "/Login/LogOut/";
+		opt.AccessDeniedPath = "/Pages/AccessDenied/";
+		opt.Cookie.SameSite = SameSiteMode.Strict;
+		opt.Cookie.HttpOnly = true;
+		opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+		opt.Cookie.Name = "CarBookJwt";
+	});
 
 
 var azureStorageConfig = builder.Configuration.GetSection("AzureStorage");

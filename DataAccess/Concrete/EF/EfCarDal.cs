@@ -87,5 +87,25 @@ namespace DataAccess.Concrete.EF
                          };
             return values.Take(5).ToList();
         }
+
+        public List<PieChartDto> GetPieChartDetail()
+        {
+            using var context = new BaseProjectContext();
+
+            var result = (from car in context.Cars
+						  where car.IsDelete == false
+                          join brand in context.Brands on car.BrandId equals brand.Id
+                          where brand.IsDelete == false
+                          group car by brand.Name into g
+                          select new PieChartDto
+                          {
+                              BrandName = g.Key,
+                              Count = g.Count()
+                          })
+                          .ToList();
+
+            return result;
+        }
+
     }
 }

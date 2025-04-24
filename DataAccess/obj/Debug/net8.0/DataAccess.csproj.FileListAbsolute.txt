@@ -27,3 +27,4 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\bin\Debug\net8.0\U
 C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\bin\Debug\net8.0\Ui.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\bin\Debug\net8.0\Ui.pdb
 C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\bin\Debug\net8.0\az\Ui.resources.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\DataAccess\bin\Debug\net8.0\libman.json

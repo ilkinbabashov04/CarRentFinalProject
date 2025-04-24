@@ -66,6 +66,10 @@
               "target": "Package",
               "version": "[11.11.0, )"
             },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[12.4.1, )"
@@ -172,6 +176,14 @@
             "Azure.Storage.Files.Shares": {
               "target": "Package",
               "version": "[12.22.0, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.11.0, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
             },
             "MediatR": {
               "target": "Package",

@@ -8,8 +8,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-    //[Authorize(Roles = "Admin")]
-    [Route("api/[controller]")]
+    [Authorize(Roles = "Admin")]
+	[Route("api/[controller]")]
 	[ApiController]
     public class LocationController : ControllerBase
 	{

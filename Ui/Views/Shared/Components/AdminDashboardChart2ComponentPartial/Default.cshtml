@@ -1,0 +1,61 @@
+﻿@model List<PieChartDto>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title d-inline-block">Car Brands graph</h4>
+
+            <div style="height: 260px;">
+                <canvas id="my2Chart" height="220px"></canvas>
+            </div>
+
+            <div class="row text-center mt-4">
+                <div class="col-6">
+                    <h4>@Model.Sum(x => x.Count)</h4>
+                    <p class="text-muted mb-0">Car Count</p>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.Count</h4>
+                    <p class="text-muted mb-0">Brand Count</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const labels = @Html.Raw(Json.Serialize(Model.Select(x => x.BrandName)));
+    const data = @Html.Raw(Json.Serialize(Model.Select(x => x.Count)));
+
+    // Generate random colors for each brand
+    const generateColors = (count) => {
+        const bgColors = [];
+        const borderColors = [];
+        for (let i = 0; i < count; i++) {
+            const r = Math.floor(Math.random() * 255);
+            const g = Math.floor(Math.random() * 255);
+            const b = Math.floor(Math.random() * 255);
+            bgColors.push(`rgba(${r},${g},${b},0.7)`);
+            borderColors.push(`rgba(${r},${g},${b},1)`);
+        }
+        return { bgColors, borderColors };
+    };
+
+    const ctx = document.getElementById('my2Chart').getContext('2d');
+    const { bgColors, borderColors } = generateColors(data.length);
+
+    new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Brand Count Graph',
+                data: data,
+                backgroundColor: bgColors,
+                borderColor: borderColors,
+                borderWidth: 1
+            }]
+        }
+    });
+</script>

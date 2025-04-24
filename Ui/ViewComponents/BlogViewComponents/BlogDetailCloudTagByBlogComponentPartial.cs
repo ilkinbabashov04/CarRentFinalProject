@@ -16,7 +16,7 @@ namespace Ui.ViewComponents.BlogViewComponents
 
         public async Task<IViewComponentResult> InvokeAsync(int id)
         {
-            ViewBag.blogid = id;
+            ViewBag.blogId = id;
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync($"https://localhost:7140/api/TagCloud/GetTagCloudsByBlogId?id=" + id);
 

@@ -1,0 +1,260 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\controllers\\admincarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\controllers\\admincarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\controllers\\carpricingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\controllers\\carpricingcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F500D204-14A5-4BE8-A433-F09376491CD4}|Core\\Core.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\core\\entity\\enum\\rolesname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F500D204-14A5-4BE8-A433-F09376491CD4}|Core\\Core.csproj|solutionrelative:core\\entity\\enum\\rolesname.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFE40B20-1929-446A-BD6E-873ACDD5FA6A}|Business\\Business.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\business\\abstract\\icardescriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFE40B20-1929-446A-BD6E-873ACDD5FA6A}|Business\\Business.csproj|solutionrelative:business\\abstract\\icardescriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFE40B20-1929-446A-BD6E-873ACDD5FA6A}|Business\\Business.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\business\\businessaspect\\appuserquery\\createappuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFE40B20-1929-446A-BD6E-873ACDD5FA6A}|Business\\Business.csproj|solutionrelative:business\\businessaspect\\appuserquery\\createappuserhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CFE40B20-1929-446A-BD6E-873ACDD5FA6A}|Business\\Business.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\business\\businessaspect\\appuserquery\\getcheckappuserquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CFE40B20-1929-446A-BD6E-873ACDD5FA6A}|Business\\Business.csproj|solutionrelative:business\\businessaspect\\appuserquery\\getcheckappuserquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\views\\signalrcar\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\views\\signalrcar\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39C0C629-2F7D-4B5D-A90D-99CAAC0727C5}|CarRentalAPI\\CarRentalAPI.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\carrentalapi\\hubs\\carhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39C0C629-2F7D-4B5D-A90D-99CAAC0727C5}|CarRentalAPI\\CarRentalAPI.csproj|solutionrelative:carrentalapi\\hubs\\carhub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\controllers\\signalrcarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\controllers\\signalrcarcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39C0C629-2F7D-4B5D-A90D-99CAAC0727C5}|CarRentalAPI\\CarRentalAPI.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\carrentalapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{39C0C629-2F7D-4B5D-A90D-99CAAC0727C5}|CarRentalAPI\\CarRentalAPI.csproj|solutionrelative:carrentalapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{39C0C629-2F7D-4B5D-A90D-99CAAC0727C5}|CarRentalAPI\\CarRentalAPI.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\carrentalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{39C0C629-2F7D-4B5D-A90D-99CAAC0727C5}|CarRentalAPI\\CarRentalAPI.csproj|solutionrelative:carrentalapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\areas\\admin\\controllers\\adminstatisticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\areas\\admin\\controllers\\adminstatisticscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 302,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Ui\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Ui\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:22:43.58Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RegisterController.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\RegisterController.cs",
+              "RelativeDocumentMoniker": "Ui\\Controllers\\RegisterController.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\RegisterController.cs",
+              "RelativeToolTip": "Ui\\Controllers\\RegisterController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:03:40.901Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CarPricingController.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\CarPricingController.cs",
+              "RelativeDocumentMoniker": "Ui\\Controllers\\CarPricingController.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\CarPricingController.cs",
+              "RelativeToolTip": "Ui\\Controllers\\CarPricingController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:18:52.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "RolesName.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Core\\Entity\\Enum\\RolesName.cs",
+              "RelativeDocumentMoniker": "Core\\Entity\\Enum\\RolesName.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Core\\Entity\\Enum\\RolesName.cs",
+              "RelativeToolTip": "Core\\Entity\\Enum\\RolesName.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:18:39.078Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ICarDescriptionService.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Business\\Abstract\\ICarDescriptionService.cs",
+              "RelativeDocumentMoniker": "Business\\Abstract\\ICarDescriptionService.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Business\\Abstract\\ICarDescriptionService.cs",
+              "RelativeToolTip": "Business\\Abstract\\ICarDescriptionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:18:23.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminCarController.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\AdminCarController.cs",
+              "RelativeDocumentMoniker": "Ui\\Controllers\\AdminCarController.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\AdminCarController.cs",
+              "RelativeToolTip": "Ui\\Controllers\\AdminCarController.cs",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAkwHsAAABQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:03:41.073Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateAppUserHandler.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Business\\BusinessAspect\\AppUserQuery\\CreateAppUserHandler.cs",
+              "RelativeDocumentMoniker": "Business\\BusinessAspect\\AppUserQuery\\CreateAppUserHandler.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Business\\BusinessAspect\\AppUserQuery\\CreateAppUserHandler.cs",
+              "RelativeToolTip": "Business\\BusinessAspect\\AppUserQuery\\CreateAppUserHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:03:40.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "GetCheckAppUserQuery.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Business\\BusinessAspect\\AppUserQuery\\GetCheckAppUserQuery.cs",
+              "RelativeDocumentMoniker": "Business\\BusinessAspect\\AppUserQuery\\GetCheckAppUserQuery.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Business\\BusinessAspect\\AppUserQuery\\GetCheckAppUserQuery.cs",
+              "RelativeToolTip": "Business\\BusinessAspect\\AppUserQuery\\GetCheckAppUserQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-23T07:17:59.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\CarRentalAPI\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "CarRentalAPI\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\CarRentalAPI\\Properties\\launchSettings.json",
+              "RelativeToolTip": "CarRentalAPI\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-04-23T06:07:36.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AdminStatisticsController.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Areas\\Admin\\Controllers\\AdminStatisticsController.cs",
+              "RelativeDocumentMoniker": "Ui\\Areas\\Admin\\Controllers\\AdminStatisticsController.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Areas\\Admin\\Controllers\\AdminStatisticsController.cs",
+              "RelativeToolTip": "Ui\\Areas\\Admin\\Controllers\\AdminStatisticsController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T19:57:20.653Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CarHub.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\CarRentalAPI\\Hubs\\CarHub.cs",
+              "RelativeDocumentMoniker": "CarRentalAPI\\Hubs\\CarHub.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\CarRentalAPI\\Hubs\\CarHub.cs",
+              "RelativeToolTip": "CarRentalAPI\\Hubs\\CarHub.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T18:32:26.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\SignalRCar\\Index.cshtml",
+              "RelativeDocumentMoniker": "Ui\\Views\\SignalRCar\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\SignalRCar\\Index.cshtml",
+              "RelativeToolTip": "Ui\\Views\\SignalRCar\\Index.cshtml",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAAwBwAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-04-22T19:12:15.446Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "SignalRCarController.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\SignalRCarController.cs",
+              "RelativeDocumentMoniker": "Ui\\Controllers\\SignalRCarController.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\SignalRCarController.cs",
+              "RelativeToolTip": "Ui\\Controllers\\SignalRCarController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T19:11:06.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\CarRentalAPI\\Program.cs",
+              "RelativeDocumentMoniker": "CarRentalAPI\\Program.cs",
+              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\CarRentalAPI\\Program.cs",
+              "RelativeToolTip": "CarRentalAPI\\Program.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwCQAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-22T18:45:07.953Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

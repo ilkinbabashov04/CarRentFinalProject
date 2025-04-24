@@ -16,6 +16,21 @@ namespace DataAccess.Concrete.EF
         {
         }
 
+        public CommentCountDto CommentCountByBlogId(int id)
+        {
+            using (var context = new BaseProjectContext())
+            {
+                var result = context.Comments
+                    .Count(c => c.BlogId == id && c.IsDelete == false);
+
+                return new CommentCountDto
+                {
+                    CommentCount = result
+                };
+            }
+        }
+
+
         public List<CommentDto> GetCommentsByBlogId(int id)
         {
             var context = new BaseProjectContext();

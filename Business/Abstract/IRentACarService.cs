@@ -11,5 +11,6 @@ namespace Business.Abstract
     public interface IRentACarService
     {
         IDataResult<List<CarGetByFilterDto>> GetByFilter(int locationId, bool available);
+        IDataResult<List<BarGraphDto>> GetBarGraphDetail();
     }
 }

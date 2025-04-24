@@ -87,6 +87,19 @@ namespace Business.Concrete
             }
         }
 
+        public IDataResult<List<PieChartDto>> GetPieChartDetail()
+        {
+            var result = _carDal.GetPieChartDetail();
+            if (result.Count > 0)
+            {
+                return new SuccessDataResult<List<PieChartDto>>(result, "Got Successfully!");
+            }
+            else
+            {
+                return new ErrorDataResult<List<PieChartDto>>(result, "Not found!");
+            }
+        }
+
         public IResult Update(Car car)
 		{
 			var result = _carDal.Get(p => p.Id == car.Id && p.IsDelete == false);

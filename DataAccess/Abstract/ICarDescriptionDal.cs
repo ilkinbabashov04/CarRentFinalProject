@@ -10,5 +10,6 @@ namespace DataAccess.Abstract
 {
 	public interface ICarDescriptionDal : IBaseReporsitory<CarDescription>
 	{
+		CarDescription GetCarDescriptionByCarId(int id);
 	}
 }

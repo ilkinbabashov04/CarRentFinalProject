@@ -12,7 +12,7 @@ namespace Business.Concrete
 {
     public class FileManager : IFileService
     {
-        private readonly string _connectionString = "DefaultEndpointsProtocol=https;AccountName=filestorageilkinbabashov;AccountKey=JGt7ng+bUaS3nc2Q+v2izbdjkpqOXf4tWeQpcLD+xfIeiDd5jtSMXcmG/V6aR+SrDkF6kbuOlyyh+AStEjuRRA==;EndpointSuffix=core.windows.net";
+        private readonly string _connectionString = "DefaultEndpointsProtocol=https;AccountName=ilkinbabashov;AccountKey=yzwaRJwEHqWDnckjDCDh3/wXMpFLTkykp4NqmPf7RZCMnXnjq3ozsXum+L0RLI4tSsKnG0JuBZI0+AStsVCZIQ==;EndpointSuffix=core.windows.net";
         private readonly string _containerName = "cars";
 
         public async Task<bool> DeleteImageFromAzure(string imageUrl)

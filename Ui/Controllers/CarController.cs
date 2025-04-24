@@ -31,5 +31,13 @@ namespace Ui.Controllers
 
             return View();
         }
+
+        public async Task<IActionResult> CarDetail(int id)
+        {
+            ViewBag.v1 = "Car Details";
+            ViewBag.v2 = "Car Technical Features";
+            ViewBag.carId = id;
+            return View();
+        }
     }
 }

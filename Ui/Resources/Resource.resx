@@ -288,4 +288,7 @@
   <data name="Car Feature List" xml:space="preserve">
     <value>Car Feature List</value>
   </data>
+  <data name="Add Feature" xml:space="preserve">
+    <value>Add Feature</value>
+  </data>
 </root>

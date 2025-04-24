@@ -16,5 +16,9 @@ namespace Core.Helper.Result.Concrete
         {
             
         }
+        public SuccessDataResult() : base(default, true) 
+        {
+
+        }
     }
 }

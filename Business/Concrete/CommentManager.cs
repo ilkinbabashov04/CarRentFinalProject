@@ -21,6 +21,19 @@ namespace Business.Concrete
             return new SuccessResult("Successfully added!");
         }
 
+        public IDataResult<CommentCountDto> CommentCountByBlogId(int id)
+        {
+            var result = _commentDal.CommentCountByBlogId(id);
+            if (result != null)
+            {
+                return new SuccessDataResult<CommentCountDto>(result, "Got Successfully!");
+            }
+            else
+            {
+                return new ErrorDataResult<CommentCountDto>(result, "Not found!");
+            }
+        }
+
         public IResult Delete(int id)
         {
             var result = _commentDal.Get(p => p.Id == id && p.IsDelete == false);
@@ -81,6 +94,7 @@ namespace Business.Concrete
             if (result != null)
             {
                 result.Name = comment.Name;
+                result.Mail = comment.Mail;
                 result.CreatedDate = comment.CreatedDate;
                 result.BlogId = comment.BlogId;
                 result.Description = comment.Description;

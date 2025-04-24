@@ -9,7 +9,7 @@ namespace Entities.Dto
 {
     public class TagCloudDto : IDto
     {
-        public int TagCloudId { get; set; }
+        public int Id { get; set; }
         public string Title { get; set; }
         public int BlogId { get; set; }
     }

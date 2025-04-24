@@ -6,14 +6,14 @@
 <section class="ftco-section ftco-degree-bg">
     <div class="container">
         <div class="row">
-            @await Component.InvokeAsync("BlogDetailsMainComponentPartial", new {id = ViewBag.blogid})
+            @await Component.InvokeAsync("BlogDetailsMainComponentPartial", new {id = ViewBag.blogId})
             
             <div class="col-md-4 sidebar ftco-animate">
                 
                 @await Component.InvokeAsync("BlogDetailSideBarSearchBoxComponentPartial")
                 @await Component.InvokeAsync("BlogDetailsCategoryComponentPartial")
                 @await Component.InvokeAsync("BlogDetailsRecentBlogsComponentPartial")
-                @await Component.InvokeAsync("BlogDetailsTagCloudComponentPartial", new { id = ViewBag.blogid })
+                @await Component.InvokeAsync("BlogDetailsTagCloudComponentPartial", new { id = ViewBag.blogId })
                 @await Component.InvokeAsync("BlogDetailsParagraphComponentPartial")
                 
             </div>

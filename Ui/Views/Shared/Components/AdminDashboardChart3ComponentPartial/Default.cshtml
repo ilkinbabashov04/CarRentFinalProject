@@ -1,0 +1,72 @@
+﻿@model List<BarGraphDto>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class="col-lg-4">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title d-inline-block">Location Details</h4>
+
+            <div style="height: 260px;">
+                <canvas id="my3Chart" height="220px"></canvas>
+            </div>
+
+            <div class="row text-center mt-4">
+                <div class="col-6">
+                    <h4>@Model.Count</h4>
+                    <p class="text-muted mb-0">Location Count</p>
+                </div>
+                <div class="col-6">
+                    <h4>@Model.Sum(x => x.AvailableCarsCount)</h4>
+                    <p class="text-muted mb-0">Available Car Count</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const barLabels = @Html.Raw(Json.Serialize(Model.Select(x => x.LocationName)));
+    const barData = @Html.Raw(Json.Serialize(Model.Select(x => x.AvailableCarsCount)));
+
+    const barColors = [
+        'rgba(255, 99, 132, 0.7)',
+        'rgba(54, 162, 235, 0.7)',
+        'rgba(255, 206, 86, 0.7)',
+        'rgba(75, 192, 192, 0.7)',
+        'rgba(153, 102, 255, 0.7)',
+        'rgba(255, 159, 64, 0.7)',
+        'rgba(185, 114, 21, 0.7)'
+    ];
+    const barBorders = [
+        'rgba(255, 99, 132, 1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(185, 114, 21, 1)'
+    ];
+
+    const barCtx = document.getElementById('my3Chart').getContext('2d');
+    new Chart(barCtx, {
+        type: 'bar',
+        data: {
+            labels: barLabels,
+            datasets: [{
+                label: 'Car - Location Graph',
+                data: barData,
+                backgroundColor: barColors.slice(0, barData.length),
+                borderColor: barBorders.slice(0, barData.length),
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    stepSize: 1
+                }
+            }
+        }
+    });
+</script>

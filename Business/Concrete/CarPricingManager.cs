@@ -26,5 +26,18 @@ namespace Business.Concrete
                 return new ErrorDataResult<List<CarPricingDto>>(result, "Not found!");
             }
         }
-    }
+
+		public IDataResult<List<GetCarPricingWithTimePeriodDto>> GetCarPricingWithTimePeriods()
+		{
+			var result = _carPricingDal.GetCarPricingWithTimePeriods();
+			if (result.Count > 0)
+			{
+				return new SuccessDataResult<List<GetCarPricingWithTimePeriodDto>>(result, "Got Successfully!");
+			}
+			else
+			{
+				return new ErrorDataResult<List<GetCarPricingWithTimePeriodDto>>(result, "Not found!");
+			}
+		}
+	}
 }

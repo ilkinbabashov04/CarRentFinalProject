@@ -260,3 +260,13 @@ C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Azure.Sto
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.Configuration.FileExtensions.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.Configuration.Json.dll
 C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.Configuration.UserSecrets.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\obj\Debug\net8.0\Ui.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\libman.json
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+C:\Users\Babashov\source\repos\CarRentFinalProject\Ui\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

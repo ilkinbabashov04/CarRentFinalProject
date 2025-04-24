@@ -125,5 +125,16 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("GetPieChartDetail")]
+        public IActionResult GetPieChartDetail()
+        {
+            var result = _carService.GetPieChartDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+        
     }
 }

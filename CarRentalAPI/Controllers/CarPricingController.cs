@@ -24,5 +24,15 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
-    }
+		[HttpGet("GetCarPricingWithTimePeriods")]
+		public IActionResult GetCarPricingWithTimePeriods()
+		{
+			var result = _carPricingService.GetCarPricingWithTimePeriods();
+			if (result.Success)
+			{
+				return Ok(result);
+			}
+			return BadRequest();
+		}
+	}
 }

@@ -288,4 +288,7 @@
   <data name="Car Feature List" xml:space="preserve">
     <value>Avtomobil Xüsusiyyətləri Siyahısı</value>
   </data>
+  <data name="Add Feature" xml:space="preserve">
+    <value>Özəllik əlavə et</value>
+  </data>
 </root>

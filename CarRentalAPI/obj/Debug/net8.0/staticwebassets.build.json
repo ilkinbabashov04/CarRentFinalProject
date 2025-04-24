@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "rIDo+bEKd5jBAH59BO5jpwhRo2iPOCKFMtDb/3P7+BE=",
+  "Hash": "ieyulTK+hBzwd7wJSv9ZJRiARUq6ystJ+2NcKZzGBk8=",
   "Source": "CarRentalAPI",
   "BasePath": "_content/CarRentalAPI",
   "Mode": "Default",
@@ -13291,6 +13291,25 @@
       "OriginalItemSpec": "wwwroot\\carbook-master\\images\\loc.png"
     },
     {
+      "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\mc.jpg",
+      "SourceId": "Ui",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\",
+      "BasePath": "_content/Ui",
+      "RelativePath": "carbook-master/images/mc.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\carbook-master\\images\\mc.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\person_1.jpg",
       "SourceId": "Ui",
       "SourceType": "Project",
@@ -15533,6 +15552,25 @@
       "OriginalItemSpec": "wwwroot\\carbook-master\\services.html"
     },
     {
+      "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\chart.js",
+      "SourceId": "Ui",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\",
+      "BasePath": "_content/Ui",
+      "RelativePath": "chart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\chart.js"
+    },
+    {
       "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\css\\site.css",
       "SourceId": "Ui",
       "SourceType": "Project",
@@ -16671,6 +16709,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js",
+      "SourceId": "Ui",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\",
+      "BasePath": "_content/Ui",
+      "RelativePath": "lib/microsoft/signalr/dist/browser/signalr.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.js"
+    },
+    {
+      "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js",
+      "SourceId": "Ui",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\",
+      "BasePath": "_content/Ui",
+      "RelativePath": "lib/microsoft/signalr/dist/browser/signalr.min.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\microsoft\\signalr\\dist\\browser\\signalr.min.js"
     }
   ]
 }

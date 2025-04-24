@@ -42,6 +42,7 @@ namespace DataAccess.Concrete.EF
         public DbSet<RentACarProcess> RentACarProcesses { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Review> Reviews { get; set; }
 		//public DbSet<User> Users { get; set; }
 		//public DbSet<OperationClaims> OperationClaims { get; set; }
 		//public DbSet<UserOperationClaim> UserOperationClaims { get; set; }

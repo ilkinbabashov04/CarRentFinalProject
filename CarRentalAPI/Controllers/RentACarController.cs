@@ -23,5 +23,16 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("GetBarGraphDetail")]
+        public IActionResult GetBarGraphDetail()
+        {
+            var result = _rentACarService.GetBarGraphDetail();
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+        
     }
 }

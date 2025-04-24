@@ -12,5 +12,6 @@ namespace DataAccess.Abstract
     public interface ICommentDal : IBaseReporsitory<Comment>
     {
         List<CommentDto> GetCommentsByBlogId(int id);
+        CommentCountDto CommentCountByBlogId(int id);
     }
 }

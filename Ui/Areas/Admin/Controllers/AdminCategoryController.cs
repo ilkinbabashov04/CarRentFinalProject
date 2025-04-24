@@ -11,7 +11,6 @@ namespace Ui.Areas.Admin.Controllers
     [Route("Admin/AdminCategory")]
     public class AdminCategoryController : Controller
     {
-
         private readonly IHttpClientFactory _httpClientFactory;
 
         public AdminCategoryController(IHttpClientFactory httpClientFactory)

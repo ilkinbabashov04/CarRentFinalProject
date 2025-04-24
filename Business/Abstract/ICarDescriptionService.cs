@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Core.Helper.Result.Abstract;
+using Entities.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +8,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstract
 {
-	internal interface ICarDescriptionService
+	public interface ICarDescriptionService
 	{
-	}
+        IResult GetCarDescriptionByCarId(int id);
+
+    }
 }

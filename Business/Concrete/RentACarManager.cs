@@ -2,6 +2,7 @@
 using Core.Helper.Result.Abstract;
 using Core.Helper.Result.Concrete;
 using DataAccess.Abstract;
+using DataAccess.Migrations;
 using Entities.Concrete;
 using Entities.Dto;
 using System;
@@ -15,6 +16,20 @@ namespace Business.Concrete
     public class RentACarManager(IRentACarDal rentACarDal) : IRentACarService
     {
         private readonly IRentACarDal _rentACarDal = rentACarDal;
+
+        public IDataResult<List<BarGraphDto>> GetBarGraphDetail()
+        {
+            var result = _rentACarDal.GetBarGraphDetail();
+            if (result != null)
+            {
+                return new SuccessDataResult<List<BarGraphDto>>(result, "Got Successfully");
+            }
+            else
+            {
+                return new ErrorDataResult<List<BarGraphDto>>(result, "Not found!");
+            }
+        }
+
         public IDataResult<List<CarGetByFilterDto>> GetByFilter(int locationId, bool available)
         {
             var result = _rentACarDal.GetByFilter(locationId, available);
