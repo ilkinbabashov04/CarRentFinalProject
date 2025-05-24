@@ -4,51 +4,161 @@
     Layout = "~/Views/UiLayout/Index.cshtml";
 }
 
-<div class="col-md-12 block-9 mb-md-5">
-    <form class="bg-light p-5 contact-form" method="post">
-        <h3 class="alert alert-success">Reservation Form</h3>
-        <br />
-            <input type="hidden" asp-for="CarId" value="@ViewBag.v3" class="form-control"  placeholder="The Selected Car">
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" asp-for="Name" class="form-control" placeholder="Your Name">
+<style>
+    .form-container {
+        max-width: 800px;
+        margin: 40px auto;
+        background: #fff;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        font-family: 'Segoe UI', sans-serif;
+    }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+        .form-group label {
+            margin-bottom: 6px;
+            font-weight: 600;
+            color: #444;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+            .form-group input:focus,
+            .form-group select:focus,
+            .form-group textarea:focus {
+                border-color: #3b82f6;
+                box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+            }
+
+    .form-row {
+        display: flex;
+        gap: 20px;
+    }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+    .btn-submit {
+        background: #3b82f6;
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+        margin-top: 20px;
+        transition: background 0.3s;
+    }
+
+        .btn-submit:hover {
+            background: #2563eb;
+        }
+</style>
+
+<div class="form-container">
+    <h2>🚗 Car Reservation Form</h2>
+    <form method="post">
+        <input type="hidden" asp-for="CarId" value="@ViewBag.v3" />
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Name</label>
+                <input asp-for="Name" class="form-control" placeholder="Your Name" />
+            </div>
+            <div class="form-group">
+                <label>Surname</label>
+                <input asp-for="Surname" class="form-control" placeholder="Your Surname" />
+            </div>
         </div>
-        <div class="form-group">
-            <label>Surname</label>
-            <input type="text" asp-for="Surname" class="form-control" placeholder="Your Surname">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Email</label>
+                <input asp-for="Mail" class="form-control" placeholder="you@example.com" />
+            </div>
+            <div class="form-group">
+                <label>Phone Number</label>
+                <input asp-for="Phone" class="form-control" placeholder="+994..." />
+            </div>
         </div>
-        <div class="form-group">
-            <label>Mail</label>
-            <input type="text" asp-for="Mail" class="form-control" placeholder="Your Email">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Pick-Up Location</label>
+                @Html.DropDownListFor(x => x.PickUpLocationId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop", name = "Id" })
+            </div>
+            <div class="form-group">
+                <label>Drop-Off Location</label>
+                @Html.DropDownListFor(x => x.DropOffLocationId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop", name = "Id" })
+            </div>
         </div>
-        <div class="form-group">
-            <label>Phone Number</label>
-            <input type="text" asp-for="Phone" class="form-control" placeholder="Phone Number">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Pick-Up Date</label>
+                <input asp-for="PickUpDate" type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Pick-Up Time</label>
+                <input asp-for="PickUpTime" type="time" class="form-control" />
+            </div>
         </div>
-        <div class="form-group">
-            <label>PickUp Location</label>
-            @Html.DropDownListFor(x => x.PickUpLocationId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop", name = "Id" })
+        <div class="form-row">
+            <div class="form-group">
+                <label>Drop-Off Date</label>
+                <input asp-for="DropOffDate" type="date" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label>Drop-Off Time</label>
+                <input asp-for="DropOffTime" type="time" class="form-control" />
+            </div>
         </div>
-        <div class="form-group">
-            <label>DropOff Location</label>
-            @Html.DropDownListFor(x => x.DropOffLocationId, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop", name = "Id" })
+
+
+        <div class="form-row">
+            @* <div class="form-group">
+                <label>Reservation Type</label>
+                @Html.DropDownListFor(x => x.PricingId, (List<SelectListItem>)ViewBag.PricingTypes, new { @class = "form-control" })
+            </div> *@
+            <div class="form-group">
+                <label>Age</label>
+                <input asp-for="Age" class="form-control" placeholder="Your Age" />
+            </div>
         </div>
+
         <div class="form-group">
-            <label>Age</label>
-            <input type="text" asp-for="Age" class="form-control" placeholder="Your Age">
+            <label>Driver Licence Year</label>
+            <input asp-for="DriverLicenceYear" class="form-control" placeholder="e.g. 2018" />
         </div>
-        <div class="form-group">
-            <label>Driver License Date</label>
-            <input type="text" asp-for="DriverLicenceYear" class="form-control" placeholder="Driver's license date">
-        </div>
+
         <div class="form-group">
             <label>Additional Information</label>
-            <textarea asp-for="Description" id="" cols="30" rows="7" class="form-control" placeholder="Additional Information"></textarea>
+            <textarea asp-for="Description" rows="4" class="form-control" placeholder="Your message..."></textarea>
         </div>
-        <div class="form-group">
-            <input type="submit" value="Reservation" class="btn btn-primary py-3 px-5">
-        </div>
+
+        <button type="submit" class="btn-submit">Submit Reservation</button>
     </form>
-
 </div>
-

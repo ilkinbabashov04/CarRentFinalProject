@@ -61,7 +61,20 @@ namespace Business.Concrete
 			}
 		}
 
-		public IDataResult<Car> GetById(int id)
+        public IDataResult<List<CarDto>> GetAvailableCars(int locationId, DateTime pickupDateTime, DateTime dropoffDateTime)
+        {
+            var result = _carDal.GetAvailableCars(locationId, pickupDateTime, dropoffDateTime);
+            if (result.Count > 0)
+            {
+                return new SuccessDataResult<List<CarDto>>(result, "Got Successfully!");
+            }
+            else
+            {
+                return new ErrorDataResult<List<CarDto>>(result, "Not found!");
+            }
+        }
+
+        public IDataResult<Car> GetById(int id)
 		{
 			var result = _carDal.Get(p => p.Id == id && p.IsDelete == false);
 			if (result != null)

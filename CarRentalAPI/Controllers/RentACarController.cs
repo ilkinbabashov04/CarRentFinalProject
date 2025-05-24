@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpGet("GetBarGraphDetail")]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetBarGraphDetail()
         {
             var result = _rentACarService.GetBarGraphDetail();

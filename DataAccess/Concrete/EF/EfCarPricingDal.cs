@@ -19,14 +19,13 @@ namespace DataAccess.Concrete.EF
         public List<CarPricingDto> GetAll()
         {
             var context = new BaseProjectContext();
+
             var result = from p in context.CarPricings
                          where p.IsDelete == false
                          where p.PricingId == 2
-                         join c in context.Cars
-                         on p.CarId equals c.Id 
-						 where c.IsDelete == false
-                         join b in context.Brands
-                         on c.BrandId equals b.Id
+                         join c in context.Cars on p.CarId equals c.Id
+                         where c.IsDelete == false
+                         join b in context.Brands on c.BrandId equals b.Id
                          select new CarPricingDto
                          {
                              CarId = p.CarId,
@@ -35,13 +34,22 @@ namespace DataAccess.Concrete.EF
                              BrandName = b.Name,
                              ModelName = c.Model,
                              CoverImageUrl = c.CoverImageUrl,
+
+                             Reservations = context.Reservations
+                                .Where(r => r.CarId == c.Id && r.DropOffDate >= DateTime.Today)
+                                .Select(r => new ReservationDto
+                                {
+                                    PickUpDate = r.PickUpDate,
+                                    PickUpTime = r.PickUpTime,
+                                    DropOffDate = r.DropOffDate,
+                                    DropOffTime = r.DropOffTime
+                                }).ToList()
                          };
 
             return result.ToList();
-
         }
 
-		public List<GetCarPricingWithTimePeriodDto> GetCarPricingWithTimePeriods()
+        public List<GetCarPricingWithTimePeriodDto> GetCarPricingWithTimePeriods()
 		{
 			using var context = new BaseProjectContext();
 

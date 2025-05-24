@@ -18,5 +18,7 @@ namespace Business.Abstract
 		IDataResult<List<CarDto>> GetAll();
 		IDataResult<List<CarDto>> GetFiveCars();
 		IDataResult<List<PieChartDto>> GetPieChartDetail();
-	}
+		IDataResult<List<CarDto>> GetAvailableCars(int locationId, DateTime pickupDateTime, DateTime dropoffDateTime);
+
+    }
 }

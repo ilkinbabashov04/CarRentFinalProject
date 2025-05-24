@@ -1,31 +1,39 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class HomeController : ControllerBase
 	{
 		private readonly IHomeService _homeService;
-		public HomeController(IHomeService homeService)
+		private readonly ILogger<HomeController> _logger;
+		public HomeController(IHomeService homeService, ILogger<HomeController> logger)
 		{
+			_logger = logger;
 			_homeService = homeService;
 		}
 		[HttpPost("AddHome")]
-		public IActionResult Add(Home home)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(Home home)
 		{
-			var result = _homeService.Add(home);
+            _logger.LogInformation("AddHome method called at {Time} by user {User}", DateTime.Now, User.Identity?.Name ?? "Anonymous");
+            var result = _homeService.Add(home);
 			if (result.Success)
 			{
-				return Ok(result);
+                _logger.LogInformation("Home added successfully with ID {HomeId}", home.Id);
+                return Ok(result);
 			}
-			return BadRequest();
+            _logger.LogWarning("Failed to add Home at {Time}", DateTime.Now);
+            return BadRequest();
 		}
 		[HttpPost("UpdateHome")]
-		public IActionResult Update(Home home)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(Home home)
 		{
 			var result = _homeService.Update(home);
 			if (result.Success)
@@ -35,7 +43,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteHome/{id}")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _homeService.Delete(id);
 			if (result.Success)

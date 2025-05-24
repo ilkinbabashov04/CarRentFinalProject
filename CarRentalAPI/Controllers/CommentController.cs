@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +26,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpPost("UpdateComment")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(Comment comment)
         {
             var result = _commentService.Update(comment);
@@ -35,6 +37,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpPost("DeleteComment")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var result = _commentService.Delete(id);

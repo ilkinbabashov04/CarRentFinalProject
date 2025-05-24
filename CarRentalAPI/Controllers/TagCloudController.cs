@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
@@ -14,6 +15,7 @@ namespace CarRentalAPI.Controllers
             _tagCloudService = tagCloudService;
         }
         [HttpPost("AddTagCloud")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Add(TagCloud tagCloud)
         {
             var result = _tagCloudService.Add(tagCloud);
@@ -24,6 +26,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpPost("UpdateTagCloud")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(TagCloud tagCloud)
         {
             var result = _tagCloudService.Update(tagCloud);
@@ -34,6 +37,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpPost("DeleteTagCloud")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var result = _tagCloudService.Delete(id);

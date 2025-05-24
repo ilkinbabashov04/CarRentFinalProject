@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class PricingController : ControllerBase
 	{
@@ -15,7 +16,8 @@ namespace CarRentalAPI.Controllers
 			_pricingService = PricingService;
 		}
 		[HttpPost("AddPricing")]
-		public IActionResult Add(Pricing pricing)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(Pricing pricing)
 		{
 			var result = _pricingService.Add(pricing);
 			if (result.Success)
@@ -25,7 +27,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdatePricing")]
-		public IActionResult Update(Pricing pricing)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(Pricing pricing)
 		{
 			var result = _pricingService.Update(pricing);
 			if (result.Success)
@@ -35,7 +38,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeletePricing")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _pricingService.Delete(id);
 			if (result.Success)
@@ -64,5 +68,15 @@ namespace CarRentalAPI.Controllers
 			}
 			return BadRequest();
 		}
-	}
+        [HttpGet("GetPricingByCarId")]
+        public IActionResult GetPricingByCarId(int id)
+        {
+            var result = _pricingService.GetPricingByCarId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+    }
 }

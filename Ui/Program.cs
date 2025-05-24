@@ -1,6 +1,7 @@
 using Azure.Storage.Files.Shares;
 using Core.Tools;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
@@ -25,17 +26,18 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddCookie
-	(JwtBearerDefaults.AuthenticationScheme, opt =>
-	{
-		opt.LoginPath = "/Login/Index";
-		opt.LogoutPath = "/Login/LogOut/";
-		opt.AccessDeniedPath = "/Pages/AccessDenied/";
-		opt.Cookie.SameSite = SameSiteMode.Strict;
-		opt.Cookie.HttpOnly = true;
-		opt.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
-		opt.Cookie.Name = "CarBookJwt";
-	});
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Login/Index"; // Login s?hif?si
+        options.LogoutPath = "/Login/LogOut"; // Ç?x?? s?hif?si
+        options.AccessDeniedPath = "/Pages/AccessDenied"; // ?caz?siz giri?
+        options.Cookie.SameSite = SameSiteMode.Strict;
+        options.Cookie.HttpOnly = true;
+        options.Cookie.SecurePolicy = CookieSecurePolicy.SameAsRequest;
+        options.Cookie.Name = "CarBookJwt";
+    });
+
 
 
 var azureStorageConfig = builder.Configuration.GetSection("AzureStorage");

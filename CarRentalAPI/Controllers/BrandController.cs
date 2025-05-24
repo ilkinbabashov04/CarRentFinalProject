@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class BrandController : ControllerBase
 	{
@@ -15,7 +16,8 @@ namespace CarRentalAPI.Controllers
 			_brandService = brandService;
 		}
 		[HttpPost("AddBrand")]
-		public IActionResult Add(string brand)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(string brand)
 		{
 			var result = _brandService.Add(brand);
 			if (result.Success)
@@ -25,7 +27,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateBrand")]
-		public IActionResult Update(int id, string brandName)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(int id, string brandName)
 		{
 			var result = _brandService.Update(id, brandName);
 			if (result.Success)
@@ -35,7 +38,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteBrand{id}")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _brandService.Delete(id);
 			if (result.Success)
@@ -45,7 +49,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpGet("GetBrandById")]
-		public IActionResult Get(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Get(int id)
 		{
 			var result = _brandService.GetById(id);
 			if (result.Success)

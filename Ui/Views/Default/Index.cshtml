@@ -5,7 +5,7 @@
 }
 
 <style>
-    #drop option{
+    #drop option {
         color: black
     }
 </style>
@@ -16,7 +16,7 @@
 <body>
 
     @await Component.InvokeAsync("NavbarUILayoutComponentPartial")
-    
+
     @await Component.InvokeAsync("DefaultCoverUILayoutComponentPartial")
 
     <section class="ftco-section ftco-no-pt bg-light">
@@ -25,29 +25,29 @@
                 <div class="col-md-12	featured-top">
                     <div class="row no-gutters">
                         <div class="col-md-4 d-flex align-items-center">
-                            <form method="post"  class="request-form ftco-animate bg-primary">
+                            <form method="post" class="request-form ftco-animate bg-primary">
                                 <h2>Rent Your Car Now</h2>
                                 <div class="form-group">
                                     <label for="" class="label">Pick-up location</label>
-                                    @Html.DropDownListFor(x => x.Id, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop", name = "Id"})
+                                    @Html.DropDownListFor(x => x.Id, (List<SelectListItem>)ViewBag.v, new { @class = "form-control", @id = "drop", name = "Id" })
                                 </div>
                                 <div class="d-flex">
                                     <div class="form-group mr-2">
                                         <label for="" class="label">Pick-up date</label>
-                                        <input type="text" class="form-control" name="book_pick_date" id="book_pick_date" placeholder="Date">
+                                        <input type="text" class="form-control" name="book_pick_date" id="book_pick_date" placeholder="Date" required>
                                     </div>
                                     <div class="form-group ml-2">
                                         <label for="" class="label">Drop-off date</label>
-                                        <input type="text" class="form-control" name="book_off_date" id="book_off_date" placeholder="Date">
+                                        <input type="text" class="form-control" name="book_off_date" id="book_off_date" placeholder="Date" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label">Pick-up time</label>
-                                    <input type="text" class="form-control" name="time_pick" id="time_pick" placeholder="Time">
+                                    <input type="text" class="form-control" name="time_pick" id="time_pick" placeholder="Time" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="" class="label">Drop-off time</label>
-                                    <input type="text" class="form-control" name="time_off" id="time_pick" placeholder="Time">
+                                    <input type="text" class="form-control" name="time_off" id="time_off" placeholder="Time" required>
                                 </div>
                                 <div class="form-group">
                                     <button class="btn btn-secondary py-3 px-4">List Available Cars</button>
@@ -92,25 +92,25 @@
     </section>
 
     @await Component.InvokeAsync("DefaultLastFiveCarsWithBrandsComponentPartial")
-
     @await Component.InvokeAsync("AboutUsComponentPartial")
-
     @await Component.InvokeAsync("ServiceComponentPartial")
-
     @await Component.InvokeAsync("BecomeADriverComponentPartial")
-
     @await Component.InvokeAsync("TestimonialComponentPartial")
-
     @await Component.InvokeAsync("GetLastThreeBlogsWithAuthorViewComponentPartial")
-    
     @await Component.InvokeAsync("DefaultStatisticsComponentPartial")
-
     @await Component.InvokeAsync("FooterUILayoutComponentPartial")
-
     @await Component.InvokeAsync("ScriptUILayoutComponentPartial")
+
+    <!-- Əlavə etdiyimiz TimePicker script -->
+    <script>
+        $(document).ready(function () {
+            $('#time_pick, #time_off').timepicker({
+                'timeFormat': 'H:i'
+            });
+        });
+    </script>
 
 </body>
 </html>
-
 
 <script src="//code.tidio.co/ko8nt9eiwm1zjx1obxigj7ikcitearzy.js" async></script>

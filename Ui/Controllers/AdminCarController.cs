@@ -8,9 +8,11 @@ using Newtonsoft.Json;
 using System.Globalization;
 using System.Text;
 using Ui.Helper;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ui.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class AdminCarController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
@@ -23,14 +25,20 @@ namespace Ui.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7140/api/Car/GetAll");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<CarDto>>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:7140/api/Car/GetAll");
+                
+                
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<CarDto>>>(jsonData);
+                    var values = apiResponse?.Data;
+                    return View(values);
+                }
             }
             return View();
         }
@@ -38,56 +46,64 @@ namespace Ui.Controllers
         [HttpGet]
         public async Task<IActionResult> CreateCar()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7140/api/Brand/GetAll");
-            var jsonData = await responseMessage.Content.ReadAsStringAsync();
-            Console.WriteLine($"API Response: {jsonData}");
-            var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<BrandDto>>>(jsonData);
-            var values = apiResponse?.Data;
-            List<SelectListItem> brandValues = (from x in values
-                                                select new SelectListItem
-                                                {
-                                                    Text = x.Name,
-                                                    Value = x.BrandId.ToString()
-                                                }).ToList();
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
+            {
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:7140/api/Brand/GetAll");
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                Console.WriteLine($"API Response: {jsonData}");
+                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<BrandDto>>>(jsonData);
+                var values = apiResponse?.Data;
+                List<SelectListItem> brandValues = (from x in values
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.Name,
+                                                        Value = x.BrandId.ToString()
+                                                    }).ToList();
 
-            ViewBag.BrandValues = brandValues;
+                ViewBag.BrandValues = brandValues;
+            }
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> CreateCar(CarFileDto createCarDto, IFormFile BigImage, IFormFile CoverImage)
         {
-            var client = _httpClientFactory.CreateClient();
-            using (var formData = new MultipartFormDataContent())
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                formData.Add(new StringContent(createCarDto.BrandId.ToString()), "BrandId");
-                formData.Add(new StringContent(createCarDto.Model), "Model");
-                formData.Add(new StringContent(createCarDto.Km.ToString()), "Km");
-                formData.Add(new StringContent(createCarDto.Transmission), "Transmission");
-                formData.Add(new StringContent(createCarDto.Seat.ToString()), "Seat");
-                formData.Add(new StringContent(createCarDto.Luggage.ToString()), "Luggage");
-                formData.Add(new StringContent(createCarDto.Fuel), "Fuel");
-
-                if (BigImage != null)
+                var client = _httpClientFactory.CreateClient();
+                using (var formData = new MultipartFormDataContent())
                 {
-                    var bigImageContent = new StreamContent(BigImage.OpenReadStream());
-                    bigImageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(BigImage.ContentType);
-                    formData.Add(bigImageContent, "bigImage", BigImage.FileName);
-                }
+                    formData.Add(new StringContent(createCarDto.BrandId.ToString()), "BrandId");
+                    formData.Add(new StringContent(createCarDto.Model), "Model");
+                    formData.Add(new StringContent(createCarDto.Km.ToString()), "Km");
+                    formData.Add(new StringContent(createCarDto.Transmission), "Transmission");
+                    formData.Add(new StringContent(createCarDto.Seat.ToString()), "Seat");
+                    formData.Add(new StringContent(createCarDto.Luggage.ToString()), "Luggage");
+                    formData.Add(new StringContent(createCarDto.Fuel), "Fuel");
 
-                if (CoverImage != null)
-                {
-                    var coverImageContent = new StreamContent(CoverImage.OpenReadStream());
-                    coverImageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(CoverImage.ContentType);
-                    formData.Add(coverImageContent, "coverImage", CoverImage.FileName);
-                }
+                    if (BigImage != null)
+                    {
+                        var bigImageContent = new StreamContent(BigImage.OpenReadStream());
+                        bigImageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(BigImage.ContentType);
+                        formData.Add(bigImageContent, "bigImage", BigImage.FileName);
+                    }
 
-                var responseMessage = await client.PostAsync("https://localhost:7140/api/Car/AddCar", formData);
+                    if (CoverImage != null)
+                    {
+                        var coverImageContent = new StreamContent(CoverImage.OpenReadStream());
+                        coverImageContent.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue(CoverImage.ContentType);
+                        formData.Add(coverImageContent, "coverImage", CoverImage.FileName);
+                    }
+                    client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                    var responseMessage = await client.PostAsync("https://localhost:7140/api/Car/AddCar", formData);
 
-                if (responseMessage.IsSuccessStatusCode)
-                {
-                    return RedirectToAction("Index");
+                    if (responseMessage.IsSuccessStatusCode)
+                    {
+                        return RedirectToAction("Index");
+                    }
                 }
             }
             return View();
@@ -98,42 +114,52 @@ namespace Ui.Controllers
 
         public async Task<IActionResult> DeleteCar(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Car/DeleteCar {id}");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index");
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Car/DeleteCar/{id}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
             }
             return View();
         }
 
+
         [HttpGet]
         public async Task<IActionResult> UpdateCar(int id)
         {
-
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage1 = await client.GetAsync("https://localhost:7140/api/Brand/GetAll");
-            var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
-            Console.WriteLine($"API Response: {jsonData1}");
-            var apiResponse1 = JsonConvert.DeserializeObject<ApiResponse<List<BrandDto>>>(jsonData1);
-            var values1 = apiResponse1?.Data;
-            List<SelectListItem> brandValues = (from x in values1
-                                                select new SelectListItem
-                                                {
-                                                    Text = x.Name,
-                                                    Value = x.BrandId.ToString()
-                                                }).ToList();
-
-            ViewBag.BrandValues = brandValues;
-
-            var responseMessage = await client.GetAsync($"https://localhost:7140/api/Car/GetCarById {id}");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                Console.WriteLine($"API Response: {jsonData}");
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<CarDto>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage1 = await client.GetAsync("https://localhost:7140/api/Brand/GetAll");
+                var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
+                Console.WriteLine($"API Response: {jsonData1}");
+                var apiResponse1 = JsonConvert.DeserializeObject<ApiResponse<List<BrandDto>>>(jsonData1);
+                var values1 = apiResponse1?.Data;
+                List<SelectListItem> brandValues = (from x in values1
+                                                    select new SelectListItem
+                                                    {
+                                                        Text = x.Name,
+                                                        Value = x.BrandId.ToString()
+                                                    }).ToList();
+
+                ViewBag.BrandValues = brandValues;
+
+                var responseMessage = await client.GetAsync($"https://localhost:7140/api/Car/GetCarById {id}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    Console.WriteLine($"API Response: {jsonData}");
+                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse<CarDto>>(jsonData);
+                    var values = apiResponse?.Data;
+                    return View(values);
+                }
             }
             return View();
         }
@@ -142,52 +168,56 @@ namespace Ui.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateCar(CarDto carDto, IFormFile? CoverImage, IFormFile? BigImage)
         {
-            var client = _httpClientFactory.CreateClient();
-
-            // Fetch Brand Name
-            var brandResponseMessage = await client.GetAsync($"https://localhost:7140/api/Brand/GetBrandById?id={carDto.BrandId}");
-            if (brandResponseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var brandJsonData = await brandResponseMessage.Content.ReadAsStringAsync();
-                var brandApiResponse = JsonConvert.DeserializeObject<ApiResponse<BrandDto>>(brandJsonData);
-                if (brandApiResponse?.Data != null)
+                var client = _httpClientFactory.CreateClient();
+                // Fetch Brand Name
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var brandResponseMessage = await client.GetAsync($"https://localhost:7140/api/Brand/GetBrandById?id={carDto.BrandId}");
+                if (brandResponseMessage.IsSuccessStatusCode)
                 {
-                    carDto.BrandName = brandApiResponse.Data.Name;
+                    var brandJsonData = await brandResponseMessage.Content.ReadAsStringAsync();
+                    var brandApiResponse = JsonConvert.DeserializeObject<ApiResponse<BrandDto>>(brandJsonData);
+                    if (brandApiResponse?.Data != null)
+                    {
+                        carDto.BrandName = brandApiResponse.Data.Name;
+                    }
                 }
+
+                using var formData = new MultipartFormDataContent();
+
+                // Add text fields
+                formData.Add(new StringContent(carDto.BrandId.ToString()), "BrandId");
+                formData.Add(new StringContent(carDto.Model), "Model");
+                formData.Add(new StringContent(carDto.Km.ToString()), "Km");
+                formData.Add(new StringContent(carDto.Transmission), "Transmission");
+                formData.Add(new StringContent(carDto.Seat.ToString()), "Seat");
+                formData.Add(new StringContent(carDto.Luggage.ToString()), "Luggage");
+                formData.Add(new StringContent(carDto.Fuel), "Fuel");
+
+                // Add image files if present
+                if (CoverImage != null)
+                {
+                    var coverImageStream = new StreamContent(CoverImage.OpenReadStream());
+                    formData.Add(coverImageStream, "coverImage", CoverImage.FileName);
+                }
+
+                if (BigImage != null)
+                {
+                    var bigImageStream = new StreamContent(BigImage.OpenReadStream());
+                    formData.Add(bigImageStream, "bigImage", BigImage.FileName);
+                }
+
+                // Send request
+                var responseMessage = await client.PostAsync($"https://localhost:7140/api/Car/UpdateCar/{carDto.id}", formData);
+
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index");
+                }
+
             }
-
-            using var formData = new MultipartFormDataContent();
-
-            // Add text fields
-            formData.Add(new StringContent(carDto.BrandId.ToString()), "BrandId");
-            formData.Add(new StringContent(carDto.Model), "Model");
-            formData.Add(new StringContent(carDto.Km.ToString()), "Km");
-            formData.Add(new StringContent(carDto.Transmission), "Transmission");
-            formData.Add(new StringContent(carDto.Seat.ToString()), "Seat");
-            formData.Add(new StringContent(carDto.Luggage.ToString()), "Luggage");
-            formData.Add(new StringContent(carDto.Fuel), "Fuel");
-
-            // Add image files if present
-            if (CoverImage != null)
-            {
-                var coverImageStream = new StreamContent(CoverImage.OpenReadStream());
-                formData.Add(coverImageStream, "coverImage", CoverImage.FileName);
-            }
-
-            if (BigImage != null)
-            {
-                var bigImageStream = new StreamContent(BigImage.OpenReadStream());
-                formData.Add(bigImageStream, "bigImage", BigImage.FileName);
-            }
-
-            // Send request
-            var responseMessage = await client.PostAsync($"https://localhost:7140/api/Car/UpdateCar/{carDto.id}", formData);
-
-            if (responseMessage.IsSuccessStatusCode)
-            {
-                return RedirectToAction("Index");
-            }
-
             return View(carDto);
         }
 

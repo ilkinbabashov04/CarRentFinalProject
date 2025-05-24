@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class AboutController : ControllerBase
 	{
@@ -15,7 +16,8 @@ namespace CarRentalAPI.Controllers
 			_aboutService = aboutService;   
         }
         [HttpPost("AddAbout")]
-		public IActionResult Add(About about)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(About about)
 		{
 			var result = _aboutService.Add(about);
 			if(result.Success)
@@ -25,7 +27,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateAbout")]
-		public IActionResult Update(About about)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(About about)
 		{
 			var result = _aboutService.Update(about);
 			if(result.Success)
@@ -35,7 +38,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteAbout")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _aboutService.Delete(id);
 			if(result.Success)
@@ -45,7 +49,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpGet("GetAboutById")]
-		public IActionResult Get(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Get(int id)
 		{
 			var result = _aboutService.GetById(id);
 			if (result.Success)

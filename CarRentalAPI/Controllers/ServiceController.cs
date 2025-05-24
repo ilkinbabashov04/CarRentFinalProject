@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class ServiceController : ControllerBase
 	{
@@ -15,7 +16,8 @@ namespace CarRentalAPI.Controllers
 			_serviceService = serviceService;
 		}
 		[HttpPost("AddService")]
-		public IActionResult Add(Service service)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(Service service)
 		{
 			var result = _serviceService.Add(service);
 			if (result.Success)
@@ -25,7 +27,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateService")]
-		public IActionResult Update(Service service)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(Service service)
 		{
 			var result = _serviceService.Update(service);
 			if (result.Success)
@@ -35,7 +38,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteService")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _serviceService.Delete(id);
 			if (result.Success)

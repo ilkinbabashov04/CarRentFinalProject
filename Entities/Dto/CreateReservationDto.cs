@@ -19,5 +19,11 @@ namespace Entities.Dto
         public string Description { get; set; }
         public int PickUpLocationId { get; set; }
         public int DropOffLocationId { get; set; }
+        public int PricingId { get; set; }
+        public string PickUpTime { get; set; }
+        public string DropOffTime { get; set; }
+        public DateTime PickUpDate { get; set; }
+        public DateTime DropOffDate { get; set; }
+
     }
 }

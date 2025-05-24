@@ -15,5 +15,6 @@ namespace Entities.Dto
         public string ModelName { get; set; }
         public decimal Amount { get; set; }
         public string CoverImageUrl { get; set; }
+        public List<ReservationDto> Reservations { get; set; } = new();
     }
 }

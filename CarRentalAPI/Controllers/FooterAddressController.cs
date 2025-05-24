@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class FooterAddressController : ControllerBase
 	{
@@ -15,7 +16,8 @@ namespace CarRentalAPI.Controllers
 			_footerAddressService = footerAddressService;
 		}
 		[HttpPost("AddFooterAddress")]
-		public IActionResult Add(FooterAddress footerAddressService)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(FooterAddress footerAddressService)
 		{
 			var result = _footerAddressService.Add(footerAddressService);
 			if (result.Success)
@@ -25,7 +27,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateFooterAddress")]
-		public IActionResult Update(FooterAddress footerAddressService)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(FooterAddress footerAddressService)
 		{
 			var result = _footerAddressService.Update(footerAddressService);
 			if (result.Success)
@@ -35,7 +38,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteFooterAddress")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _footerAddressService.Delete(id);
 			if (result.Success)

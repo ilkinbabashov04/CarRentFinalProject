@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class CategoryController : ControllerBase
 	{
@@ -15,7 +16,8 @@ namespace CarRentalAPI.Controllers
 			_categoryService = categoryService;
 		}
 		[HttpPost("AddCategory")]
-		public IActionResult Add(Category category)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(Category category)
 		{
 			var result = _categoryService.Add(category);
 			if (result.Success)
@@ -25,7 +27,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateCategory")]
-		public IActionResult Update(Category category)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(Category category)
 		{
 			var result = _categoryService.Update(category);
 			if (result.Success)
@@ -35,7 +38,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteCategory")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _categoryService.Delete(id);
 			if (result.Success)
@@ -45,7 +49,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpGet("GetCategoryById")]
-		public IActionResult Get(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Get(int id)
 		{
 			var result = _categoryService.GetById(id);
 			if (result.Success)

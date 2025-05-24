@@ -1,4 +1,5 @@
 ﻿using Entities.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -7,6 +8,7 @@ using Ui.Helper;
 namespace Ui.Areas.Admin.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminBlog")]
     public class AdminBlogController : Controller
@@ -21,14 +23,18 @@ namespace Ui.Areas.Admin.Controllers
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7140/api/Blog/GetAllBlogsWithAuthor");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<AllBlogsWithAuthorDto>>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:7140/api/Blog/GetAllBlogsWithAuthor");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<AllBlogsWithAuthorDto>>>(jsonData);
+                    var values = apiResponse?.Data;
+                    return View(values);
+                }
             }
             return View();
         }
@@ -43,11 +49,16 @@ namespace Ui.Areas.Admin.Controllers
         [Route("DeleteBlog/{id}")]
         public async Task<IActionResult> DeleteBlog(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Blog/DeleteBlog?id={id}");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminBlog", new { area = "Admin" });
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Blog/DeleteBlog?id={id}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminBlog", new { area = "Admin" });
+                }
             }
             return RedirectToAction("Index", "AdminBlog", new { area = "Admin" });
         }

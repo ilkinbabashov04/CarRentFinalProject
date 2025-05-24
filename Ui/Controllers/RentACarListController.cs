@@ -18,11 +18,22 @@ namespace Ui.Controllers
         public async Task<IActionResult> Index()
         {
             var Id = TempData["Id"];
+            var bookPickDate = TempData["bookpickdate"];
+            var bookOffDate = TempData["bookoffdate"];
+            var timePick = TempData["timepick"];
+            var timeOff = TempData["timeoff"];
 
             ViewBag.Id = Id;
+            ViewBag.bookPickDate = bookPickDate;
+            ViewBag.bookOffDate = bookOffDate;
+            ViewBag.timePick = timePick;
+            ViewBag.timeOff = timeOff;
 
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7140/api/RentACar/GetByFilter{Id}" + "/true");
+            var responseMessage = await client.GetAsync($"https://localhost:7140/api/Car/GetAvailableCars" +
+                $"?locationId={Id}" +
+                $"&pickupDateTime={bookPickDate:yyyy-MM-dd}" +
+                $"&dropoffDateTime={bookOffDate:yyyy-MM-dd}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();

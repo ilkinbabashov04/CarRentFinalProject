@@ -1,0 +1,88 @@
+﻿
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/UiLayout/Index.cshtml";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow rounded-4">
+                <div class="card-header bg-success text-white text-center rounded-top-4">
+                    <h4 class="my-2">💳 Ödəniş Et</h4>
+                </div>
+                <div class="card-body p-4">
+                    <form id="payment-form" method="post" action="/Payment/CreateCharge">
+                        <input type="hidden" name="stripeToken" />
+                        <input type="hidden" name="stripeEmail" />
+
+                        <div class="mb-3">
+                            <label class="form-label">📧 Email ünvanı</label>
+                            <input type="email" name="stripeEmail" class="form-control form-control-lg rounded-3" required />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">💳 Kart məlumatı</label>
+                            <div id="card-element" class="form-control form-control-lg rounded-3">
+                                <!-- Stripe Card Element -->
+                            </div>
+                        </div>
+
+                        <div id="card-errors" class="text-danger small mb-3"></div>
+
+                        <div class="d-grid">
+                            <button class="btn btn-success btn-lg rounded-3" type="submit">Ödənişi Tamamla</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center text-muted small">
+                    Stripe ilə təhlükəsiz ödəniş
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://js.stripe.com/v3/"></script>
+<script>
+    const stripe = Stripe("@ViewBag.PublishableKey");
+    const elements = stripe.elements();
+
+    const style = {
+        base: {
+            color: '#32325d',
+            fontFamily: '"Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+            fontSmoothing: 'antialiased',
+            fontSize: '16px',
+            '::placeholder': {
+                color: '#aab7c4'
+            }
+        },
+        invalid: {
+            color: '#e5424d',
+            iconColor: '#e5424d'
+        }
+    };
+
+    const card = elements.create('card', { style });
+    card.mount('#card-element');
+
+    card.on('change', function (event) {
+        const displayError = document.getElementById('card-errors');
+        displayError.textContent = event.error ? event.error.message : '';
+    });
+
+    const form = document.getElementById('payment-form');
+    form.addEventListener('submit', function (event) {
+        event.preventDefault();
+
+        stripe.createToken(card).then(function (result) {
+            if (result.error) {
+                document.getElementById('card-errors').textContent = result.error.message;
+            } else {
+                document.querySelector('input[name="stripeToken"]').value = result.token.id;
+                form.submit();
+            }
+        });
+    });
+</script>

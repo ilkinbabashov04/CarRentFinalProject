@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
@@ -14,6 +15,7 @@ namespace CarRentalAPI.Controllers
             _authorService = authorService;
         }
         [HttpPost("AddAuthor")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Add(Author author)
         {
             var result = _authorService.Add(author);
@@ -24,6 +26,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpPost("UpdateAuthor")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(Author author)
         {
             var result = _authorService.Update(author);
@@ -34,6 +37,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpDelete("DeleteAuthor")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var result = _authorService.Delete(id);
@@ -44,6 +48,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpGet("GetAuthorById")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Get(int id)
         {
             var result = _authorService.GetById(id);

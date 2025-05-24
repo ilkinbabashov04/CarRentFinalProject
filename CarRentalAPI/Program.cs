@@ -13,8 +13,36 @@ using Microsoft.Extensions.Options;
 using FluentValidation.AspNetCore;
 using System.Reflection;
 using CarRentalAPI.Hubs;
+using Business.Concrete;
+using Serilog.Events;
+using Serilog.Sinks.MSSqlServer;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .WriteTo.Console()
+    .WriteTo.MSSqlServer(
+        connectionString: "Server=DESKTOP-V1MHL8O\\MSSQLSERVER01;Database=CarRentalDatabase;Integrated Security=True;TrustServerCertificate=True",
+        sinkOptions: new MSSqlServerSinkOptions
+        {
+            TableName = "Logs",
+            AutoCreateSqlTable = true
+        },
+        restrictedToMinimumLevel: LogEventLevel.Information
+    )
+    .CreateLogger();
+
+builder.Host.UseSerilog((context, services, configuration) =>
+{
+    configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Services(services)
+        .Enrich.FromLogContext();
+});
+
 builder.Services.AddHttpClient();
 builder.Services.AddHttpContextAccessor();
 builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
@@ -46,6 +74,7 @@ builder.Services.AddCors(opt =>
     });
 });
 builder.Services.AddSignalR();
+builder.Services.AddScoped<PaymentService>();
 builder.Services.AddControllers();
 
 
@@ -129,6 +158,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseSerilogRequestLogging();
 
 var localizationOptions = app.Services.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value;
 app.UseRequestLocalization(localizationOptions);

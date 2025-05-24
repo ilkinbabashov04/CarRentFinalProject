@@ -39,24 +39,17 @@
                 <li><a href="/Admin/AdminTestimonial/Index/" class="waves-effect"><i class="fas fa-people-carry"></i><span>@Ui.Resources.Resource.GetString("References")</span></a></li>
                 <li><a href="#" class="waves-effect"><i class="fas fa-hashtag"></i><span>@Ui.Resources.Resource.GetString("Tag Clouds")</span></a></li>
                 <li><a href="#" class="waves-effect"><i class="fas fa-plug"></i><span>@Ui.Resources.Resource.GetString("Settings")</span></a></li>
-                <li><a href="#" class="waves-effect"><i class="fas fa-window-close"></i><span>@Ui.Resources.Resource.GetString("Log Out")</span></a></li>
-
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow waves-effect"><i class="feather-copy"></i><span>@Ui.Resources.Resource.GetString("Pages")</span></a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="pages-invoice.html">@Ui.Resources.Resource.GetString("Invoice")</a></li>
-                        <li><a href="pages-starter.html">@Ui.Resources.Resource.GetString("Starter Page")</a></li>
-                        <li><a href="pages-maintenance.html">@Ui.Resources.Resource.GetString("Maintenance")</a></li>
-                        <li><a href="pages-faqs.html">@Ui.Resources.Resource.GetString("FAQs")</a></li>
-                        <li><a href="pages-pricing.html">@Ui.Resources.Resource.GetString("Pricing")</a></li>
-                        <li><a href="pages-login.html">@Ui.Resources.Resource.GetString("Login")</a></li>
-                        <li><a href="pages-register.html">@Ui.Resources.Resource.GetString("Register")</a></li>
-                        <li><a href="pages-recoverpw.html">@Ui.Resources.Resource.GetString("Recover Password")</a></li>
-                        <li><a href="pages-lock-screen.html">@Ui.Resources.Resource.GetString("Lock Screen")</a></li>
-                        <li><a href="pages-404.html">@Ui.Resources.Resource.GetString("Error 404")</a></li>
-                        <li><a href="pages-500.html">@Ui.Resources.Resource.GetString("Error 500")</a></li>
-                    </ul>
+                    <a href="#" class="waves-effect" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-window-close"></i>
+                        <span>@Ui.Resources.Resource.GetString("Log Out")</span>
+                    </a>
+                    <form id="logout-form" action="/Login/LogOut" method="post" style="display:none;">
+                        <!-- POST method to handle logout -->
+                    </form>
                 </li>
+
+
             </ul>
         </div>
     </div>

@@ -1,4 +1,5 @@
 ﻿using Entities.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -7,6 +8,7 @@ using Ui.Helper;
 namespace Ui.Areas.Admin.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminService")]
     public class AdminServiceController : Controller
@@ -21,14 +23,18 @@ namespace Ui.Areas.Admin.Controllers
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7140/api/Service/GetAll");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<ServiceDto>>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:7140/api/Service/GetAll");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<ServiceDto>>>(jsonData);
+                    var values = apiResponse?.Data;
+                    return View(values);
+                }
             }
             return View();
         }
@@ -44,13 +50,18 @@ namespace Ui.Areas.Admin.Controllers
         [Route("CreateService")]
         public async Task<IActionResult> CreateService(CreateServiceDto createServiceDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createServiceDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7140/api/Service/AddService", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminService", new { area = "Admin" });
+                var client = _httpClientFactory.CreateClient();
+                var jsonData = JsonConvert.SerializeObject(createServiceDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.PostAsync("https://localhost:7140/api/Service/AddService", stringContent);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminService", new { area = "Admin" });
+                }
             }
             return View();
         }
@@ -58,11 +69,16 @@ namespace Ui.Areas.Admin.Controllers
         [Route("DeleteService/{id}")]
         public async Task<IActionResult> DeleteService(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Service/DeleteService?id={id}");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminService", new { area = "Admin" });
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Service/DeleteService?id={id}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminService", new { area = "Admin" });
+                }
             }
             return RedirectToAction("Index", "AdminService", new { area = "Admin" });
         }
@@ -71,16 +87,19 @@ namespace Ui.Areas.Admin.Controllers
         [Route("UpdateService/{id}")]
         public async Task<IActionResult> UpdateService(int id)
         {
-
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7140/api/Service/GetServiceById?id={id}");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                Console.WriteLine($"API Response: {jsonData}");
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<ServiceDto>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync($"https://localhost:7140/api/Service/GetServiceById?id={id}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    Console.WriteLine($"API Response: {jsonData}");
+                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse<ServiceDto>>(jsonData);
+                    var values = apiResponse?.Data;
+                    return View(values);
+                }
             }
             return View();
         }
@@ -90,13 +109,18 @@ namespace Ui.Areas.Admin.Controllers
         [Route("UpdateService/{id}")]
         public async Task<IActionResult> UpdateService(ServiceDto ServiceDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(ServiceDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7140/api/Service/UpdateService", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminService", new { area = "Admin" });
+                var client = _httpClientFactory.CreateClient();
+                var jsonData = JsonConvert.SerializeObject(ServiceDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.PostAsync("https://localhost:7140/api/Service/UpdateService", stringContent);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminService", new { area = "Admin" });
+                }
             }
             return View();
         }

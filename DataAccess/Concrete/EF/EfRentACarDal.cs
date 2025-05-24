@@ -52,7 +52,7 @@ namespace DataAccess.Concrete.EF
                              from cp in pricingGroup.DefaultIfEmpty()
                              select new CarGetByFilterDto
                              {
-                                 CarId = r.CarId,
+                                 id = r.CarId,
                                  Brand = b.Name,
                                  Model = c.Model,
                                  Amount = cp != null ? cp.Amount : 0,

@@ -1,4 +1,5 @@
 ﻿using Entities.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using Ui.Helper;
@@ -6,6 +7,7 @@ using Ui.Helper;
 namespace Ui.Areas.Admin.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminComment")]
     public class AdminCommentController : Controller

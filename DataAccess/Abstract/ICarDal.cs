@@ -14,5 +14,8 @@ namespace DataAccess.Abstract
 		List<CarDto> GetCarWithBrandName();
 		List<CarDto> GetLastFiveCarsWithBrand();
 		List<PieChartDto> GetPieChartDetail();
-	}
+		List<CarDto> GetAvailableCars(int locationId, DateTime pickupDateTime, DateTime dropoffDateTime);
+
+
+    }
 }

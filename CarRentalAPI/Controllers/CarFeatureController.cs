@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace CarRentalAPI.Controllers
             _carFeatureService = carFeatureService;
         }
         [HttpPost("AddCarFeature")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Add(CarFeature carFeature)
         {
             var result = _carFeatureService.Add(carFeature);

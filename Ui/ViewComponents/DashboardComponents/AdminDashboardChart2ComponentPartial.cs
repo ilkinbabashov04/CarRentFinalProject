@@ -16,15 +16,21 @@ namespace Ui.ViewComponents.DashboardComponents
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7140/api/Car/GetPieChartDetail");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = UserClaimsPrincipal.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<PieChartDto>>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.GetAsync("https://localhost:7140/api/Car/GetPieChartDetail");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<PieChartDto>>>(jsonData);
+                    var values = apiResponse?.Data;
+                    return View(values);
+                }
             }
+                
             return View();
         }
     }

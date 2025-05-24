@@ -1,11 +1,12 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class FeatureController : ControllerBase
 	{
@@ -15,7 +16,8 @@ namespace CarRentalAPI.Controllers
 			_featureService = featureService;
 		}
 		[HttpPost("AddFeature")]
-		public IActionResult Add(Feature feature)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(Feature feature)
 		{
 			var result = _featureService.Add(feature);
 			if (result.Success)
@@ -25,7 +27,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateFeature {id}")]
-		public IActionResult Update(Feature feature)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(Feature feature)
 		{
 			var result = _featureService.Update(feature);
 			if (result.Success)
@@ -35,7 +38,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteFeature {id}")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _featureService.Delete(id);
 			if (result.Success)

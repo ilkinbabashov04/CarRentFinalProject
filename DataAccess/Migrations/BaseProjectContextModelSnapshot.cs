@@ -642,8 +642,15 @@ namespace DataAccess.Migrations
                     b.Property<int>("DriverLicenceYear")
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DropOffDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("DropOffLocationId")
                         .HasColumnType("int");
+
+                    b.Property<string>("DropOffTime")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDelete")
                         .HasColumnType("bit");
@@ -660,12 +667,18 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("PickUpDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("PickUpLocationId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Status")
+                    b.Property<string>("PickUpTime")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PricingId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Surname")
                         .IsRequired()

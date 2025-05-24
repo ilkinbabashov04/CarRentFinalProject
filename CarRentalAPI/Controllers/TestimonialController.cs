@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace CarRentalAPI.Controllers
             _testimonialService = testimonialService;
         }
         [HttpPost("AddTestimonial")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Add(Testimonial testimonial)
         {
             var result = _testimonialService.Add(testimonial);
@@ -25,6 +27,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpPost("UpdateTestimonial")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(Testimonial testimonial)
         {
             var result = _testimonialService.Update(testimonial);
@@ -35,6 +38,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpDelete("DeleteTestimonial")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var result = _testimonialService.Delete(id);

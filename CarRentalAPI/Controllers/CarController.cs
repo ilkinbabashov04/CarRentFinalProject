@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
 using Entities.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,15 +13,19 @@ namespace CarRentalAPI.Controllers
     {
         private readonly ICarService _carService;
         private readonly IFileService _fileService;
+        private readonly ILogger<CarController> _logger;
 
-        public CarController(ICarService carService, IFileService fileService)
+        public CarController(ICarService carService, IFileService fileService, ILogger<CarController> logger)
         {
             _carService = carService;
             _fileService = fileService;
+            _logger = logger;
         }
         [HttpPost("AddCar")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Add([FromForm] CarFileDto carDto, IFormFile coverImage, IFormFile bigImage)
         {
+            _logger.LogInformation("AddCar called for model: {Model}", carDto.Model);
             var car = new Car
             {
                 BrandId = carDto.BrandId,
@@ -44,16 +49,21 @@ namespace CarRentalAPI.Controllers
             var result = _carService.Add(car);
             if (result.Success)
             {
+                _logger.LogInformation("Car added successfully: {Model}", car.Model);
                 return Ok(result);
             }
+            _logger.LogWarning("Failed to add car: {Model}", car.Model);
             return BadRequest();
         }
         [HttpPost("UpdateCar/{id}")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Update(int id, [FromForm] CarFileDto carDto, IFormFile? coverImage, IFormFile? bigImage)
         {
+            _logger.LogInformation("UpdateCar called for CarId: {Id}", id);
             var existingCar = _carService.GetById(id);
             if (!existingCar.Success)
             {
+                _logger.LogWarning("Car not found with Id: {Id}", id);
                 return NotFound("Car not found.");
             }
 
@@ -80,11 +90,19 @@ namespace CarRentalAPI.Controllers
             }
 
             var result = _carService.Update(car);
-            return result.Success ? Ok(result) : BadRequest(result);
+            if (result.Success)
+            {
+                _logger.LogInformation("Car updated successfully. Id: {Id}", id);
+                return Ok(result);
+            }
+
+            _logger.LogWarning("Failed to update car. Id: {Id}", id);
+            return BadRequest(result);
         }
 
 
-        [HttpDelete("DeleteCar {id}")]
+        [HttpDelete("DeleteCar/{id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var result = _carService.Delete(id);
@@ -114,6 +132,16 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("GetAvailableCars")]
+        public IActionResult GetAvailableCars(int locationId, DateTime pickupDateTime, DateTime dropoffDateTime)
+        {
+            var result = _carService.GetAvailableCars(locationId,pickupDateTime,dropoffDateTime);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
 
         [HttpGet("Get5Cars")]
         public IActionResult GetFiveCars()
@@ -126,6 +154,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpGet("GetPieChartDetail")]
+        [Authorize(Roles = "Admin")]
         public IActionResult GetPieChartDetail()
         {
             var result = _carService.GetPieChartDetail();

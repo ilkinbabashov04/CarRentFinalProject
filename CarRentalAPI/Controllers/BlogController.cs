@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +16,7 @@ namespace CarRentalAPI.Controllers
             _blogService = blogService;
         }
         [HttpPost("AddBlog")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Add(Blog blog)
         {
             var result = _blogService.Add(blog);
@@ -25,6 +27,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpPost("UpdateBlog")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(Blog blog)
         {
             var result = _blogService.Update(blog);
@@ -35,6 +38,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpDelete("DeleteBlog")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var result = _blogService.Delete(id);
@@ -45,6 +49,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpGet("GetBlogById")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Get(int id)
         {
             var result = _blogService.GetById(id);
@@ -85,6 +90,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpGet("GetBlogsByAuthorId")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult GetBlogsByAuthorId(int id)
         {
             var result = _blogService.GetBlogWithoutAuthorId(id);

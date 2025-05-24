@@ -3,6 +3,7 @@ using Core.Helper.Result.Abstract;
 using Core.Helper.Result.Concrete;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -61,7 +62,20 @@ namespace Business.Concrete
 			}
 		}
 
-		public IResult Update(Pricing pricing)
+        public IDataResult<List<GetPricingByCarIdDto>> GetPricingByCarId(int id)
+        {
+			var result = _pricingDal.GetPricingByCarId(id);
+            if (result != null)
+            {
+                return new SuccessDataResult<List<GetPricingByCarIdDto>>(result, "Got Successfully");
+            }
+            else
+            {
+                return new ErrorDataResult<List<GetPricingByCarIdDto>>(result, "Not found!");
+            }
+        }
+
+        public IResult Update(Pricing pricing)
 		{
 			var result = _pricingDal.Get(p => p.Id == pricing.Id && p.IsDelete == false);
 			if (result != null)

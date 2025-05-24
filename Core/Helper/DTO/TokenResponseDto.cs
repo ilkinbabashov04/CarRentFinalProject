@@ -8,12 +8,14 @@ namespace Entities.Dto
 {
     public class TokenResponseDto
     {
-        public TokenResponseDto(string token, DateTime expireDate)
+        public TokenResponseDto(string token, DateTime expireDate, string role)
         {
             Token = token;
             ExpireDate = expireDate;
+            Role = role;
         }
         public string Token { get; set; }
         public DateTime ExpireDate { get; set; }
+        public string Role { get; set; }
     }
 }

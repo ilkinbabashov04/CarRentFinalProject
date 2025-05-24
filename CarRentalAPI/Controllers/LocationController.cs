@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-    [Authorize(Roles = "Admin")]
 	[Route("api/[controller]")]
 	[ApiController]
     public class LocationController : ControllerBase
@@ -19,7 +18,8 @@ namespace CarRentalAPI.Controllers
 			_locationService = locationService;
 		}
 		[HttpPost("AddLocation")]
-		public IActionResult Add(Location location)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(Location location)
 		{
 			var result = _locationService.Add(location);
 			if (result.Success)
@@ -29,7 +29,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateLocation")]
-		public IActionResult Update(Location location)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(Location location)
 		{
 			var result = _locationService.Update(location);
 			if (result.Success)
@@ -39,7 +40,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteLocation")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _locationService.Delete(id);
 			if (result.Success)

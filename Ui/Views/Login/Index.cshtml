@@ -3,6 +3,14 @@
     Layout = null;
 }
 
+<style>
+    .login-background {
+        background-image: url('/carbook-master/images/bmw4.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,6 +33,23 @@
 
 </head>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var errorMessageElement = document.getElementById("login-error");
+        if (errorMessageElement) {
+            var message = errorMessageElement.getAttribute("data-error");
+            if (message) {
+                swal({
+                    title: "Login Failed",
+                    text: message,
+                    icon: "warning",
+                    button: "Try Again"
+                });
+            }
+        }
+    });
+</script>
+
 <body>
 
     <div>
@@ -34,7 +59,7 @@
                     <div class="d-flex align-items-center min-vh-100">
                         <div class="w-100 d-block bg-white shadow-lg rounded my-5">
                             <div class="row">
-                                <div class="col-lg-5 d-none d-lg-block bg-login rounded-left"></div>
+                                <div class="col-lg-5 d-none d-lg-block login-background rounded-left"></div>
                                 <div class="col-lg-7">
                                     <div class="p-5">
                                         <div class="text-center mb-5">
@@ -53,7 +78,16 @@
                                             </div>
                                             <button class="btn btn-success btn-block waves-effect waves-light"> Log In </button>
                                         </form>
-                                            <div class="text-center mt-4">
+                                        @if (!ViewData.ModelState.IsValid)
+{
+    var error = ViewData.ModelState.Values.SelectMany(v => v.Errors).FirstOrDefault()?.ErrorMessage;
+    if (!string.IsNullOrEmpty(error))
+    {
+        <div id="login-error" data-error="@error" style="display:none;"></div>
+    }
+}
+
+                                           @*  <div class="text-center mt-4">
                                                 <h5 class="text-muted font-size-16">Sign in using</h5>
 
                                                 <ul class="list-inline mt-3 mb-0">
@@ -70,14 +104,14 @@
                                                         <a href="javascript: void(0);" class="social-list-item border-secondary text-secondary"><i class="mdi mdi-github-circle"></i></a>
                                                     </li>
                                                 </ul>
-                                            </div>
+                                            </div> *@
 
                                         
 
                                         <div class="row mt-4">
                                             <div class="col-12 text-center">
                                                 <p class="text-muted mb-2"><a href="pages-recoverpw.html" class="text-muted font-weight-medium ml-1">Forgot your password?</a></p>
-                                                <p class="text-muted mb-0">Don't have an account? <a href="/Register/CreateAppUser" class="text-muted font-weight-medium ml-1"><b>Sign Up</b></a></p>
+                                               @*  <p class="text-muted mb-0">Don't have an account? <a href="/Register/CreateAppUser" class="text-muted font-weight-medium ml-1"><b>Sign Up</b></a></p> *@
                                             </div> <!-- end col -->
                                         </div>
                                         <!-- end row -->
@@ -98,6 +132,7 @@
     <script src="~/Admin/vertical/assets/js/metismenu.min.js"></script>
     <script src="~/Admin/vertical/assets/js/waves.js"></script>
     <script src="~/Admin/vertical/assets/js/simplebar.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
     <!-- App js -->
     <script src="assets/js/theme.js"></script>

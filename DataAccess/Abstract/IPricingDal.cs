@@ -11,5 +11,6 @@ namespace DataAccess.Abstract
 {
 	public interface IPricingDal : IBaseReporsitory<Pricing>
 	{
+		List<GetPricingByCarIdDto> GetPricingByCarId(int id);
 	}
 }

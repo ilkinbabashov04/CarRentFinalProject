@@ -432,7 +432,7 @@
   {
     "ContainingType": "CarRentalAPI.Controllers.CarController",
     "Method": "Delete",
-    "RelativePath": "api/Car/DeleteCar {id}",
+    "RelativePath": "api/Car/DeleteCar/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -463,6 +463,32 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CarController",
+    "Method": "GetAvailableCars",
+    "RelativePath": "api/Car/GetAvailableCars",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "locationId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "pickupDateTime",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "dropoffDateTime",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -1256,6 +1282,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CarRentalAPI.Controllers.PaymentController",
+    "Method": "CreatePaymentIntent",
+    "RelativePath": "api/Payment/create-payment-intent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "amount",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CarRentalAPI.Controllers.PricingController",
     "Method": "Add",
     "RelativePath": "api/Pricing/AddPricing",
@@ -1295,6 +1337,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.PricingController",
+    "Method": "GetPricingByCarId",
+    "RelativePath": "api/Pricing/GetPricingByCarId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

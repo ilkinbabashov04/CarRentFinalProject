@@ -1,4 +1,5 @@
 ﻿using Entities.Dto;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System.Text;
@@ -7,6 +8,7 @@ using Ui.Helper;
 namespace Ui.Areas.Admin.Controllers
 {
     [ApiExplorerSettings(IgnoreApi = true)]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminCategory")]
     public class AdminCategoryController : Controller
@@ -21,14 +23,18 @@ namespace Ui.Areas.Admin.Controllers
         [Route("Index")]
         public async Task<IActionResult> Index()
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync("https://localhost:7140/api/Category/GetAll");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<CategoryDto>>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                var responseMessage = await client.GetAsync("https://localhost:7140/api/Category/GetAll");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<CategoryDto>>>(jsonData);
+                    var values = apiResponse?.Data;
+                    return View(values);
+                }
             }
             return View();
         }
@@ -44,13 +50,18 @@ namespace Ui.Areas.Admin.Controllers
         [Route("CreateCategory")]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto createCategoryDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(createCategoryDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7140/api/Category/AddCategory", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminCategory", new { area = "Admin" });
+                var client = _httpClientFactory.CreateClient();
+                var jsonData = JsonConvert.SerializeObject(createCategoryDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.PostAsync("https://localhost:7140/api/Category/AddCategory", stringContent);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminCategory", new { area = "Admin" });
+                }
             }
             return View();
         }
@@ -58,11 +69,16 @@ namespace Ui.Areas.Admin.Controllers
         [Route("DeleteCategory/{id}")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Category/DeleteCategory?id={id}");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminCategory", new { area = "Admin" });
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Category/DeleteCategory?id={id}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminCategory", new { area = "Admin" });
+                }
             }
             return RedirectToAction("Index", "AdminCategory", new { area = "Admin" });
         }
@@ -71,16 +87,20 @@ namespace Ui.Areas.Admin.Controllers
         [Route("UpdateCategory/{id}")]
         public async Task<IActionResult> UpdateCategory(int id)
         {
-
-            var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"https://localhost:7140/api/Category/GetCategoryById?id={id}");
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                Console.WriteLine($"API Response: {jsonData}");
-                var apiResponse = JsonConvert.DeserializeObject<ApiResponse<CategoryDto>>(jsonData);
-                var values = apiResponse?.Data;
-                return View(values);
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.GetAsync($"https://localhost:7140/api/Category/GetCategoryById?id={id}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                    Console.WriteLine($"API Response: {jsonData}");
+                    var apiResponse = JsonConvert.DeserializeObject<ApiResponse<CategoryDto>>(jsonData);
+                    var values = apiResponse?.Data;
+                    return View(values);
+                }
             }
             return View();
         }
@@ -90,13 +110,18 @@ namespace Ui.Areas.Admin.Controllers
         [Route("UpdateCategory/{id}")]
         public async Task<IActionResult> UpdateCategory(CategoryDto CategoryDto)
         {
-            var client = _httpClientFactory.CreateClient();
-            var jsonData = JsonConvert.SerializeObject(CategoryDto);
-            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7140/api/Category/UpdateCategory", stringContent);
-            if (responseMessage.IsSuccessStatusCode)
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
             {
-                return RedirectToAction("Index", "AdminCategory", new { area = "Admin" });
+                var client = _httpClientFactory.CreateClient();
+                var jsonData = JsonConvert.SerializeObject(CategoryDto);
+                StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.PostAsync("https://localhost:7140/api/Category/UpdateCategory", stringContent);
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminCategory", new { area = "Admin" });
+                }
             }
             return View();
         }

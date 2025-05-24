@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using Core.Entity.Concrete;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -36,6 +37,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpDelete("DeleteRole {id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             var result = _roleService.Delete(id);
@@ -46,6 +48,7 @@ namespace CarRentalAPI.Controllers
             return BadRequest();
         }
         [HttpGet("GetRoleById {id}")]
+        [Authorize(Roles = "Admin")]
         public IActionResult Get(int id)
         {
             var result = _roleService.GetById(id);

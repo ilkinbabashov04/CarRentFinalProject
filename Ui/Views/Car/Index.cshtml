@@ -14,7 +14,26 @@
                     <div class="img rounded d-flex align-items-end" style="background-image: url(@item.CoverImageUrl);">
                     </div>
                     <div class="text">
-                        <h2 class="mb-0"><a href="car-single.html">@item.ModelName</a></h2>
+                            <h2 class="mb-0">
+                                <a href="car-single.html">
+                                    @item.ModelName
+                                    @if (item.Reservations.Any())
+                                    {
+                                        foreach (var res in item.Reservations)
+                                        {
+                                            var pickUp = DateTime.Parse($"{res.PickUpDate:yyyy-MM-dd} {res.PickUpTime}");
+                                            var dropOff = DateTime.Parse($"{res.DropOffDate:yyyy-MM-dd} {res.DropOffTime}");
+                                            if (dropOff > DateTime.Now)
+                                            {
+                                                <p style="color:red; font-size:14px;">
+                                                    (Reserved from @pickUp.ToString("dd MMM yyyy HH:mm") to @dropOff.ToString("dd MMM yyyy HH:mm"))
+                                                </p>
+                                            }
+                                        }
+                                    }
+
+                                </a>
+                            </h2>
                         <div class="d-flex mb-3">
                             <span class="cat">@item.BrandName</span>
                             <p class="price ml-auto">@item.Amount <span>/day</span></p>

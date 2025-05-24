@@ -1,12 +1,14 @@
 ﻿using Business.Abstract;
 //using Business.BusinessAspect.Autofac.Secured;
 using Entities.Concrete;
+using Microsoft.AspNetCore.Authorization;
+
 //using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CarRentalAPI.Controllers
 {
-	[Route("api/[controller]")]
+    [Route("api/[controller]")]
 	[ApiController]
 	public class SocialMediaController : ControllerBase
 	{
@@ -17,7 +19,8 @@ namespace CarRentalAPI.Controllers
 			_socialMediaService = socialMediaService;
 		}
         [HttpPost("AddSocialMedia")]
-		public IActionResult Add(SocialMedia socialMedia)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Add(SocialMedia socialMedia)
 		{
 			var result = _socialMediaService.Add(socialMedia);
 			if (result.Success)
@@ -27,7 +30,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateSocialMedia")]
-		public IActionResult Update(SocialMedia socialMedia)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Update(SocialMedia socialMedia)
 		{
 			var result = _socialMediaService.Update(socialMedia);
 			if (result.Success)
@@ -37,7 +41,8 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpDelete("DeleteSocialMedia")]
-		public IActionResult Delete(int id)
+        [Authorize(Roles = "Admin")]
+        public IActionResult Delete(int id)
 		{
 			var result = _socialMediaService.Delete(id);
 			if (result.Success)

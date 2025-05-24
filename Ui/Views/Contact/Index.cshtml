@@ -3,6 +3,19 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/UiLayout/Index.cshtml";
 }
+
+<!-- Leaflet CSS -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+<style>
+    #myLeafletMap {
+        height: 400px;
+        width: 100%;
+        border: 2px solid #ccc;
+        margin-top: 20px;
+    }
+</style>
+
 <section class="ftco-section contact-section">
     <div class="container">
         <div class="row d-flex mb-5 contact-info">
@@ -25,14 +38,32 @@
                         <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
                     </div>
                 </form>
-
             </div>
         </div>
+
+        <!-- Map Section -->
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <div id="map" class="bg-white"></div>
+                <div id="myLeafletMap" class="bg-white"></div>
             </div>
         </div>
     </div>
 </section>
 
+<!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var map = L.map('myLeafletMap').setView([40.37842, 49.81953], 13);
+
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 19
+        }).addTo(map);
+
+        L.marker([40.37842, 49.81953]).addTo(map)
+            .bindPopup('Our Office Location')
+            .openPopup();
+    });
+</script>
