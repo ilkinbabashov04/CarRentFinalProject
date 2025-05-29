@@ -13,7 +13,8 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
@@ -24,32 +25,32 @@ jobs:
         run: dotnet build Ui/Ui.csproj --configuration Release
 
       - name: Publish Ui project
-        # Publish nəticəsini repo-nun kök qovluğuna 'myapp' adlı qovluğa çıxarırıq
-        run: dotnet publish Ui/Ui.csproj -c Release -o ./myapp
+        run: dotnet publish Ui/Ui.csproj --configuration Release --output ./publish_output
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: .net-ui-app
-          path: ./myapp
+          name: ui-artifact
+          path: ./publish_output
 
-    deploy:
+  deploy:
+    runs-on: windows-latest
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: .net-ui-app
+          name: ui-artifact
+          path: ./publish_output
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'BookCar'  # Azure portalda olan Web App adını yaz
+          app-name: 'BookCar'  # Change to your actual Azure Web App name
           slot-name: 'Production'
-          package: .            # <-- Burada `./myapp` yox, sadəcə `.` qoy
+          package: ./publish_output
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D6531D35190A455FA70FF1C4FC5B3DF8 }}
