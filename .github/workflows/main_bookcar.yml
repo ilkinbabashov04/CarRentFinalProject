@@ -49,7 +49,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'YOUR_AZURE_WEBAPP_NAME'  # buraya Azure Web App adını yaz
+          app-name: 'BookCar'  # buraya Azure Web App adını yaz
           slot-name: 'Production'
           package: ${{env.DOTNET_ROOT}}/myapp
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D6531D35190A455FA70FF1C4FC5B3DF8 }}
