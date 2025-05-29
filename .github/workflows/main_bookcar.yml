@@ -33,8 +33,7 @@ jobs:
           name: .net-ui-app
           path: ./myapp
 
-  deploy:
-    runs-on: windows-latest
+    deploy:
     needs: build
     environment:
       name: 'Production'
@@ -52,5 +51,5 @@ jobs:
         with:
           app-name: 'BookCar'  # Azure portalda olan Web App adını yaz
           slot-name: 'Production'
-          package: ./myapp    # Burada da düzəldilmiş yol göstərilir
+          package: .            # <-- Burada `./myapp` yox, sadəcə `.` qoy
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D6531D35190A455FA70FF1C4FC5B3DF8 }}
