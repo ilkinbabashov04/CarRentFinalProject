@@ -24,13 +24,14 @@ jobs:
         run: dotnet build Ui/Ui.csproj --configuration Release
 
       - name: Publish Ui project
-        run: dotnet publish Ui/Ui.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        # Publish nəticəsini repo-nun kök qovluğuna 'myapp' adlı qovluğa çıxarırıq
+        run: dotnet publish Ui/Ui.csproj -c Release -o ./myapp
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: .net-ui-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+          path: ./myapp
 
   deploy:
     runs-on: windows-latest
@@ -49,7 +50,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'BookCar'  # buraya Azure Web App adını yaz
+          app-name: 'BookCar'  # Azure portalda olan Web App adını yaz
           slot-name: 'Production'
-          package: ${{env.DOTNET_ROOT}}/myapp
+          package: ./myapp    # Burada da düzəldilmiş yol göstərilir
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D6531D35190A455FA70FF1C4FC5B3DF8 }}
