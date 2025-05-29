@@ -21,10 +21,10 @@ jobs:
           dotnet-version: '8.x'
 
       - name: Build Ui project
-        run: dotnet build CarRentFinalProject/Ui/Ui.csproj --configuration Release
+        run: dotnet build Ui/Ui.csproj --configuration Release
 
       - name: Publish Ui project
-        run: dotnet publish CarRentFinalProject/Ui/Ui.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish Ui/Ui.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
