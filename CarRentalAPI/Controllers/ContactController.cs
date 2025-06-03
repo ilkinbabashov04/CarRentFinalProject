@@ -16,7 +16,7 @@ namespace CarRentalAPI.Controllers
 			_contactService = contactService;
 		}
 		[HttpPost("AddContact")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Add(Contact contact)
 		{
 			var result = _contactService.Add(contact);
@@ -27,7 +27,7 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("UpdateContact")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Update(Contact contact)
 		{
 			var result = _contactService.Update(contact);
@@ -38,7 +38,7 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpPost("DeleteContact")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
 		{
 			var result = _contactService.Delete(id);
@@ -49,7 +49,7 @@ namespace CarRentalAPI.Controllers
 			return BadRequest();
 		}
 		[HttpGet("GetContactById")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Get(int id)
 		{
 			var result = _contactService.GetById(id);

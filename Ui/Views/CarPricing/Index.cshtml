@@ -14,9 +14,9 @@
 							<tr class="text-center">
 								<th>&nbsp;</th>
 								<th>&nbsp;</th>
-								<th class="bg-primary heading">Per Hour Rate</th>
-								<th class="bg-dark heading">Per Day Rate</th>
-								<th class="bg-black heading">Leasing</th>
+								<th class="bg-primary heading">Per Day Rate</th>
+								<th class="bg-dark heading">Per Week Rate</th>
+								<th class="bg-black heading">Per Month Rate</th>
 							</tr>
 						</thead>
 						@foreach (var item in Model)
@@ -37,7 +37,7 @@
 									</td>
 
 									<td class="price">
-										<p class="btn-custom"><a href="#">Rent a car</a></p>
+										<p class="btn-custom"><a href="/Reservation/Index/@item.CarId">Rent a car</a></p>
 										<div class="price-rate">
 											<h3>
 												<span class="num"><small class="currency">$</small>@item.DailyAmount</span>
@@ -47,7 +47,7 @@
 									</td>
 
 									<td class="price">
-										<p class="btn-custom"><a href="#">Rent a car</a></p>
+										<p class="btn-custom"><a href="/Reservation/Index/@item.CarId">Rent a car</a></p>
 										<div class="price-rate">
 											<h3>
 												<span class="num"><small class="currency">$</small>@item.WeeklyAmount</span>
@@ -57,7 +57,7 @@
 									</td>
 
 									<td class="price">
-										<p class="btn-custom"><a href="#">Rent a car</a></p>
+										<p class="btn-custom"><a href="/Reservation/Index/@item.CarId">Rent a car</a></p>
 										<div class="price-rate">
 											<h3>
 												<span class="num"><small class="currency">$</small>@item.MonthlyAmount</span>

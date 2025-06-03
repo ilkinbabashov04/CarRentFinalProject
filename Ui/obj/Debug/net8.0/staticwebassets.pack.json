@@ -2681,6 +2681,10 @@
       "PackagePath": "staticwebassets\\carbook-master\\images\\about.jpg"
     },
     {
+      "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\adam.png",
+      "PackagePath": "staticwebassets\\carbook-master\\images\\adam.png"
+    },
+    {
       "Id": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bg.jpg",
       "PackagePath": "staticwebassets\\carbook-master\\images\\bg.jpg"
     },

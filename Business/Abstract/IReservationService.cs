@@ -12,5 +12,6 @@ namespace Business.Abstract
     public interface IReservationService
     {
         IResult Add(Reservation reservation);
+        IDataResult<List<GetReservationDto>> GetAllReservationByCarId(int id);
     }
 }

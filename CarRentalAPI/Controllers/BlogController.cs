@@ -1,8 +1,10 @@
 ﻿using Business.Abstract;
 using Entities.Concrete;
+using Entities.Dto;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Stripe;
 
 namespace CarRentalAPI.Controllers
 {
@@ -11,14 +13,38 @@ namespace CarRentalAPI.Controllers
     public class BlogController : ControllerBase
     {
         private readonly IBlogService _blogService;
-        public BlogController(IBlogService blogService)
+        private readonly IFileService _fileService;
+        public BlogController(IBlogService blogService, IFileService fileService)
         {
             _blogService = blogService;
+            _fileService = fileService;
         }
         [HttpPost("AddBlog")]
         [Authorize(Roles = "Admin")]
-        public IActionResult Add(Blog blog)
+        public async Task<IActionResult> Add([FromForm] BlogFileDto blogDto, IFormFile coverImage, IFormFile bigImage)
         {
+            var blog = new Blog
+            {
+                Title = blogDto.Title,
+                Description = blogDto.Description,
+                AuthorId = blogDto.AuthorId,
+                CategoryId = blogDto.CategoryId,
+                CreatedDate = DateTime.UtcNow,
+                TagClouds = blogDto.TagClouds?.Select(tc => new TagCloud
+                {
+                    Title = tc.Title
+                }).ToList()
+            };
+
+            if (coverImage != null)
+            {
+                blog.CoverImageUrl = await _fileService.UploadImageToAzure(coverImage);
+            }
+            if (bigImage != null)
+            {
+                blog.BigImageUrl = await _fileService.UploadImageToAzure(bigImage);
+            }
+
             var result = _blogService.Add(blog);
             if (result.Success)
             {
@@ -26,6 +52,7 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
+
         [HttpPost("UpdateBlog")]
         [Authorize(Roles = "Admin")]
         public IActionResult Update(Blog blog)

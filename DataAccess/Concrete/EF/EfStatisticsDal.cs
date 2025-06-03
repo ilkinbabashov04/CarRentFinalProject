@@ -275,7 +275,7 @@ namespace DataAccess.Concrete.EF
         {
             using (var context = new BaseProjectContext())
             {
-                var result = context.Cars.Where(x => x.Km <= 1000 && x.IsDelete == false).Count();
+                var result = context.Cars.Where(x => x.Km <= 10000 && x.IsDelete == false).Count();
                 return new GetCarCountByKmLessThan1000Dto { CarCount = result };
             }
         }

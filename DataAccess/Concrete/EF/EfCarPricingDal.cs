@@ -22,7 +22,7 @@ namespace DataAccess.Concrete.EF
 
             var result = from p in context.CarPricings
                          where p.IsDelete == false
-                         where p.PricingId == 2
+                         where p.PricingId == 1
                          join c in context.Cars on p.CarId equals c.Id
                          where c.IsDelete == false
                          join b in context.Brands on c.BrandId equals b.Id
@@ -49,6 +49,26 @@ namespace DataAccess.Concrete.EF
             return result.ToList();
         }
 
+        public List<CarPricingDto> GetCarPricingByCarId(int id)
+        {
+            using var context = new BaseProjectContext();
+
+            var result = context.CarPricings
+                .Where(cp => cp.CarId == id && cp.IsDelete == false)
+                .Select(cp => new CarPricingDto
+                {
+                    CarPricingId = cp.Id,
+                    CarId = cp.CarId,
+                    PricingId = cp.PricingId,
+                    Amount = cp.Amount,
+                    IsDelete = cp.IsDelete
+                })
+                .ToList();
+
+            return result;
+        }
+
+
         public List<GetCarPricingWithTimePeriodDto> GetCarPricingWithTimePeriods()
 		{
 			using var context = new BaseProjectContext();
@@ -62,9 +82,10 @@ namespace DataAccess.Concrete.EF
 						 where c.IsDelete == false
 						 join b in context.Brands
 						 on c.BrandId equals b.Id
-						 group cp by new { c.Id, c.Model, c.CoverImageUrl, Brand = b.Name } into g
+						 group cp by new { c.Id, c.Model, c.CoverImageUrl, cp.CarId, Brand = b.Name } into g
 						 select new GetCarPricingWithTimePeriodDto
 						 {
+                             CarId = g.Key.CarId,
 							 Brand = g.Key.Brand,
 							 Model = g.Key.Model,
 							 CoverImageUrl = g.Key.CoverImageUrl,
@@ -76,6 +97,8 @@ namespace DataAccess.Concrete.EF
 			return result.ToList();
 
 		}
+
+        
 
 	}
 }

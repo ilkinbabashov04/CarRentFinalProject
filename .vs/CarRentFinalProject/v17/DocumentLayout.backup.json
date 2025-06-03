@@ -1,121 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{BBB76DCE-2F3F-44B4-9284-DCC09E01B540}|Entities\\Entities.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\entities\\concrete\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBB76DCE-2F3F-44B4-9284-DCC09E01B540}|Entities\\Entities.csproj|solutionrelative:entities\\concrete\\location.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BBB76DCE-2F3F-44B4-9284-DCC09E01B540}|Entities\\Entities.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\entities\\dto\\locationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBB76DCE-2F3F-44B4-9284-DCC09E01B540}|Entities\\Entities.csproj|solutionrelative:entities\\dto\\locationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\controllers\\defaultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\controllers\\defaultcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\views\\default\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\views\\default\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\controllers\\rentacarlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\controllers\\rentacarlistcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|c:\\users\\babashov\\source\\repos\\carrentfinalproject\\ui\\views\\shared\\components\\rentacarfiltercomponentpartial\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7150A744-C3B7-4622-936C-4CD50F382C25}|Ui\\Ui.csproj|solutionrelative:ui\\views\\shared\\components\\rentacarfiltercomponentpartial\\default.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": [
-        {
-          "DockedHeight": 302,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Location.cs",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Entities\\Concrete\\Location.cs",
-              "RelativeDocumentMoniker": "Entities\\Concrete\\Location.cs",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Entities\\Concrete\\Location.cs*",
-              "RelativeToolTip": "Entities\\Concrete\\Location.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T17:45:37.953Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LocationDto.cs",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Entities\\Dto\\LocationDto.cs",
-              "RelativeDocumentMoniker": "Entities\\Dto\\LocationDto.cs",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Entities\\Dto\\LocationDto.cs",
-              "RelativeToolTip": "Entities\\Dto\\LocationDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-24T10:38:28.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\Default\\Index.cshtml",
-              "RelativeDocumentMoniker": "Ui\\Views\\Default\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\Default\\Index.cshtml",
-              "RelativeToolTip": "Ui\\Views\\Default\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFoAAAASAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-24T10:34:53.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DefaultController.cs",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\DefaultController.cs",
-              "RelativeDocumentMoniker": "Ui\\Controllers\\DefaultController.cs",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\DefaultController.cs",
-              "RelativeToolTip": "Ui\\Controllers\\DefaultController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAABmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T11:38:23.857Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RentACarListController.cs",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\RentACarListController.cs",
-              "RelativeDocumentMoniker": "Ui\\Controllers\\RentACarListController.cs",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Controllers\\RentACarListController.cs",
-              "RelativeToolTip": "Ui\\Controllers\\RentACarListController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAACwAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-23T10:59:24.723Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Default.cshtml",
-              "DocumentMoniker": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\Shared\\Components\\RentACarFilterComponentPartial\\Default.cshtml",
-              "RelativeDocumentMoniker": "Ui\\Views\\Shared\\Components\\RentACarFilterComponentPartial\\Default.cshtml",
-              "ToolTip": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\Views\\Shared\\Components\\RentACarFilterComponentPartial\\Default.cshtml",
-              "RelativeToolTip": "Ui\\Views\\Shared\\Components\\RentACarFilterComponentPartial\\Default.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAABzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-05-23T11:32:32.408Z"
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }

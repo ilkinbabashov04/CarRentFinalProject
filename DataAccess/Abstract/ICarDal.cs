@@ -16,6 +16,5 @@ namespace DataAccess.Abstract
 		List<PieChartDto> GetPieChartDetail();
 		List<CarDto> GetAvailableCars(int locationId, DateTime pickupDateTime, DateTime dropoffDateTime);
 
-
     }
 }

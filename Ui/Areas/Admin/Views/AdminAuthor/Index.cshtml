@@ -22,7 +22,7 @@
                                         <th>Name and Surname</th>
                                         <th>Delete</th>
                                         <th>Update</th>
-                                        <th>Authors' Blogs</th>
+                                        @* <th>Authors' Blogs</th> *@
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +34,7 @@
                                             <td><img src="@item.ImageUrl" width="50" height="50" style="margin-right:10px; border-radius:50%" />@item.Name</td>
                                             <td><a href="/Admin/AdminAuthor/DeleteAuthor/@item.Id" class="btn btn-outline-danger">Delete</a></td>
                                             <td><a href="/Admin/AdminAuthor/UpdateAuthor/@item.Id" class="btn btn-outline-success">Update</a></td>
-                                            <td><a href="/Admin/AdminAuthor/UpdateAuthor/@item.Id" class="btn btn-outline-success">Authors' Blogs</a></td>
+                                            @* <td><a href="/Admin/AdminAuthor/UpdateAuthor/@item.Id" class="btn btn-outline-success">Authors' Blogs</a></td> *@
                                         </tr>
                                     }
                                 </tbody>

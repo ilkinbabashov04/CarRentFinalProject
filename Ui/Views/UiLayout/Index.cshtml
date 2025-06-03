@@ -8,13 +8,10 @@
 @await Component.InvokeAsync("HeadUILayoutComponentPartial")
 <body>
     @await Component.InvokeAsync("NavbarUILayoutComponentPartial")
-
     @await Component.InvokeAsync("MainCoverUILayoutComponentPartial")
-    
     @RenderBody()
-
     @await Component.InvokeAsync("FooterUILayoutComponentPartial")
-
     @await Component.InvokeAsync("ScriptUILayoutComponentPartial")
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

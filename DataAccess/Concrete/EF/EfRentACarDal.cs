@@ -53,7 +53,7 @@ namespace DataAccess.Concrete.EF
                              select new CarGetByFilterDto
                              {
                                  id = r.CarId,
-                                 Brand = b.Name,
+                                 BrandName = b.Name,
                                  Model = c.Model,
                                  Amount = cp != null ? cp.Amount : 0,
                                  CoverImageUrl = c.CoverImageUrl,

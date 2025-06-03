@@ -8,7 +8,6 @@ namespace Ui.Controllers
     public class PaymentController : Controller
     {
         private readonly IConfiguration _configuration;
-
         public PaymentController(IConfiguration configuration)
         {
             _configuration = configuration;
@@ -41,8 +40,8 @@ namespace Ui.Controllers
             }
         },
                 Mode = "payment",
-                SuccessUrl = "https://localhost:7175/Reservation/Success",
-                CancelUrl = "https://localhost:7175/Reservation/Cancel",
+                SuccessUrl = "https://localhost:7056/Default/Index?payment=success",
+                CancelUrl = "https://localhost:7056/Reservation/Cancel",
             };
 
             var service = new SessionService();
@@ -51,6 +50,7 @@ namespace Ui.Controllers
             return Redirect(session.Url);
         }
 
+        [HttpGet]
         public IActionResult Success()
         {
             return View();

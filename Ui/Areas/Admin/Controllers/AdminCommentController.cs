@@ -34,5 +34,22 @@ namespace Ui.Areas.Admin.Controllers
             }
             return View();
         }
+
+        [Route("DeleteComment/{id}")]
+        public async Task<IActionResult> DeleteComment(int id)
+        {
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null)
+            {
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var responseMessage = await client.DeleteAsync($"https://localhost:7140/api/Comment/DeleteComment?id={id}");
+                if (responseMessage.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Index", "AdminBlog", new { area = "Admin" });
+                }
+            }
+            return RedirectToAction("Index", "AdminBlog", new { area = "Admin" });
+        }
     }
 }

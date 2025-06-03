@@ -23,6 +23,7 @@
                                         <th>Author</th>
                                         <th>Category</th>
                                         <th>Created Date</th>
+                                        <th>Add Tags</th>
                                         <th>Delete</th>
                                         <th>Open Blog</th>
                                         <th>Blog Comments</th>
@@ -38,6 +39,7 @@
                                             <td>@item.AuthorName</td>
                                             <td>@item.CategoryName</td>
                                             <td>@item.CreatedDate</td>
+                                            <td><a href="/Admin/AdminBlog/AddTagCloud/@item.Id" class="btn btn-outline-success">Add Tag</a></td>
                                             <td><a href="/Admin/AdminBlog/DeleteBlog/@item.Id" class="btn btn-outline-danger">Delete</a></td>
                                             <td><a href="/Blog/BlogDetail/@item.Id" class="btn btn-outline-dark">Open Blogs</a></td>
                                             <td><a href="/Admin/AdminComment/Index/@item.Id" class="btn btn-outline-warning">Blog Comments</a></td>
@@ -45,6 +47,7 @@
                                     }
                                 </tbody>
                             </table>
+                            <td><a href="/Admin/AdminBlog/CreateBlog" class="btn btn-outline-primary">Add new Blog</a></td>
                         </div>
                     </div>
                 </div>

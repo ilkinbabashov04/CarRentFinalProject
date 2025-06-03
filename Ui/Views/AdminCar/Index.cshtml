@@ -30,8 +30,8 @@
                                         <th>@Ui.Resources.Resource.GetString("Update")</th>
                                         <th>@Ui.Resources.Resource.GetString("Details")</th>
                                         <th>@Ui.Resources.Resource.GetString("Add Feature")</th>
-                                        <th>@Ui.Resources.Resource.GetString("View in Site")</th>
-                                        <th>@Ui.Resources.Resource.GetString("Price Information")</th>
+                                        @* <th>@Ui.Resources.Resource.GetString("View in Site")</th>
+                                        <th>@Ui.Resources.Resource.GetString("Price Information")</th> *@
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,9 +47,9 @@
                                             <td><a href="/AdminCar/DeleteCar/@item.id" class="btn btn-outline-danger">@Ui.Resources.Resource.GetString("Delete")</a></td>
                                             <td><a href="/AdminCar/UpdateCar/@item.id" class="btn btn-outline-success">@Ui.Resources.Resource.GetString("Update")</a></td>
                                             <td><a href="/Admin/AdminCarFeatureDetail/Index/@item.id" class="btn btn-outline-dark">@Ui.Resources.Resource.GetString("Details")</a></td>
-                                            <td><a href="/Admin/AdminCarFeatureDetail/CreateFeatureByCarId/" class="btn btn-outline-info">@Ui.Resources.Resource.GetString("Add Feature")</a></td>
-                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-warning">@Ui.Resources.Resource.GetString("View in Site")</a></td>
-                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-secondary">@Ui.Resources.Resource.GetString("Price Information")</a></td>
+                                            <td><a href="/Admin/AdminCarFeatureDetail/CreateFeatureByCarId/@item.id" class="btn btn-outline-info">@Ui.Resources.Resource.GetString("Add Feature")</a></td>
+                                          @*   <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-warning">@Ui.Resources.Resource.GetString("View in Site")</a></td>
+                                            <td><a href="/CarList/CarDetail/@item.id" class="btn btn-outline-secondary">@Ui.Resources.Resource.GetString("Price Information")</a></td> *@
                                         </tr>
                                     }
                                 </tbody>

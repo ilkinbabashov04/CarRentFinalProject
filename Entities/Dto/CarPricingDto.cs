@@ -11,8 +11,10 @@ namespace Entities.Dto
     {
         public int CarPricingId { get; set; }
         public int CarId { get; set; }
+        public int PricingId { get; set; }
         public string BrandName { get; set; }
         public string ModelName { get; set; }
+        public bool IsDelete { get; set; }
         public decimal Amount { get; set; }
         public string CoverImageUrl { get; set; }
         public List<ReservationDto> Reservations { get; set; } = new();

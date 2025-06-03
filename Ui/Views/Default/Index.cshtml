@@ -1,4 +1,5 @@
 ﻿@model LocationDto
+@using Newtonsoft.Json
 @{
     ViewData["Title"] = "Index";
     Layout = null;
@@ -6,7 +7,12 @@
 
 <style>
     #drop option {
-        color: black
+        color: black;
+    }
+
+    #locationMap {
+        height: 335px;
+        border-radius: 5px;
     }
 </style>
 
@@ -16,13 +22,13 @@
 <body>
 
     @await Component.InvokeAsync("NavbarUILayoutComponentPartial")
-
     @await Component.InvokeAsync("DefaultCoverUILayoutComponentPartial")
 
-    <section class="ftco-section ftco-no-pt bg-light">
+    <!-- RENT FORM SECTION -->
+    <section class="">
         <div class="container">
             <div class="row no-gutters">
-                <div class="col-md-12	featured-top">
+                <div class="col-md-12 featured-top">
                     <div class="row no-gutters">
                         <div class="col-md-4 d-flex align-items-center">
                             <form method="post" class="request-form ftco-animate bg-primary">
@@ -34,11 +40,11 @@
                                 <div class="d-flex">
                                     <div class="form-group mr-2">
                                         <label for="" class="label">Pick-up date</label>
-                                        <input type="text" class="form-control" name="book_pick_date" id="book_pick_date" placeholder="Date" required>
+                                        <input type="date" class="form-control" name="pickup_date" id="pickup_date" required>
                                     </div>
                                     <div class="form-group ml-2">
                                         <label for="" class="label">Drop-off date</label>
-                                        <input type="text" class="form-control" name="book_off_date" id="book_off_date" placeholder="Date" required>
+                                        <input type="date" class="form-control" name="dropoff_date" id="dropoff_date" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -56,61 +62,178 @@
                         </div>
                         <div class="col-md-8 d-flex align-items-center">
                             <div class="services-wrap rounded-right w-100">
-                                <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
-                                <div class="row d-flex mb-4">
-                                    <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                                        <div class="services w-100 text-center">
-                                            <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
-                                            <div class="text w-100">
-                                                <h3 class="heading mb-2">Choose Your Pickup Location</h3>
-                                            </div>
-                                        </div>
+                                @* <h3 class="mb-4">Choose Your Pickup Location</h3> *@
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div id="locationMap"></div>
                                     </div>
-                                    <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                                        <div class="services w-100 text-center">
-                                            <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
-                                            <div class="text w-100">
-                                                <h3 class="heading mb-2">Select the Best Deal</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4 d-flex align-self-stretch ftco-animate">
-                                        <div class="services w-100 text-center">
-                                            <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
-                                            <div class="text w-100">
-                                                <h3 class="heading mb-2">Reserve Your Rental Car</h3>
-                                            </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*  <p><a href="/CarPricing/Index/" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p> *@
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row justify-content-center mb-5">
+                        <div class="col-md-10 text-center heading-section ftco-animate">
+                            <br />
+                            <h2 class="mb-2">Better Way to Rent Your Perfect Cars</h2>
+                            @* <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3> *@
+                            <div class="row d-flex mb-4">
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Choose Your Pickup Location</h3>
                                         </div>
                                     </div>
                                 </div>
-                                <p><a href="/CarPricing/Index/" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-handshake"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Select the Best Deal</h3>
+                                            <br />
+                                            <p class="mt-3">
+                                                <a href="/CarPricing/Index/" class="btn btn-primary py-3 px-4">
+                                                    Reserve Your Perfect Car
+                                                </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Reserve Your Rental Car</h3>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-    </section>
+        </div>
 
-    @await Component.InvokeAsync("DefaultLastFiveCarsWithBrandsComponentPartial")
-    @await Component.InvokeAsync("AboutUsComponentPartial")
-    @await Component.InvokeAsync("ServiceComponentPartial")
-    @await Component.InvokeAsync("BecomeADriverComponentPartial")
-    @await Component.InvokeAsync("TestimonialComponentPartial")
-    @await Component.InvokeAsync("GetLastThreeBlogsWithAuthorViewComponentPartial")
-    @await Component.InvokeAsync("DefaultStatisticsComponentPartial")
-    @await Component.InvokeAsync("FooterUILayoutComponentPartial")
-    @await Component.InvokeAsync("ScriptUILayoutComponentPartial")
+        <!-- MORE COMPONENTS -->
+        @await Component.InvokeAsync("DefaultLastFiveCarsWithBrandsComponentPartial")
+        @await Component.InvokeAsync("AboutUsComponentPartial")
+        @await Component.InvokeAsync("ServiceComponentPartial")
+        @await Component.InvokeAsync("BecomeADriverComponentPartial")
+        @await Component.InvokeAsync("TestimonialComponentPartial")
+        @await Component.InvokeAsync("GetLastThreeBlogsWithAuthorViewComponentPartial")
+        @await Component.InvokeAsync("DefaultStatisticsComponentPartial")
+        @await Component.InvokeAsync("FooterUILayoutComponentPartial")
+        @await Component.InvokeAsync("ScriptUILayoutComponentPartial")
 
-    <!-- Əlavə etdiyimiz TimePicker script -->
-    <script>
-        $(document).ready(function () {
-            $('#time_pick, #time_off').timepicker({
-                'timeFormat': 'H:i'
-            });
+        <style>
+            .services-wrap.rounded-right.w-100 {
+                margin-left: -15px; /* Move it 15px to the left */
+            }
+        </style>
+
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+            const paymentSuccess = urlParams.get('payment');
+
+            if (paymentSuccess === 'success') {
+                Swal.fire({
+                    title: '✅ Success!',
+                    text: 'Payment has been completed and reservation has been received.',
+                    icon: 'success',
+                    confirmButtonText: 'Okay',
+                    confirmButtonColor: '#198754'
+                });
+                // Optional: URL-dən ?payment=success hissəsini silmək
+                window.history.replaceState({}, document.title, window.location.pathname);
+            }
+        </script>
+
+
+        <!-- TimePicker -->
+       <script>
+    $(document).ready(function () {
+        // Initialize time picker
+        $('#time_pick, #time_off').timepicker({
+            'timeFormat': 'H:i'
         });
-    </script>
 
+        // Set today's date as minimum for pickup
+        const today = new Date().toISOString().split('T')[0];
+        $('#pickup_date').attr('min', today);
+
+        // When pickup date changes
+        $('#pickup_date').on('change', function () {
+            const pickupDate = this.value;
+            $('#dropoff_date').attr('min', pickupDate);
+
+            if ($('#dropoff_date').val() < pickupDate) {
+                $('#dropoff_date').val('');
+            }
+        });
+
+        // On form submit
+        $('form').on('submit', function (e) {
+            const pickup = $('#pickup_date').val();
+            const dropoff = $('#dropoff_date').val();
+
+            if (!pickup || !dropoff) {
+                alert("Please select both pick-up and drop-off dates.");
+                e.preventDefault();
+                return;
+            }
+
+            if (pickup < today) {
+                alert("Pick-up date cannot be earlier than today.");
+                e.preventDefault();
+                return;
+            }
+
+            if (dropoff < pickup) {
+                alert("Drop-off date cannot be earlier than pick-up date.");
+                e.preventDefault();
+                return;
+            }
+        });
+    });
+</script>
+
+
+
+        <!-- Leaflet Map Scripts -->
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+        <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+
+        <script>
+            // Serialize the C# list to JSON
+            const locations = @Html.Raw(JsonConvert.SerializeObject(ViewBag.LocationData ?? new List<LocationDto>()));
+
+            const map = L.map('locationMap').setView([40.3900, 49.8600], 12);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Map data © OpenStreetMap contributors'
+            }).addTo(map);
+
+            locations.forEach(loc => {
+                const marker = L.marker([loc.Latitude, loc.Longitude]).addTo(map);
+                marker.bindPopup(`<strong>${loc.Name}</strong><br><button onclick="selectLocation(${loc.Id})" class='btn btn-sm btn-primary mt-2'>Select</button>`);
+            });
+
+            function selectLocation(id) {
+                const dropdown = document.querySelector('#drop');
+                if (dropdown) {
+                    dropdown.value = id;
+                    dropdown.dispatchEvent(new Event('change'));
+                }
+            }
+        </script>
+
+        <script src="//code.tidio.co/ko8nt9eiwm1zjx1obxigj7ikcitearzy.js" async></script>
 </body>
 </html>
-
-<script src="//code.tidio.co/ko8nt9eiwm1zjx1obxigj7ikcitearzy.js" async></script>

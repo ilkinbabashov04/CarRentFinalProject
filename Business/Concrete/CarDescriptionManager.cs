@@ -16,7 +16,12 @@ namespace Business.Concrete
     {
         ICarDescriptionDal _carDescriptionDal = carDescriptionDal;
 
-		public IResult GetCarDescriptionByCarId(int id)
+        public IResult Add(CarDescription carDescription)
+        {
+            _carDescriptionDal.Add(carDescription);
+            return new SuccessResult("Successfully added!");
+        }
+        public IResult GetCarDescriptionByCarId(int id)
 		{
 			var result = _carDescriptionDal.GetCarDescriptionByCarId(id);
 			if (result != null)
@@ -28,5 +33,19 @@ namespace Business.Concrete
 				return new ErrorDataResult<CarDescription>(result, "Not found!");
 			}
 		}
-	}
+        public IResult Update(CarDescription carDescription)
+        {
+            var result = _carDescriptionDal.Get(p => p.Id == carDescription.Id && p.IsDelete == false);
+            if (result != null)
+            {
+                result.Detail = carDescription.Detail;
+                _carDescriptionDal.Update(result);
+                return new SuccessResult("Updated successfully!");
+            }
+            else
+            {
+                return new ErrorResult("Not found!");
+            }
+        }
+    }
 }

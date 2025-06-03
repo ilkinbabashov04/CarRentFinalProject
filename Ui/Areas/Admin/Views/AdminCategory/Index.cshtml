@@ -22,7 +22,7 @@
                                         <th>Category Name</th>
                                         <th>Delete</th>
                                         <th>Update</th>
-                                        <th>Categorys' Blogs</th>
+                                        @* <th>Categorys' Blogs</th> *@
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -34,7 +34,7 @@
                                             <td>@item.Name</td>
                                             <td><a href="/Admin/AdminCategory/DeleteCategory/@item.Id" class="btn btn-outline-danger">Delete</a></td>
                                             <td><a href="/Admin/AdminCategory/UpdateCategory/@item.Id" class="btn btn-outline-success">Update</a></td>
-                                            <td><a href="/Admin/AdminCategory/UpdateCategory/@item.Id" class="btn btn-outline-success">Categorys' Blogs</a></td>
+                                            @* <td><a href="/Admin/AdminCategory/UpdateCategory/@item.Id" class="btn btn-outline-success">Categorys' Blogs</a></td> *@
                                         </tr>
                                     }
                                 </tbody>

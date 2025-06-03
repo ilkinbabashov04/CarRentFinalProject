@@ -16,5 +16,9 @@ namespace Entities.Dto
         public int Seat { get; set; }
         public int Luggage { get; set; }
         public string Fuel { get; set; }
+        public string Description { get; set; }
+        public decimal PerDayPrice { get; set; }
+        public decimal PerWeekPrice { get; set; }
+        public decimal PerMonthPrice { get; set; }
     }
 }

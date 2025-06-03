@@ -6,8 +6,6 @@
 
 <div class="page-content">
     <div class="container-fluid">
-
-        <!-- start page title -->
         <div class="row">
             <div class="col-xl-12">
                 <div class="card">
@@ -36,7 +34,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputTransmission">Transmission</label>
-                                <input type="text" class="form-control" id="exampleInputTransmission" asp-for="Transmission" placeholder="Enter transmission type">
+                                @Html.DropDownListFor(model => model.Transmission, (List<SelectListItem>)ViewBag.TransmissionOptions, "Select Transmission", new { @class = "form-control" })
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputSeat">Seat</label>
@@ -48,26 +46,34 @@
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputFuel">Fuel</label>
-                                <input type="text" class="form-control" id="exampleInputFuel" asp-for="Fuel" placeholder="Enter Fuel type">
+                                @Html.DropDownListFor(model => model.Fuel, (List<SelectListItem>)ViewBag.FuelOptions, "Select Fuel Type", new { @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputModel">Description</label>
+                                <input type="text" class="form-control" id="exampleInputModel" asp-for="Description" placeholder="Description">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputBigImageUrl">Big Image</label>
                                 <input type="file" class="form-control" name="BigImage">
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputSeat">Per Day Price</label>
+                                <input type="number" class="form-control" id="exampleInputSeat" asp-for="PerDayPrice" placeholder="Per Day Price">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSeat">Per Week Price</label>
+                                <input type="number" class="form-control" id="exampleInputSeat" asp-for="PerWeekPrice" placeholder="Per Week Price">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputSeat">Per Month Price</label>
+                                <input type="number" class="form-control" id="exampleInputSeat" asp-for="PerMonthPrice" placeholder="Per Month Price">
+                            </div>
                             <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
                         </form>
 
-                    </div> <!-- end card-body-->
+                    </div>
                 </div>
             </div>
-
         </div>
-        <!-- end card-body-->
     </div>
-    <!-- end card -->
-
 </div>
-<!-- end col -->
-        </div>
-<!-- end page title -->

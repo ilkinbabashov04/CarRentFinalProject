@@ -24,5 +24,15 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
+        [HttpGet("GetAllReservationByCarId/{id}")]
+        public IActionResult GetAllReservationByCarId(int id)
+        {
+            var result = _reservationService.GetAllReservationByCarId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
     }
 }

@@ -12,5 +12,6 @@ namespace DataAccess.Abstract
 {
     public interface IReservationDal : IBaseReporsitory<Reservation>
     {
+        List<GetReservationDto> GetAllReservationByCarId(int id);
     }
 }

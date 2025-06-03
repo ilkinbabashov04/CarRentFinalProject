@@ -64,9 +64,9 @@ namespace Ui.Areas.Admin.Controllers
             }
             return RedirectToAction("Index", "AdminCar");
         }
-        [Route("CreateFeatureByCarId")]
+        [Route("CreateFeatureByCarId/{id}")]
         [HttpGet]
-        public async Task<IActionResult> CreateFeatureByCarId()
+        public async Task<IActionResult> CreateFeatureByCarId(int id)
         {
             var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
             if (token != null)
@@ -78,10 +78,47 @@ namespace Ui.Areas.Admin.Controllers
                     var jsonData = await responseMessage.Content.ReadAsStringAsync();
                     var apiResponse = JsonConvert.DeserializeObject<ApiResponse<List<FeatureDto>>>(jsonData);
                     var values = apiResponse?.Data;
+                    ViewBag.id = id;
                     return View(values);
                 }
             }
             return View();
         }
+
+
+        [HttpPost]
+        [Route("CreateFeatureByCarId/{id}")]
+        public async Task<IActionResult> CreateFeatureByCarId(int id, List<FeatureDto> features)
+        {
+            var selectedFeatures = features.Where(f => f.IsSelected).ToList();
+
+            var token = User.Claims.FirstOrDefault(x => x.Type == "accessToken")?.Value;
+            if (token != null && selectedFeatures.Any())
+            {
+                var client = _httpClientFactory.CreateClient();
+                client.DefaultRequestHeaders.Authorization =
+                    new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+
+                foreach (var feature in selectedFeatures)
+                {
+                    var dto = new CreateCarFeatureDto
+                    {
+                        CarId = id,
+                        FeatureId = feature.Id,
+                        FeatureName = feature.Name
+                    };
+
+                    var jsonData = JsonConvert.SerializeObject(dto);
+                    var content = new StringContent(jsonData, Encoding.UTF8, "application/json");
+
+                    var response = await client.PostAsync($"https://localhost:7140/api/CarFeature/AddCarFeature", content);
+                }
+
+                return RedirectToAction("Index", "AdminCar");
+            }
+
+            return View();
+        }
+
     }
 }

@@ -13,5 +13,6 @@ namespace DataAccess.Abstract
 	{
 		List<CarPricingDto> GetAll();
 		List<GetCarPricingWithTimePeriodDto> GetCarPricingWithTimePeriods();
+		List<CarPricingDto> GetCarPricingByCarId(int id);
 	}
 }

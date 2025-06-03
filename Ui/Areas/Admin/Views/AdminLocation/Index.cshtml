@@ -24,7 +24,7 @@
                                         <th>Location</th>
                                         <th>Delete</th>
                                         <th>Update</th>
-                                        <th>Open Location</th>
+                                        @* <th>Open Location</th> *@
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -36,7 +36,7 @@
                                             <td>@item.Name</td>
                                             <td><a href="/Admin/AdminLocation/DeleteLocation/@item.Id" class="btn btn-outline-danger">Delete</a></td>
                                             <td><a href="/Admin/AdminLocation/UpdateLocation/@item.Id" class="btn btn-outline-success">Update</a></td>
-                                            <td><a href="/Admin/AdminLocation/LocationDetail/@item.Id" class="btn btn-outline-success">Open Location</a></td>
+                                            @*<td><a href="/Admin/AdminLocation/LocationDetail/@item.Id" class="btn btn-outline-success">Open Location</a></td> *@
                                         </tr>
                                     }
                                 </tbody>

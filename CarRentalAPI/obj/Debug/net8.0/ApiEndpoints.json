@@ -193,9 +193,44 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "blog",
-        "Type": "Entities.Concrete.Blog",
-        "IsRequired": true
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CategoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "AuthorId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreatedAt",
+        "Type": "System.DateTime",
+        "IsRequired": false
+      },
+      {
+        "Name": "TagClouds",
+        "Type": "System.Collections.Generic.List\u00601[[Entities.Dto.TagCloudDto, Entities, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "coverImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "bigImage",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -417,6 +452,26 @@
         "IsRequired": false
       },
       {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PerDayPrice",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "PerWeekPrice",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "PerMonthPrice",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
         "Name": "coverImage",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
@@ -566,6 +621,26 @@
         "IsRequired": false
       },
       {
+        "Name": "Description",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PerDayPrice",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "PerWeekPrice",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
+        "Name": "PerMonthPrice",
+        "Type": "System.Decimal",
+        "IsRequired": false
+      },
+      {
         "Name": "coverImage",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
@@ -574,6 +649,22 @@
         "Name": "bigImage",
         "Type": "Microsoft.AspNetCore.Http.IFormFile",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CarDescriptionController",
+    "Method": "Add",
+    "RelativePath": "api/CarDescription/AddCarDescription",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carDescription",
+        "Type": "Entities.Concrete.CarDescription",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -590,6 +681,22 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CarDescriptionController",
+    "Method": "Update",
+    "RelativePath": "api/CarDescription/UpdateCarDescription",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carDescription",
+        "Type": "Entities.Concrete.CarDescription",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -660,6 +767,22 @@
   },
   {
     "ContainingType": "CarRentalAPI.Controllers.CarPricingController",
+    "Method": "Add",
+    "RelativePath": "api/CarPricing/AddCarPricing",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carPricing",
+        "Type": "Entities.Concrete.CarPricing",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CarPricingController",
     "Method": "GetAll",
     "RelativePath": "api/CarPricing/GetAll",
     "HttpMethod": "GET",
@@ -670,12 +793,44 @@
   },
   {
     "ContainingType": "CarRentalAPI.Controllers.CarPricingController",
+    "Method": "GetCarPricingByCarId",
+    "RelativePath": "api/CarPricing/GetCarPricingByCarId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CarPricingController",
     "Method": "GetCarPricingWithTimePeriods",
     "RelativePath": "api/CarPricing/GetCarPricingWithTimePeriods",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.CarPricingController",
+    "Method": "Update",
+    "RelativePath": "api/CarPricing/UpdateCarPricing",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "carPricing",
+        "Type": "Entities.Concrete.CarPricing",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -788,7 +943,7 @@
     "ContainingType": "CarRentalAPI.Controllers.CommentController",
     "Method": "Delete",
     "RelativePath": "api/Comment/DeleteComment",
-    "HttpMethod": "POST",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
@@ -1445,6 +1600,22 @@
       {
         "Name": "reservation",
         "Type": "Entities.Concrete.Reservation",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CarRentalAPI.Controllers.ReservationController",
+    "Method": "GetAllReservationByCarId",
+    "RelativePath": "api/Reservation/GetAllReservationByCarId/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],

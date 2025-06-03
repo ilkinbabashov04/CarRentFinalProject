@@ -15,5 +15,23 @@ namespace DataAccess.Concrete.EF
         public EfReservationDal(BaseProjectContext context) : base(context)
         {
         }
+
+        public List<GetReservationDto> GetAllReservationByCarId(int id)
+        {
+            using var context = new BaseProjectContext();
+
+            var result = context.Reservations
+                .Where(r => r.CarId == id && r.IsDelete == false)
+                .Select(r => new GetReservationDto
+                {
+                    Id = r.Id,
+                    PickUpDate = r.PickUpDate,
+                    DropOffDate = r.DropOffDate,
+                })
+                .ToList();
+
+            return result;
+        }
+
     }
 }

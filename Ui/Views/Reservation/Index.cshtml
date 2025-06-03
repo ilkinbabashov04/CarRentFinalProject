@@ -1,59 +1,79 @@
 ﻿@model CreateReservationDto
 @{
     ViewData["Title"] = "Index";
-    Layout = "~/Views/UiLayout/Index.cshtml";
+    Layout = null;
 }
 
 <style>
-    .form-container {
-        max-width: 800px;
-        margin: 40px auto;
-        background: #fff;
-        padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        background: url('https://www.bmw-m.com/content/dam/bmw/marketBMW_M/www_bmw-m_com/topics/magazine-article-pool/2025/wallpaper/m-wallpaper/2025-m3-touring/bmw-m3-competition-touring-front-side_desktop.jpg.asset.1736873125649.jpg') no-repeat center center fixed;
+        background-size: cover;
         font-family: 'Segoe UI', sans-serif;
+    }
+
+    .overlay {
+        background-color: rgba(0, 0, 0, 0.4);
+        backdrop-filter: blur(5px);
+        position: absolute;
+        inset: 0;
+    }
+
+    .form-container {
+        position: absolute;
+        top: 50%;
+        right: 60px;
+        transform: translateY(-50%);
+        width: 600px;
+        height: 750px;
+        background: rgba(20, 20, 20, 0.75); /* Darker */
+        border-radius: 15px;
+        padding: 40px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6); /* Stronger shadow */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        color: #f1f1f1;
     }
 
         .form-container h2 {
             text-align: center;
             margin-bottom: 30px;
-            color: #333;
+            color: #ffffff;
         }
 
     .form-group {
         display: flex;
         flex-direction: column;
-        margin-bottom: 20px;
+        margin-bottom: 15px;
     }
 
         .form-group label {
+            font-weight: 500;
             margin-bottom: 6px;
-            font-weight: 600;
-            color: #444;
+            color: #ddd;
         }
 
         .form-group input,
         .form-group select,
         .form-group textarea {
             padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
+            border: none;
+            border-radius: 10px;
             font-size: 16px;
-            outline: none;
-            transition: 0.3s;
+            background: rgba(40, 40, 40, 0.7); /* Darker */
+            color: #fff;
         }
 
-            .form-group input:focus,
-            .form-group select:focus,
-            .form-group textarea:focus {
-                border-color: #3b82f6;
-                box-shadow: 0 0 0 3px rgba(59,130,246,0.2);
+            .form-group input::placeholder,
+            .form-group textarea::placeholder {
+                color: #aaa;
             }
 
     .form-row {
         display: flex;
-        gap: 20px;
+        gap: 15px;
     }
 
         .form-row .form-group {
@@ -61,25 +81,26 @@
         }
 
     .btn-submit {
-        background: #3b82f6;
-        color: white;
-        padding: 14px;
+        background-color: #3b82f6;
+        color: #fff;
         border: none;
-        border-radius: 8px;
-        cursor: pointer;
+        padding: 14px;
+        border-radius: 10px;
         font-size: 16px;
         width: 100%;
         margin-top: 20px;
+        cursor: pointer;
         transition: background 0.3s;
     }
 
         .btn-submit:hover {
-            background: #2563eb;
+            background-color: #2563eb;
         }
 </style>
 
+
 <div class="form-container">
-    <h2>🚗 Car Reservation Form</h2>
+    <h2>Car Reservation Form</h2>
     <form method="post">
         <input type="hidden" asp-for="CarId" value="@ViewBag.v3" />
 
@@ -137,12 +158,7 @@
             </div>
         </div>
 
-
         <div class="form-row">
-            @* <div class="form-group">
-                <label>Reservation Type</label>
-                @Html.DropDownListFor(x => x.PricingId, (List<SelectListItem>)ViewBag.PricingTypes, new { @class = "form-control" })
-            </div> *@
             <div class="form-group">
                 <label>Age</label>
                 <input asp-for="Age" class="form-control" placeholder="Your Age" />
@@ -154,11 +170,75 @@
             <input asp-for="DriverLicenceYear" class="form-control" placeholder="e.g. 2018" />
         </div>
 
-        <div class="form-group">
+        @* <div class="form-group">
             <label>Additional Information</label>
             <textarea asp-for="Description" rows="4" class="form-control" placeholder="Your message..."></textarea>
-        </div>
+        </div> *@
 
         <button type="submit" class="btn-submit">Submit Reservation</button>
     </form>
 </div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
+    const reservedRanges = @Html.Raw(ViewBag.ReservedRanges);
+
+    function parseDate(dateStr) {
+        return new Date(dateStr + "T00:00:00");
+    }
+
+    function formatDate(date) {
+        return date.toISOString().split('T')[0];
+    }
+
+    const disabledDates = [];
+    reservedRanges.forEach(range => {
+        const start = parseDate(range.Start);
+        const end = parseDate(range.End);
+
+        for (let d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+            disabledDates.push(formatDate(new Date(d)));
+        }
+    });
+
+    function getNextReservationStart(pickUpDate) {
+        const futureReservations = reservedRanges
+            .map(r => parseDate(r.Start))
+            .filter(start => start > pickUpDate)
+            .sort((a, b) => a - b);
+        return futureReservations.length > 0 ? futureReservations[0] : null;
+    }
+
+    const pickupInput = document.querySelector("input[name='PickUpDate']");
+    const dropoffInput = document.querySelector("input[name='DropOffDate']");
+
+    const dropoffCalendar = flatpickr(dropoffInput, {
+        dateFormat: "Y-m-d",
+        disable: disabledDates,
+        minDate: "today"
+    });
+
+    flatpickr(pickupInput, {
+        dateFormat: "Y-m-d",
+        disable: disabledDates,
+        minDate: "today",
+        onChange: function (selectedDates) {
+            const pickUpDate = selectedDates[0];
+            if (!pickUpDate) return;
+
+            const nextReservedStart = getNextReservationStart(pickUpDate);
+            let maxDropOff = null;
+
+            if (nextReservedStart) {
+                maxDropOff = new Date(nextReservedStart);
+                maxDropOff.setDate(maxDropOff.getDate() - 1);
+            }
+
+            dropoffCalendar.set('minDate', pickUpDate);
+            dropoffCalendar.set('maxDate', maxDropOff);
+        }
+    });
+</script>
+
+

@@ -9,6 +9,8 @@ using System.Globalization;
 using System.Text;
 using Ui.Helper;
 using Microsoft.AspNetCore.Authorization;
+using Newtonsoft.Json.Linq;
+using System.Net.Http.Headers;
 
 namespace Ui.Controllers
 {
@@ -16,7 +18,7 @@ namespace Ui.Controllers
     public class AdminCarController : Controller
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly string connectionString = "DefaultEndpointsProtocol=https;AccountName=ilkinbabashov;AccountKey=yzwaRJwEHqWDnckjDCDh3/wXMpFLTkykp4NqmPf7RZCMnXnjq3ozsXum+L0RLI4tSsKnG0JuBZI0+AStsVCZIQ==;EndpointSuffix=core.windows.net";
+        private readonly string connectionString = "DefaultEndpointsProtocol=https;AccountName=babashovilkin;AccountKey=aNQF8IbAitLm9STdiV7A0py55M9c70bW9xYmO4dBpQnlFJe7SpkC1OcUi+46jZFtzoGMariWaJMH+AStM4+8hw==;EndpointSuffix=core.windows.net";
         private readonly string shareName = "cars";
         public AdminCarController(IHttpClientFactory httpClientFactory)
         {
@@ -63,6 +65,19 @@ namespace Ui.Controllers
                                                     }).ToList();
 
                 ViewBag.BrandValues = brandValues;
+                ViewBag.TransmissionOptions = new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Automatic", Value = "Automatic" },
+            new SelectListItem { Text = "Manual", Value = "Manual" }
+        };
+
+                ViewBag.FuelOptions = new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Diesel", Value = "Diesel" },
+            new SelectListItem { Text = "Gasoline", Value = "Gasoline" },
+            new SelectListItem { Text = "Hybrid", Value = "Hybrid" },
+            new SelectListItem { Text = "Electric", Value = "Electric" }
+        };
             }
             return View();
         }
@@ -83,6 +98,10 @@ namespace Ui.Controllers
                     formData.Add(new StringContent(createCarDto.Seat.ToString()), "Seat");
                     formData.Add(new StringContent(createCarDto.Luggage.ToString()), "Luggage");
                     formData.Add(new StringContent(createCarDto.Fuel), "Fuel");
+                    formData.Add(new StringContent(createCarDto.Description), "Description");
+                    formData.Add(new StringContent(createCarDto.PerDayPrice.ToString()), "PerDayPrice");
+                    formData.Add(new StringContent(createCarDto.PerWeekPrice.ToString()), "PerWeekPrice");
+                    formData.Add(new StringContent(createCarDto.PerMonthPrice.ToString()), "PerMonthPrice");
 
                     if (BigImage != null)
                     {
@@ -102,14 +121,76 @@ namespace Ui.Controllers
 
                     if (responseMessage.IsSuccessStatusCode)
                     {
+                        var responseContent = await responseMessage.Content.ReadAsStringAsync();
+                        var json = JObject.Parse(responseContent);
+
+                        int carId = (int)json["id"];
+
+                        var descriptionDto = new
+                        {
+                            CarId = carId,
+                            Detail = createCarDto.Description
+                        };
+
+                        var descriptionContent = new StringContent(
+                            JsonConvert.SerializeObject(descriptionDto),
+                            Encoding.UTF8,
+                            "application/json"
+                        );
+
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                        var descResponse = await client.PostAsync("https://localhost:7140/api/CarDescription/AddCarDescription", descriptionContent);
+
+                        var pricingDto = new
+                        {
+                            CarId = carId,
+                            PricingId = 1, // Per Day
+                            Amount = createCarDto.PerDayPrice
+                        };
+
+                        var pricingContent = new StringContent(
+                            JsonConvert.SerializeObject(pricingDto),
+                            Encoding.UTF8,
+                            "application/json"
+                        );
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                        await client.PostAsync("https://localhost:7140/api/CarPricing/AddCarPricing", pricingContent);
+
+                        var pricingDto2 = new
+                        {
+                            CarId = carId,
+                            PricingId = 2, // Per week
+                            Amount = createCarDto.PerWeekPrice
+                        };
+
+                        var pricingContent2 = new StringContent(
+                            JsonConvert.SerializeObject(pricingDto2),
+                            Encoding.UTF8,
+                            "application/json"
+                        );
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                        await client.PostAsync("https://localhost:7140/api/CarPricing/AddCarPricing", pricingContent2);
+
+                        var pricingDto3 = new
+                        {
+                            CarId = carId,
+                            PricingId = 4, // Per Month
+                            Amount = createCarDto.PerMonthPrice
+                        };
+
+                        var pricingContent3 = new StringContent(
+                            JsonConvert.SerializeObject(pricingDto3),
+                            Encoding.UTF8,
+                            "application/json"
+                        );
+                        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+                        await client.PostAsync("https://localhost:7140/api/CarPricing/AddCarPricing", pricingContent3);
                         return RedirectToAction("Index");
                     }
                 }
             }
             return View();
         }
-
-
 
 
         public async Task<IActionResult> DeleteCar(int id)
@@ -150,6 +231,19 @@ namespace Ui.Controllers
                                                     }).ToList();
 
                 ViewBag.BrandValues = brandValues;
+                ViewBag.TransmissionOptions = new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Automatic", Value = "Automatic" },
+            new SelectListItem { Text = "Manual", Value = "Manual" }
+        };
+
+                ViewBag.FuelOptions = new List<SelectListItem>
+        {
+            new SelectListItem { Text = "Diesel", Value = "Diesel" },
+            new SelectListItem { Text = "Gasoline", Value = "Gasoline" },
+            new SelectListItem { Text = "Hybrid", Value = "Hybrid" },
+            new SelectListItem { Text = "Electric", Value = "Electric" }
+        };
 
                 var responseMessage = await client.GetAsync($"https://localhost:7140/api/Car/GetCarById {id}");
                 if (responseMessage.IsSuccessStatusCode)
@@ -158,6 +252,45 @@ namespace Ui.Controllers
                     Console.WriteLine($"API Response: {jsonData}");
                     var apiResponse = JsonConvert.DeserializeObject<ApiResponse<CarDto>>(jsonData);
                     var values = apiResponse?.Data;
+
+                    var descriptionResponse = await client.GetAsync($"https://localhost:7140/api/CarDescription/GetCarDescriptionByCarId?id={id}");
+                    if (descriptionResponse.IsSuccessStatusCode)
+                    {
+                        var descriptionJson = await descriptionResponse.Content.ReadAsStringAsync();
+                        var descriptionApiResponse = JsonConvert.DeserializeObject<ApiResponse<CarDescriptionDto>>(descriptionJson);
+                        if (descriptionApiResponse?.Data != null)
+                        {
+                            values.Description = descriptionApiResponse.Data.Detail;
+                        }
+                    }
+                    // 5. CarPricing getir və PerDay, PerWeek, PerMonth sahələrinə doldur
+                    var pricingResponse = await client.GetAsync($"https://localhost:7140/api/CarPricing/GetCarPricingByCarId?id={id}");
+                    if (pricingResponse.IsSuccessStatusCode)
+                    {
+                        var pricingJson = await pricingResponse.Content.ReadAsStringAsync();
+                        var pricingApiResponse = JsonConvert.DeserializeObject<ApiResponse<List<CarPricingDto>>>(pricingJson);
+                        var pricingData = pricingApiResponse?.Data;
+
+                        if (pricingData != null)
+                        {
+                            foreach (var pricing in pricingData)
+                            {
+                                switch (pricing.PricingId)
+                                {
+                                    case 1:
+                                        values.PerDayPrice = pricing.Amount;
+                                        break;
+                                    case 2:
+                                        values.PerWeekPrice = pricing.Amount;
+                                        break;
+                                    case 4:
+                                        values.PerMonthPrice = pricing.Amount;
+                                        break;
+                                }
+                            }
+                        }
+                    }
+
                     return View(values);
                 }
             }
@@ -195,6 +328,8 @@ namespace Ui.Controllers
                 formData.Add(new StringContent(carDto.Seat.ToString()), "Seat");
                 formData.Add(new StringContent(carDto.Luggage.ToString()), "Luggage");
                 formData.Add(new StringContent(carDto.Fuel), "Fuel");
+                formData.Add(new StringContent(carDto.Description), "Description");
+                //formData.Add(new StringContent(carDto.PerDayPrice.ToString()), "PerDayPrice");
 
                 // Add image files if present
                 if (CoverImage != null)
@@ -208,13 +343,109 @@ namespace Ui.Controllers
                     var bigImageStream = new StreamContent(BigImage.OpenReadStream());
                     formData.Add(bigImageStream, "bigImage", BigImage.FileName);
                 }
-
-                // Send request
-                var responseMessage = await client.PostAsync($"https://localhost:7140/api/Car/UpdateCar/{carDto.id}", formData);
-
-                if (responseMessage.IsSuccessStatusCode)
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                await client.PostAsync($"https://localhost:7140/api/Car/UpdateCar/{carDto.id}", formData);
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                var getDescriptionResponse = await client.GetAsync($"https://localhost:7140/api/CarDescription/GetCarDescriptionByCarId?id={carDto.id}");
+                if (getDescriptionResponse.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    var getDescriptionJson = await getDescriptionResponse.Content.ReadAsStringAsync();
+                    var getDescriptionData = JsonConvert.DeserializeObject<ApiResponse<CarDescriptionDto>>(getDescriptionJson);
+
+                    if (getDescriptionData?.Data != null)
+                    {
+                        var descriptionDto = new
+                        {
+                            Id = getDescriptionData.Data.Id, 
+                            CarId = carDto.id,
+                            Detail = carDto.Description
+                        };
+
+                        var descriptionContent = new StringContent(
+                            JsonConvert.SerializeObject(descriptionDto),
+                            Encoding.UTF8,
+                            "application/json"
+                        );
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                        var responseMessage2 = await client.PostAsync("https://localhost:7140/api/CarDescription/UpdateCarDescription", descriptionContent);
+                        client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                        var pricingResponse = await client.GetAsync($"https://localhost:7140/api/CarPricing/GetCarPricingByCarId?id={carDto.id}");
+                        var pricingJson = await pricingResponse.Content.ReadAsStringAsync();
+                        var pricingData = JsonConvert.DeserializeObject<ApiResponse<List<CarPricingDto>>>(pricingJson);
+
+                        if (pricingData?.Data != null)
+                        {
+                            var perDay = pricingData.Data.FirstOrDefault(p => p.PricingId == 1); // Günlük
+                            var perWeek = pricingData.Data.FirstOrDefault(p => p.PricingId == 2); // Həftəlik
+                            var perMonth = pricingData.Data.FirstOrDefault(p => p.PricingId == 4); // Aylıq
+
+                            // Günlük qiyməti güncəllə
+                            if (perDay != null)
+                            {
+                                var dayDto = new
+                                {
+                                    Id = perDay.CarPricingId,
+                                    CarId = carDto.id,
+                                    PricingId = 1,
+                                    Amount = carDto.PerDayPrice,
+                                    IsDelete = false
+                                };
+
+                                var dayContent = new StringContent(
+                                    JsonConvert.SerializeObject(dayDto),
+                                    Encoding.UTF8,
+                                    "application/json"
+                                );
+                                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                                var ressss = await client.PostAsync("https://localhost:7140/api/CarPricing/UpdateCarPricing", dayContent);
+                            }
+
+                            // Həftəlik
+                            if (perWeek != null)
+                            {
+                                var weekDto = new
+                                {
+                                    Id = perWeek.CarPricingId,
+                                    CarId = carDto.id,
+                                    PricingId = 2,
+                                    Amount = carDto.PerWeekPrice,
+                                    IsDelete = false
+                                };
+
+                                var weekContent = new StringContent(
+                                    JsonConvert.SerializeObject(weekDto),
+                                    Encoding.UTF8,
+                                    "application/json"
+                                );
+                                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                                await client.PostAsync("https://localhost:7140/api/CarPricing/UpdateCarPricing", weekContent);
+                            }
+
+                            // Aylıq
+                            if (perMonth != null)
+                            {
+                                var monthDto = new
+                                {
+                                    Id = perMonth.CarPricingId,
+                                    CarId = carDto.id,
+                                    PricingId = 4,
+                                    Amount = carDto.PerMonthPrice,
+                                    IsDelete = false
+                                };
+
+                                var monthContent = new StringContent(
+                                    JsonConvert.SerializeObject(monthDto),
+                                    Encoding.UTF8,
+                                    "application/json"
+                                );
+                                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
+                                await client.PostAsync("https://localhost:7140/api/CarPricing/UpdateCarPricing", monthContent);
+                            }
+                        }
+
+                        return RedirectToAction("Index");
+                        
+                    }
                 }
 
             }

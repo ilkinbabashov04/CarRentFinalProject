@@ -21,5 +21,18 @@ namespace Business.Concrete
             _reservationDal.Add(reservation);
             return new SuccessResult("Successfully added!");
         }
+
+        public IDataResult<List<GetReservationDto>> GetAllReservationByCarId(int id)
+        {
+            var result = _reservationDal.GetAllReservationByCarId(id);
+            if (result.Count > 0)
+            {
+                return new SuccessDataResult<List<GetReservationDto>>(result, "Got Successfully!");
+            }
+            else
+            {
+                return new ErrorDataResult<List<GetReservationDto>>(result, "Not found!");
+            }
+        }
     }
 }

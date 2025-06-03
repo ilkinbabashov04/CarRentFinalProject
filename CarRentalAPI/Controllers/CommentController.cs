@@ -36,7 +36,7 @@ namespace CarRentalAPI.Controllers
             }
             return BadRequest();
         }
-        [HttpPost("DeleteComment")]
+        [HttpDelete("DeleteComment")]
         [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {

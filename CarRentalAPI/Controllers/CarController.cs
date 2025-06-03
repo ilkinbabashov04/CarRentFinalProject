@@ -49,8 +49,14 @@ namespace CarRentalAPI.Controllers
             var result = _carService.Add(car);
             if (result.Success)
             {
+                var description = new CarDescription
+                {
+                    CarId = car.Id,
+                    Detail = carDto.Description,
+                    IsDelete = false
+                };
                 _logger.LogInformation("Car added successfully: {Model}", car.Model);
-                return Ok(result);
+                return Ok(new { id = car.Id });
             }
             _logger.LogWarning("Failed to add car: {Model}", car.Model);
             return BadRequest();

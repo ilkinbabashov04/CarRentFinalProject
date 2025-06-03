@@ -1,6 +1,9 @@
 ﻿@model BlogDto
 <div class="col-md-8 ftco-animate">
     <h2 class="mb-3">@Model.Title</h2>
+    <div class="block-21 mb-4 d-flex">
+        <a class="blog-img mr-4" style="background-image: url(@Model.BigImageUrl); height: 400px; width: 700px"></a>
+    </div>
     <p>@Model.Description</p>
     
     @await Component.InvokeAsync("BlogDetailCloudTagByBlogComponentPartial", new {id = ViewBag.blogId})

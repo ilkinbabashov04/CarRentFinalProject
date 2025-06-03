@@ -49,7 +49,7 @@
 
                             <div class="form-group">
                                 <label for="exampleInputTransmission">Transmission</label>
-                                <input type="text" class="form-control" id="exampleInputTransmission" asp-for="Transmission" placeholder="Enter transmission type">
+                                @Html.DropDownListFor(model => model.Transmission, (List<SelectListItem>)ViewBag.TransmissionOptions, "Select Transmission", new { @class = "form-control" })
                             </div>
 
                             <div class="form-group">
@@ -64,7 +64,7 @@
 
                             <div class="form-group">
                                 <label for="exampleInputFuel">Fuel</label>
-                                <input type="text" class="form-control" id="exampleInputFuel" asp-for="Fuel" placeholder="Enter Fuel type">
+                                @Html.DropDownListFor(model => model.Fuel, (List<SelectListItem>)ViewBag.FuelOptions, "Select Fuel Type", new { @class = "form-control" })
                             </div>
                             <div class="form-group">
                                 <label for="coverImage">Big Image</label>
@@ -78,7 +78,22 @@
                                     </div>
                                 }
                             </div>
-
+                            <div class="form-group">
+                                <label for="exampleInputSeat">Description</label>
+                                <input type="text" class="form-control" id="exampleInputSeat" asp-for="Description" placeholder="Description">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputLuggage">Per Day Price</label>
+                                <input type="number" class="form-control" id="exampleInputLuggage" asp-for="PerDayPrice" placeholder="PerDayPrice">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputLuggage">Per Week Price</label>
+                                <input type="number" class="form-control" id="exampleInputLuggage" asp-for="PerWeekPrice" placeholder="Per Week Price">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputLuggage">Per Month Price</label>
+                                <input type="number" class="form-control" id="exampleInputLuggage" asp-for="PerMonthPrice" placeholder="Per Month Price">
+                            </div>
                             @* <div class="form-group">
                                 <label for="exampleInputBigImageUrl">Big Image Url</label>
                                 <input type="text" class="form-control" id="exampleInputBigImageUrl" asp-for="BigImageUrl" placeholder="Enter Big Image Url">

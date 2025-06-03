@@ -16,6 +16,7 @@ namespace Ui.Controllers
         }
         [HttpGet]
         public async Task<IActionResult> Index()
+        
         {
             var client = _httpClientFactory.CreateClient();
             var responseMessage = await client.GetAsync("https://localhost:7140/api/Location/GetAll");
@@ -29,13 +30,14 @@ namespace Ui.Controllers
                                                 Value = x.Id.ToString(),
                                             }).ToList();
             ViewBag.v = values2;
+            ViewBag.LocationData = values;
             return View();
         }
         [HttpPost]
-        public IActionResult Index(string book_pick_date, string book_off_date, string time_pick, string time_off, string Id)
+        public IActionResult Index(string pickup_date, string dropoff_date, string time_pick, string time_off, string Id)
         {
-            TempData["bookpickdate"] = book_pick_date;
-            TempData["bookoffdate"] = book_off_date;
+            TempData["bookpickdate"] = pickup_date;
+            TempData["bookoffdate"] = dropoff_date;
             TempData["timepick"] = time_pick;
             TempData["timeoff"] = time_off;
             TempData["Id"] = Id;

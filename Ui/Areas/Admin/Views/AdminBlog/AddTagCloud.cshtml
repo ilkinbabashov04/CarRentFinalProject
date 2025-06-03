@@ -1,0 +1,30 @@
+﻿@model TagCloudDto
+@{
+    ViewData["Title"] = "AddTagCloud";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">New Tag</h4>
+                        <p class="card-subtitle mb-4">You are required to enter all the Brands of the cars before proceeding. Once all the necessary information has been provided, please press the Save button to complete the operation.</p>
+
+                        <form method="post">
+                            <div class="form-group">
+                                <label for="exampleInputName">Tag</label>
+                                <input type="text" class="form-control" id="exampleInputName" asp-for="Title" placeholder="Tag Name">
+                            </div>
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">Add Tag</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

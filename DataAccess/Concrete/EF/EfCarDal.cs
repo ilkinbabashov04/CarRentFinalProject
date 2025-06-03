@@ -119,7 +119,7 @@ namespace DataAccess.Concrete.EF
                         car => car.Id,
                         cp => cp.CarId,
                         (car, cp) => new { car, cp })
-                    .Where(x => x.cp.PricingId == 1)
+                    .Where(x => x.cp.PricingId == 1 && x.cp.IsDelete == false)
                     .Join(context.Brands,
                         x => x.car.BrandId,
                         brand => brand.Id,
@@ -167,6 +167,6 @@ namespace DataAccess.Concrete.EF
 
             return result;
         }
-
+       
     }
 }

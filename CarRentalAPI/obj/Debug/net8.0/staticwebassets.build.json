@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ieyulTK+hBzwd7wJSv9ZJRiARUq6ystJ+2NcKZzGBk8=",
+  "Hash": "FlPLo95QKXZO4f0X7Xn8YEFjz9mL/uUlSCowX/ApSYI=",
   "Source": "CarRentalAPI",
   "BasePath": "_content/CarRentalAPI",
   "Mode": "Default",
@@ -12776,6 +12776,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\carbook-master\\images\\about.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\adam.png",
+      "SourceId": "Ui",
+      "SourceType": "Project",
+      "ContentRoot": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\",
+      "BasePath": "_content/Ui",
+      "RelativePath": "carbook-master/images/adam.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\carbook-master\\images\\adam.png"
     },
     {
       "Identity": "C:\\Users\\Babashov\\source\\repos\\CarRentFinalProject\\Ui\\wwwroot\\carbook-master\\images\\bg.jpg",

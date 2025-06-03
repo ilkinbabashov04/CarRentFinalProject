@@ -10,6 +10,8 @@ namespace Business.Abstract
 {
 	public interface ICarDescriptionService
 	{
+        IResult Update(CarDescription carDescription);
+        IResult Add(CarDescription carDescription);
         IResult GetCarDescriptionByCarId(int id);
 
     }

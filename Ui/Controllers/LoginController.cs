@@ -79,7 +79,7 @@ namespace Ui.Controllers
                             authProps
                         );
 
-                        return RedirectToAction("Index", "AdminCar");
+                        return RedirectToAction("Index", "AdminDashboard", new { area = "Admin" });
                     }
                 }
             }

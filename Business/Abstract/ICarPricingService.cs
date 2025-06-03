@@ -11,8 +11,10 @@ namespace Business.Abstract
 {
 	public interface ICarPricingService
 	{
+		IResult Add(CarPricing createCarPricingDto);
+		IResult Update(CarPricing carPricing);
         IDataResult<List<CarPricingDto>> GetAll();
 		IDataResult<List<GetCarPricingWithTimePeriodDto>> GetCarPricingWithTimePeriods();
-
-	}
+		IDataResult<List<CarPricingDto>> GetCarPricingByCarId(int id);
+    }
 }

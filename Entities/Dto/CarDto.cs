@@ -25,5 +25,10 @@ namespace Entities.Dto
 		public string Fuel { get; set; }
 		public string BigImageUrl { get; set; }
         public decimal Amount { get; set; }
+        public string? Description { get; set; } // CarDescription üçün
+        public decimal PerDayPrice { get; set; }
+        public decimal PerWeekPrice { get; set; }
+        public decimal PerMonthPrice { get; set; }
+
     }
 }

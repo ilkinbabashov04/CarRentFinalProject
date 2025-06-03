@@ -63,7 +63,7 @@ namespace Ui.Controllers
             var responseMessage = await client.PostAsync("https://localhost:7140/api/Comment/AddComment", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index", "Default");
+                return RedirectToAction("BlogDetail", "Blog", new { id = createCommentDto.BlogId });
             }
             return View();
         }
