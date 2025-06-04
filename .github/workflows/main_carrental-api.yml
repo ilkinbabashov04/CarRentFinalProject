@@ -13,41 +13,41 @@ jobs:
       contents: read
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Set up .NET Core
+      - name: Set up .NET Core SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
 
-      - name: Build only CarRentalAPI project
+      - name: Build CarRentalAPI project
         run: dotnet build CarRentalAPI/CarRentalAPI.csproj --configuration Release
 
       - name: Publish CarRentalAPI project
-        run: dotnet publish CarRentalAPI/CarRentalAPI.csproj -c Release -o ./myapp
+        run: dotnet publish CarRentalAPI/CarRentalAPI.csproj --configuration Release --output ./publish_output/api
 
-      - name: Upload artifact for deployment job
+      - name: Upload artifact for deployment
         uses: actions/upload-artifact@v4
         with:
-          name: .net-api
-          path: ./myapp
+          name: api-artifact
+          path: ./publish_output/api
 
   deploy:
     runs-on: windows-latest
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
     permissions:
       id-token: write
       contents: read
 
     steps:
-      - name: Download artifact from build job
+      - name: Download artifact
         uses: actions/download-artifact@v4
         with:
-          name: .net-api
-          path: ./myapp
+          name: api-artifact
+          path: ./publish_output/api
 
       - name: Login to Azure
         uses: azure/login@v2
@@ -57,10 +57,8 @@ jobs:
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AAAB9340908D459382C6B8BE4838BC62 }}
 
       - name: Deploy to Azure Web App
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'carrental-api'
+          app-name: 'carrental-api'       # Azure Web App adı
           slot-name: 'Production'
-          package: ./myapp
-
+          package: ./publish_output/api
