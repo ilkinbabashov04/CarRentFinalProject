@@ -1,4 +1,4 @@
-name: Deploy ASP.NET Core API to Azure Web App - carrental-api
+name: Build and deploy ASP.Net Core API to Azure Web App - carrental-api
 
 on:
   push:
@@ -7,44 +7,58 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: windows-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    permissions:
+      contents: read
 
-      - name: Setup .NET 8 SDK
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up .NET Core
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
 
-      - name: Publish CarRentalAPI only
-        run: |
-          cd CarRentalAPI
-          dotnet publish CarRentalAPI.csproj -c Release -o ../publish
+      - name: Build only CarRentalAPI project
+        run: dotnet build CarRentalAPI/CarRentalAPI.csproj --configuration Release
 
-      - name: Upload artifact
+      - name: Publish CarRentalAPI project
+        run: dotnet publish CarRentalAPI/CarRentalAPI.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+
+      - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
-          name: api-publish
-          path: ./publish
+          name: .net-api
+          path: ${{env.DOTNET_ROOT}}/myapp
 
-      - name: Download artifact
+  deploy:
+    runs-on: windows-latest
+    needs: build
+    environment:
+      name: 'Production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Download artifact from build job
         uses: actions/download-artifact@v4
         with:
-          name: api-publish
-          path: ./publish
+          name: .net-api
 
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5CFB86B6715144B7BB6AEFE6EA1EDA47 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5A64A252BBFA497C8A716EC3DCF59513 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AAAB9340908D459382C6B8BE4838BC62 }}
 
       - name: Deploy to Azure Web App
+        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
           app-name: 'carrental-api'
           slot-name: 'Production'
-          package: ./publish
+          package: .
