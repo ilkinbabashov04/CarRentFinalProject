@@ -10,7 +10,7 @@ jobs:
   build:
     runs-on: windows-latest
     permissions:
-      contents: read # Required for actions/checkout
+      contents: read
 
     steps:
       - uses: actions/checkout@v4
@@ -20,16 +20,16 @@ jobs:
         with:
           dotnet-version: '8.x'
 
-      - name: Build only CarRentalAPI project
+      - name: Build CarRentalAPI project only
         run: dotnet build CarRentalAPI/CarRentalAPI.csproj --configuration Release
 
-      - name: Publish CarRentalAPI project
+      - name: Publish CarRentalAPI project only
         run: dotnet publish CarRentalAPI/CarRentalAPI.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
 
-      - name: Upload artifact for deployment job
+      - name: Upload API artifact
         uses: actions/upload-artifact@v4
         with:
-          name: .net-api
+          name: api-artifact
           path: ${{env.DOTNET_ROOT}}/myapp
 
   deploy:
@@ -43,17 +43,15 @@ jobs:
       contents: read
 
     steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v4
         with:
-          name: .net-api
+          name: api-artifact
 
-      - name: Login to Azure
-        uses: azure/login@v2
+      - uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5CFB86B6715144B7BB6AEFE6EA1EDA47 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_5A64A252BBFA497C8A716EC3DCF59513 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_AAAB9340908D459382C6B8BE4838BC62 }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
