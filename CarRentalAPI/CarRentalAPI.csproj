@@ -36,14 +36,5 @@
     <ProjectReference Include="..\Core\Core.csproj" />
   </ItemGroup>
 
-<ItemGroup>
-  <None Update="appsettings.Development.json">
-    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-  </None>
-  <None Update="libman.json">
-    <CopyToPublishDirectory>Never</CopyToPublishDirectory>
-  </None>
-</ItemGroup>
-
 
 </Project>
