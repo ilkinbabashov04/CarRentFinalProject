@@ -9,14 +9,12 @@ on:
 jobs:
   build:
     runs-on: windows-latest
-    permissions:
-      contents: read
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up .NET Core SDK
+      - name: Setup .NET SDK
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '8.x'
@@ -27,7 +25,7 @@ jobs:
       - name: Publish CarRentalAPI project
         run: dotnet publish CarRentalAPI/CarRentalAPI.csproj --configuration Release --output ./publish_output/api
 
-      - name: Upload artifact for deployment
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: api-artifact
@@ -36,11 +34,6 @@ jobs:
   deploy:
     runs-on: windows-latest
     needs: build
-    environment:
-      name: 'Production'
-    permissions:
-      id-token: write
-      contents: read
 
     steps:
       - name: Download artifact
@@ -49,7 +42,7 @@ jobs:
           name: api-artifact
           path: ./publish_output/api
 
-      - name: Login to Azure
+      - name: Azure login
         uses: azure/login@v2
         with:
           client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_5CFB86B6715144B7BB6AEFE6EA1EDA47 }}
@@ -59,6 +52,5 @@ jobs:
       - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'carrental-api'       # Azure Web App adı
-          slot-name: 'Production'
+          app-name: 'carrental-api'
           package: ./publish_output/api
