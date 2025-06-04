@@ -24,13 +24,13 @@ jobs:
         run: dotnet build CarRentalAPI/CarRentalAPI.csproj --configuration Release
 
       - name: Publish CarRentalAPI project only
-        run: dotnet publish CarRentalAPI/CarRentalAPI.csproj -c Release -o "${{env.DOTNET_ROOT}}/myapp"
+        run: dotnet publish CarRentalAPI/CarRentalAPI.csproj -c Release -o ./publish
 
-      - name: Upload API artifact
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: api-artifact
-          path: ${{env.DOTNET_ROOT}}/myapp
+          name: api-publish
+          path: ./publish
 
   deploy:
     runs-on: windows-latest
@@ -45,7 +45,7 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: api-artifact
+          name: api-publish
 
       - uses: azure/login@v2
         with:
@@ -59,4 +59,4 @@ jobs:
         with:
           app-name: 'carrental-api'
           slot-name: 'Production'
-          package: './myapp'
+          package: './api-publish'
